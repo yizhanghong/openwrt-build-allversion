@@ -1,4 +1,5 @@
 #!/bin/bash
+cd immortalwrt-mt798x
 
 # 修改默认IP，主机名，WiFi名称
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
@@ -28,3 +29,5 @@ sed -i "s/${orig_version}/R${date_version} by Haiibo/g" package/lean/default-set
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+
+cd ..
