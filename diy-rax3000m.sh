@@ -25,6 +25,8 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/l
 # 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
 
 
 # 修改版本为编译日期
