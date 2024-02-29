@@ -15,9 +15,16 @@ sed -i 's/ImmortalWrt/CMCCRAX/g' package/kernel/mac80211/files/lib/wifi/mac80211
 #   cd .. && rm -rf $repodir
 # }
 
-# 添加额外插件
-# git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall
-# git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
+# 移除要替换的包
+rm -rf feeds/packages/net/hysteria
+# rm -rf feeds/packages/net/xray-core
+
+# 添加额外插件passwall2
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
+# 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
+rm -rf feeds/packages/lang/golang
+git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 
 # 修改版本为编译日期
