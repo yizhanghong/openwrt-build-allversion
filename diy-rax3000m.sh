@@ -54,7 +54,7 @@ rm -rf package/passwall-packages/shadowsocks-rust
 mv package/passwall-packages/sing-box package/
 cp -rf package/passwall-packages/* feeds/packages/net/
 rm -rf package/passwall-packages
-mv /package/sing-box package/luci-app-passwall2/
+mv package/sing-box package/luci-app-passwall2/
 
 # 修改版本为编译日期
 # date_version=$(date +"%y.%m.%d")
