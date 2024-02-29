@@ -1,4 +1,4 @@
-name: rax3000m
+name: rax3000m-test
 
 # Add a button to trigger the workflow
 on: 
