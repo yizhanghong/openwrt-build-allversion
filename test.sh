@@ -3,16 +3,16 @@ sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_genera
 
 
 # 添加额外插件
-git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome mypackage/luci-app-adguardhome
-git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy mypackage/luci-app-ikoolproxy
-git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff mypackage/luci-app-poweroff
-git clone --depth=1 https://github.com/destan19/OpenAppFilter mypackage/OpenAppFilter
+git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/mypackage/luci-app-adguardhome
+git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy package/mypackage/luci-app-ikoolproxy
+git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/mypackage/luci-app-poweroff
+git clone --depth=1 https://github.com/destan19/OpenAppFilter package/mypackage/OpenAppFilter
 
-# git clone --depth=1 https://github.com/Jason6111/luci-app-netdata mypackage/luci-app-netdata
+# git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/mypackage/luci-app-netdata
 
 
 # 科学上网插件
-git clone --depth=1 https://github.com/kenzok8/small mypackage/small
+git clone --depth=1 https://github.com/kenzok8/small package/mypackage/small
 
 # Themes
 
@@ -21,8 +21,8 @@ rm -rf feeds/luci/applications/luci-app-argon-config
 
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon feeds/luci/themes/luci-theme-argon
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-app-argon-config feeds/luci/applications/luci-app-argon-config
-git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom mypackage/luci-theme-infinityfreedom
-git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge mypackage/luci-theme-edge
+git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/mypackage/luci-theme-infinityfreedom
+git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/mypackage/luci-theme-edge
 
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
@@ -30,7 +30,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/M
 # cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 # 晶晨宝盒
-git clone --depth=1 https://github.com/ophub/luci-app-amlogic mypackage/luci-app-amlogic
+git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/mypackage/luci-app-amlogic
 
 # sed -i "s|firmware_repo.*|firmware_repo 'https://github.com/haiibo/OpenWrt'|g" package/luci-app-amlogic/root/etc/config/amlogic
 # sed -i "s|kernel_path.*|kernel_path 'https://github.com/ophub/kernel'|g" package/luci-app-amlogic/root/etc/config/amlogic
@@ -38,11 +38,13 @@ git clone --depth=1 https://github.com/ophub/luci-app-amlogic mypackage/luci-app
 
 
 # iStore
-git clone --depth=1 -b main https://github.com/linkease/istore.git mypackage/istore
-mv mypackage/istore/luci/luci-app-store mypackage/
-rm -rf mypackage/istore
-git clone --depth=1 -b master https://github.com/linkease/nas-packages.git mypackage/nas
-git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git mypackage/nas-luci
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/mypackage/istore
+
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/mypackage/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/mypackage/nas-luci
+mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packages/
+rm -rf package/mypackage/nas-packages/network
+
 
 
 # 修改本地时间格式
