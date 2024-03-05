@@ -31,6 +31,9 @@ git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon mypac
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config mypackage/luci-app-argon-config
 git clone --depth=1 https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom mypackage/luci-theme-infinityfreedom
 
+# 更改默认主题
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+
 # 更改 Argon 主题背景
 # cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
