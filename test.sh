@@ -1,13 +1,9 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 # sed -i 's/OpenWrt/L1Pro/g' package/base-files/files/bin/config_generate
 
-mkdir mypackage
-
-
 
 # 添加额外插件
 git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome mypackage/luci-app-adguardhome
-git clone --depth=1 -b openwrt-18.06 https://github.com/tty228/luci-app-wechatpush mypackage/luci-app-serverchan
 git clone --depth=1 https://github.com/ilxp/luci-app-ikoolproxy mypackage/luci-app-ikoolproxy
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff mypackage/luci-app-poweroff
 git clone --depth=1 https://github.com/destan19/OpenAppFilter mypackage/OpenAppFilter
@@ -42,11 +38,9 @@ git clone --depth=1 https://github.com/ophub/luci-app-amlogic mypackage/luci-app
 
 
 # iStore
-echo >> feeds.conf.default
-echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
-./scripts/feeds update istore
-./scripts/feeds install -d y -p istore luci-app-store
-
+git clone --depth=1 -b main https://github.com/linkease/istore.git mypackage/istore
+mv mypackage/istore/luci/luci-app-store mypackage/
+rm -rf mypackage/istore
 git clone --depth=1 -b master https://github.com/linkease/nas-packages.git mypackage/nas
 git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git mypackage/nas-luci
 
