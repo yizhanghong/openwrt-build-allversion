@@ -104,17 +104,13 @@ jobs:
       working-directory: ./
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         COMMIT_AUTHOR=$(git show -s --date=short --format="%an")
         echo "COMMIT_AUTHOR=$COMMIT_AUTHOR" >> $GITHUB_ENV
         COMMIT_DATE=$(git show -s --date=short --format="%ci")
         echo "COMMIT_DATE=$COMMIT_DATE" >> $GITHUB_ENV
-        COMMIT_MESSAGE=$(git show -s --date=short --format="%s")
-        echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
-        COMMIT_HASH=$(git show -s --date=short --format="%H")
-        echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
     - name: Cache Toolchain
       if: env.CACHE_TOOLCHAIN == 'true'
@@ -128,6 +124,7 @@ jobs:
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
+        git checkout 75aeb7ed627ba5ea6f10f365b232bed21e40b502
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -173,7 +170,7 @@ jobs:
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
         cp $OPENWRT_PATH/.config build.config
-        rm -rf packages *.buildinfo *.manifest profiles.json sha256sums
+        rm -rf packages *.buildinfo *.manifest profiles.json
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact
