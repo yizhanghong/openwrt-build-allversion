@@ -1,6 +1,3 @@
-git checkout 75aeb7ed627ba5ea6f10f365b232bed21e40b502
-git checkout 75aeb7ed627ba5ea6f10f365b232bed21e40b502
-
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/L1Pro/g' package/base-files/files/bin/config_generate
 
