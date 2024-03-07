@@ -124,9 +124,10 @@ jobs:
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
-        git checkout 75aeb7ed627ba5ea6f10f365b232bed21e40b502
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        git checkout 75aeb7ed627ba5ea6f10f365b232bed21e40b502
+        git checkout 75aeb7ed627ba5ea6f10f365b232bed21e40b502
 
     - name: Load Custom Script
       run: |
