@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: L1Pro-immortalwrt
+  FIRMWARE_TAG: L1Pro-immortalwrt2305
   TZ: Asia/Shanghai
 
 jobs:
@@ -124,10 +124,9 @@ jobs:
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
+        git checkout v23.05.1
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        git checkout 75aeb7ed627ba5ea6f10f365b232bed21e40b502
-        git checkout 75aeb7ed627ba5ea6f10f365b232bed21e40b502
 
     - name: Load Custom Script
       run: |
