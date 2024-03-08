@@ -112,14 +112,6 @@ jobs:
         COMMIT_DATE=$(git show -s --date=short --format="%ci")
         echo "COMMIT_DATE=$COMMIT_DATE" >> $GITHUB_ENV
 
-    - name: Cache Toolchain
-      if: env.CACHE_TOOLCHAIN == 'true'
-      uses: HiGarfield/cachewrtbuild@main
-      with:
-        ccache: false
-        mixkey: ${{ env.FIRMWARE_TAG }}
-        prefix: ${{ env.OPENWRT_PATH }}
-
 
     - name: Install Feeds
       run: |
