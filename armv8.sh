@@ -6,7 +6,15 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/mypackage/luci-app-poweroff
 git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/mypackage/luci-app-amlogic
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/mypackage/luci-app-passwall2
+
+# iStore
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/mypackage/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/mypackage/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/mypackage/nas-luci
+mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packages/
+rm -rf package/mypackage/nas-packages/network
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+
+
