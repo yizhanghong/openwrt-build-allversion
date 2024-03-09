@@ -144,7 +144,7 @@ jobs:
         rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
         mv $GITHUB_WORKSPACE/md5/vermagic $OPENWRT_PATH/
         mv $GITHUB_WORKSPACE/md5/Makefile $OPENWRT_PATH/package/kernel/linux/
-        mv $GITHUB_WORKSPACE/md5/kernel-defaults.mk $OPENWRT_PATH/include/    - name: text md5
+        mv $GITHUB_WORKSPACE/md5/kernel-defaults.mk $OPENWRT_PATH/include/
 
 
     - name: Compile Firmware
