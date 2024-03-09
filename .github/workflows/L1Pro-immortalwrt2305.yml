@@ -131,9 +131,9 @@ jobs:
         rm -rf $OPENWRT_PATH/.vermagic
         rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
         rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
-        mv $GITHUB_WORKSPACE/md5/vermagic $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/md5/Makefile $OPENWRT_PATH/package/kernel/linux/Makefile
-        mv $GITHUB_WORKSPACE/md5/kernel-defaults.mk $OPENWRT_PATH/include/kernel-defaults.mk
+        mv $GITHUB_WORKSPACE/md5/vermagic $OPENWRT_PATH/
+        mv $GITHUB_WORKSPACE/md5/Makefile $OPENWRT_PATH/package/kernel/linux/
+        mv $GITHUB_WORKSPACE/md5/kernel-defaults.mk $OPENWRT_PATH/include/
 
     - name: Download DL Package
       run: |
