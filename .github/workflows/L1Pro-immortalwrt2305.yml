@@ -126,14 +126,7 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
-    - name: text md5
-      run: |
-        rm -rf $OPENWRT_PATH/.vermagic
-        rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
-        rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
-        mv $GITHUB_WORKSPACE/md5/vermagic $OPENWRT_PATH/
-        mv $GITHUB_WORKSPACE/md5/Makefile $OPENWRT_PATH/package/kernel/linux/
-        mv $GITHUB_WORKSPACE/md5/kernel-defaults.mk $OPENWRT_PATH/include/
+
 
     - name: Download DL Package
       run: |
@@ -143,6 +136,16 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+
+    - name: text md5
+      run: |
+        rm -rf $OPENWRT_PATH/.vermagic
+        rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
+        rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
+        mv $GITHUB_WORKSPACE/md5/vermagic $OPENWRT_PATH/
+        mv $GITHUB_WORKSPACE/md5/Makefile $OPENWRT_PATH/package/kernel/linux/
+        mv $GITHUB_WORKSPACE/md5/kernel-defaults.mk $OPENWRT_PATH/include/    - name: text md5
+
 
     - name: Compile Firmware
       id: compile
