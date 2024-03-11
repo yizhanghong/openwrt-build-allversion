@@ -1,20 +1,20 @@
-name: L1Pro-istoreos
-# 脚本参考github/haiibo
+name: L1Pro-openwrt23052
+# 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
-  CONFIG_FILE: config/istoreos.config
-  DIY_SCRIPT: test.sh
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: openwrt-23.05
+  CONFIG_FILE: config/L1Pro-openwrt.config
+  DIY_SCRIPT: armv8.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: L1Pro-istoreos
+  FIRMWARE_TAG: L1Pro-openwrt23052
   TZ: Asia/Shanghai
 
 jobs:
@@ -61,13 +61,6 @@ jobs:
         remove-codeql: 'true'
         remove-docker-images: 'true'
 
-    - name: Free up disk space complete
-      run: |
-        echo "Free up disk space complete"
-        echo "=============================================================================="
-        df -hT
-        echo "=============================================================================="
-
     - name: Checkout
       uses: actions/checkout@main
 
@@ -98,7 +91,8 @@ jobs:
         libncursesw5-dev libpython3-dev libreadline-dev libssl-dev libtool lld llvm lrzsz mkisofs msmtp \
         nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip python3-ply \
         python3-docutils python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig \
-        texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+        texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev \
+        $(curl -fsSL is.gd/depends_ubuntu_2204)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
@@ -110,29 +104,19 @@ jobs:
       working-directory: ./
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         COMMIT_AUTHOR=$(git show -s --date=short --format="%an")
         echo "COMMIT_AUTHOR=$COMMIT_AUTHOR" >> $GITHUB_ENV
         COMMIT_DATE=$(git show -s --date=short --format="%ci")
         echo "COMMIT_DATE=$COMMIT_DATE" >> $GITHUB_ENV
-        COMMIT_MESSAGE=$(git show -s --date=short --format="%s")
-        echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> $GITHUB_ENV
-        COMMIT_HASH=$(git show -s --date=short --format="%H")
-        echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
-    - name: Cache Toolchain
-      if: env.CACHE_TOOLCHAIN == 'true'
-      uses: HiGarfield/cachewrtbuild@main
-      with:
-        ccache: false
-        mixkey: ${{ env.FIRMWARE_TAG }}
-        prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
+        git checkout v23.05.2
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -142,6 +126,8 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
+
+
     - name: Download DL Package
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
@@ -150,6 +136,16 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+
+    - name: text md5
+      run: |
+        rm -rf $OPENWRT_PATH/.vermagic
+        rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
+        rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
+        mv $GITHUB_WORKSPACE/md5opw/vermagic $OPENWRT_PATH/
+        mv $GITHUB_WORKSPACE/md5opw/Makefile $OPENWRT_PATH/package/kernel/linux/
+        mv $GITHUB_WORKSPACE/md5opw/kernel-defaults.mk $OPENWRT_PATH/include/
+
 
     - name: Compile Firmware
       id: compile
@@ -178,7 +174,7 @@ jobs:
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
         cp $OPENWRT_PATH/.config build.config
-        rm -rf packages *.buildinfo *.manifest profiles.json sha256sums
+        rm -rf packages *.buildinfo *.manifest profiles.json
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact
