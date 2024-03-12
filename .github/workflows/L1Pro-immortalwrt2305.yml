@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: config/L1Pro.config
+  CONFIG_FILE: config/L1Pro-immortalwrt.config
   DIY_SCRIPT: armv8.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
