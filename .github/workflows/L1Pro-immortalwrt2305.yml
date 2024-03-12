@@ -1,4 +1,4 @@
-name: L1Pro-immortalwrt2305-istore
+name: L1Pro-immortalwrt23051
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: L1Pro-immortalwrt2305-istore
+  FIRMWARE_TAG: L1Pro-immortalwrt23051
   TZ: Asia/Shanghai
 
 jobs:
