@@ -135,6 +135,14 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
+    - name: text md5
+      run: |
+        rm -rf $OPENWRT_PATH/.vermagic
+        rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
+        rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
+        mv $GITHUB_WORKSPACE/md5opw/vermagic $OPENWRT_PATH/
+        mv $GITHUB_WORKSPACE/md5opw/Makefile $OPENWRT_PATH/package/kernel/linux/
+        mv $GITHUB_WORKSPACE/md5opw/kernel-defaults.mk $OPENWRT_PATH/include/
 
     - name: Compile Firmware
       id: compile
