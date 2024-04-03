@@ -142,13 +142,12 @@ jobs:
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
-        cp $OPENWRT_PATH/.config build.config
-        rm -rf packages *.buildinfo *.manifest profiles.json sha256sums
+        rm -rf packages
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-firmware-${{ env.COMMIT_AUTHOR }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-firmware-hanwckf-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
