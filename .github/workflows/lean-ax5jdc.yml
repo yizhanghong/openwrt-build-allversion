@@ -1,4 +1,4 @@
-name: Redmi-ax5jdc
+name: lean-ax5jdc
 
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
@@ -8,14 +8,14 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/ax5jdc
-  DIY_SCRIPT: ax5jdc.sh
+  CONFIG_FILE: config/lean-ax5jdc
+  DIY_SCRIPT: lean-ax5jdc.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: RMax5jdc-lean
+  FIRMWARE_TAG: lean-ax5jdc
   TZ: Asia/Shanghai
 
 jobs:
@@ -120,6 +120,12 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
+    - name: Install Feeds 2
+      run: |
+        cd $OPENWRT_PATH
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+
     - name: Load Custom Script
       run: |
         chmod +x $DIY_SCRIPT
@@ -168,5 +174,5 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-firmware-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
