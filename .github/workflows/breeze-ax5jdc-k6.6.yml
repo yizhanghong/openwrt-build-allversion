@@ -89,6 +89,7 @@ jobs:
         cd $OPENWRT_PATH
         sed -i '$d' feeds.conf.default
         sed -i '$d' feeds.conf.default
+        cat feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
