@@ -15,8 +15,3 @@ git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/mypackage/
 # git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/mypackage/nas-luci
 # mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packages/
 # rm -rf package/mypackage/nas-packages/network
-
-./scripts/feeds update -a
-./scripts/feeds install -a
-
-
