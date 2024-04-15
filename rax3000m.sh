@@ -11,5 +11,5 @@ rm -rf package/small
 # 添加cpufreq和diskman
 git clone --depth=1 https://github.com/immortalwrt/luci.git package/immortal-luci
 mv package/immortal-luci/applications/luci-app-cpufreq package/
-mv package/immortimmortal-lucial-luci/applications/luci-app-diskman package/
+mv package/immortal-luci/applications/luci-app-diskman package/
 rm -rf package/immortal-luci
