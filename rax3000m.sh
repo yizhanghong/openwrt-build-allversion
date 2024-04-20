@@ -6,12 +6,17 @@ sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_genera
 # sed -i 's/ImmortalWrt/CMCCRAX/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # sed -i '$d' feeds.conf.default
 # 添加homeproxy
-git clone --depth=1 https://github.com/immortalwrt/homeproxy.git package/homeproxy
+git clone --depth=1 https://github.com/immortalwrt/homeproxy.git package/mypackage/homeproxy
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small
-mv package/small/chinadns-ng package/
+mv package/small/chinadns-ng package/mypackage/
 rm -rf package/small
 # 添加cpufreq和diskman
 git clone --depth=1 https://github.com/immortalwrt/luci.git package/immortal-luci
-mv package/immortal-luci/applications/luci-app-cpufreq package/
-mv package/immortal-luci/applications/luci-app-diskman package/
+mv package/immortal-luci/applications/luci-app-cpufreq package/mypackage/
+mv package/immortal-luci/applications/luci-app-diskman package/mypackage/
+mv package/immortal-luci/luci.mk package/mypackage/
 rm -rf package/immortal-luci
+sed -i '10d' package/mypackage/luci-app-cpufreq/Makefile
+sed -i '51d' package/mypackage/luci-app-diskman/Makefile
+sed -i '10i include ../luci.mk' package/mypackage/luci-app-cpufreq/Makefile
+sed -i '51i include ../luci.mk' package/mypackage/luci-app-diskman/Makefile
