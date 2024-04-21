@@ -53,7 +53,6 @@ CONFIG_PACKAGE_avahi-dbus-daemon=y
 CONFIG_PACKAGE_block-mount=y
 CONFIG_PACKAGE_btrfs-progs=y
 CONFIG_PACKAGE_ca-certificates=y
-CONFIG_PACKAGE_chinadns-ng=y
 # CONFIG_PACKAGE_containerd is not set
 CONFIG_PACKAGE_coremark=y
 CONFIG_PACKAGE_coreutils=y
@@ -168,13 +167,7 @@ CONFIG_PACKAGE_lua=y
 # CONFIG_PACKAGE_luci-app-samba4 is not set
 # CONFIG_PACKAGE_luci-app-upnp is not set
 # CONFIG_PACKAGE_luci-app-wol is not set
-CONFIG_PACKAGE_luci-app-cpufreq=y
-CONFIG_PACKAGE_luci-app-diskman=y
-CONFIG_PACKAGE_luci-app-homeproxy=y
 CONFIG_PACKAGE_luci-app-ttyd=y
-CONFIG_PACKAGE_luci-i18n-cpufreq-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-diskman-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-homeproxy-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
 CONFIG_PACKAGE_luci-compat=y
 # CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn is not set
@@ -193,7 +186,7 @@ CONFIG_PACKAGE_microsocks=y
 CONFIG_PACKAGE_nlbwmon=y
 CONFIG_PACKAGE_resolveip=y
 CONFIG_PACKAGE_runc=y
-CONFIG_PACKAGE_sing-box=y
+# CONFIG_PACKAGE_sing-box  is not set
 CONFIG_PACKAGE_tcping=y
 CONFIG_PACKAGE_terminfo=y
 # CONFIG_PACKAGE_tini is not set
@@ -203,17 +196,6 @@ CONFIG_PACKAGE_unzip=y
 CONFIG_PACKAGE_wget-ssl=y
 CONFIG_PACKAGE_wsdd2=y
 CONFIG_PACKAGE_zlib=y
-CONFIG_SAMBA4_SERVER_AVAHI=y
-CONFIG_SAMBA4_SERVER_NETBIOS=y
-CONFIG_SAMBA4_SERVER_VFS=y
-CONFIG_SAMBA4_SERVER_WSDD2=y
-CONFIG_SINGBOX_WITH_CLASH_API=y
-CONFIG_SINGBOX_WITH_ECH=y
-CONFIG_SINGBOX_WITH_GVISOR=y
-CONFIG_SINGBOX_WITH_QUIC=y
-CONFIG_SINGBOX_WITH_REALITY_SERVER=y
-CONFIG_SINGBOX_WITH_UTLS=y
-CONFIG_SINGBOX_WITH_WIREGUARD=y
 # CONFIG_TARGET_ROOTFS_INITRAMFS is not set
 # CONFIG_PACKAGE_boost is not set
 CONFIG_PACKAGE_iptables-mod-fullconenat=y
