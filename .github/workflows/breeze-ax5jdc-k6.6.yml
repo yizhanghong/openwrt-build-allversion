@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/breeze303/openwrt-ipq60xx.git
   REPO_BRANCH: main
-  CONFIG_FILE: config/breeze-ax5jdc
+  CONFIG_FILE: config/breeze-emmc-nowifi
   DIY_SCRIPT: rax3000m.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: breeze-ax5jdc-k6.6
+  FIRMWARE_TAG: breeze-emmcnowifi-k6.6
   TZ: Asia/Shanghai
 
 jobs:
