@@ -1,11 +1,11 @@
-name: breeze-ax5jdc-k6.6
+name: breeze-emmc-k6.6
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/breeze303/openwrt-ipq60xx.git
+  REPO_URL: https://github.com/breeze303/openwrt-6.x.git
   REPO_BRANCH: main
   CONFIG_FILE: config/breeze-emmc-wifi
   DIY_SCRIPT: generic.sh
