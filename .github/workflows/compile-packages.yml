@@ -87,8 +87,8 @@ jobs:
     - name: git checkout
       run: |
         cd $OPENWRT_PATH
-        git checkout 86171d4d6e5a3da226f40e290194779608f67705 
-        git checkout 86171d4d6e5a3da226f40e290194779608f67705 
+        git checkout 4c6e9a99432bd87c0afb73a48a28b3f467db407e 
+        git checkout 4c6e9a99432bd87c0afb73a48a28b3f467db407e 
 
     - name: Install Feeds
       run: |
