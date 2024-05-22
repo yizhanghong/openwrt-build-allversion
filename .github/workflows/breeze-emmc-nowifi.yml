@@ -126,7 +126,7 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/md5/vermagic-op $OPENWRT_PATH/
+        mv $GITHUB_WORKSPACE/md5/vermagic-op $OPENWRT_PATH/vermagic
         sed -i '119d' include/kernel-defaults.mk
         sed -i '119i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '29d' package/kernel/linux//Makefile
