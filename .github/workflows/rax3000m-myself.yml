@@ -8,13 +8,13 @@ env:
   REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   CONFIG_FILE: config/rax3000mpw.config
-  DIY_SCRIPT: rax3000m.sh
+  DIY_SCRIPT: script/rax3000m.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: rax3000m-nand
+  FIRMWARE_TAG: rax3000m-nand-hanwckf
   TZ: Asia/Shanghai
 
 jobs:
@@ -89,12 +89,9 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-
-    - name: Install Feeds 2
-      run: |
-        cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+        
 
     - name: Load Custom Script
       run: |
@@ -111,14 +108,15 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: text md5
+    - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
-        rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
-        mv $GITHUB_WORKSPACE/md5/vermagic-mt798x $OPENWRT_PATH/vermagic
-        mv $GITHUB_WORKSPACE/md5/Makefile-mt798x $OPENWRT_PATH/package/kernel/linux//Makefile
-        mv $GITHUB_WORKSPACE/md5/kernel-defaults-mt798x $OPENWRT_PATH/include/kernel-defaults.mk
+        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        cd $OPENWRT_PATH
+        sed -i '109d' include/kernel-defaults.mk
+        sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '27d' package/kernel/linux//Makefile
+        sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux//Makefile
 
     - name: Compile Firmware
       id: compile
@@ -146,12 +144,12 @@ jobs:
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
-        rm -rf packages
+        rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-firmware-hanwckf-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
