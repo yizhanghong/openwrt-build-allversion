@@ -8,7 +8,7 @@ env:
   REPO_URL: https://github.com/JiaY-shi/openwrt.git
   REPO_BRANCH: ipq60xx-devel_nss
   CONFIG_FILE: config/jiay-yase-nss
-  DIY_SCRIPT: generic.sh
+  DIY_SCRIPT: script/generic.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -64,7 +64,7 @@ jobs:
     - name: Clone Source Code
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 $REPO_URL -b $REPO_BRANCH openwrt
+        git clone --depth=1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         COMMIT_AUTHOR=$(git show -s --date=short --format="%an")
@@ -89,10 +89,6 @@ jobs:
         cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-
-    - name: Install Feeds 2
-      run: |
-        cd $OPENWRT_PATH
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -119,14 +115,15 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: text md5
+    - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        rm -rf $OPENWRT_PATH/package/kernel/linux/Makefile
-        rm -rf $OPENWRT_PATH/include/kernel-defaults.mk
-        mv $GITHUB_WORKSPACE/md5/vermagic-op $OPENWRT_PATH/vermagic
-        mv $GITHUB_WORKSPACE/md5/Makefile-jiay $OPENWRT_PATH/package/kernel/linux//Makefile
-        mv $GITHUB_WORKSPACE/md5/kernel-defaults-jiay $OPENWRT_PATH/include/kernel-defaults.mk
+        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        cd $OPENWRT_PATH
+        sed -i '119d' include/kernel-defaults.mk
+        sed -i '119i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '29d' package/kernel/linux//Makefile
+        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux//Makefile
 
     - name: Compile Firmware
       id: compile
@@ -154,7 +151,7 @@ jobs:
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
-        rm -rf packages
+        rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact
