@@ -1,4 +1,4 @@
-name: lean
+name: lean-ipq6k
 
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
@@ -8,14 +8,14 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/lean-ax5jdc
+  CONFIG_FILE: config/lean-ipq6k
   DIY_SCRIPT: script/lean.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: lean-ipq6k-ax5jdc
+  FIRMWARE_TAG: openwrt-lean-ipq6k
   TZ: Asia/Shanghai
 
 jobs:
