@@ -131,7 +131,7 @@ jobs:
     - name: Apply patches
       run: |
         rm -rf $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
-        cp PATCHES_FILE_2 $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
+        cp $PATCHES_FILE_2 $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
         git config --global user.name "OpenWrt Builder"
         git config --global user.email "buster-openwrt@ovvo.uk"
         cp $PATCHES_FILE_1 $OPENWRT_PATH/feeds/luci
