@@ -93,13 +93,6 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
-    - name: Apply patches   
-      run: |
-        git config --global user.name "OpenWrt Builder"
-        git config --global user.email "buster-openwrt@ovvo.uk"
-        cp $GITHUB_WORKSPACE/patches/1-show-soc-status-on-luci.patch $OPENWRT_PATH/feeds/luci
-        cd $OPENWRT_PATH/feeds/luci
-        git am 1-show-soc-status-on-luci.patch
 
     - name: Load Custom Script
       run: |
