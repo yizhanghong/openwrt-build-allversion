@@ -97,9 +97,9 @@ jobs:
       run: |
         git config --global user.name "OpenWrt Builder"
         git config --global user.email "buster-openwrt@ovvo.uk"
+        cp $GITHUB_WORKSPACE/patches/1-show-soc-status-on-luci.patch $OPENWRT_PATH/feeds/luci
         cd $OPENWRT_PATH/feeds/luci
-        wget https://raw.githubusercontent.com/openwrt-ipq60xx/patches/main/feeds/luci/0001-show-soc-status-on-luci.patch
-        git am 0001-show-soc-status-on-luci.patch
+        git am 1-show-soc-status-on-luci.patch
 
     - name: Load Custom Script
       run: |
