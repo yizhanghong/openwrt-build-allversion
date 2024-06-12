@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: openwrt-breeze-emmc-k6.6
+  FIRMWARE_TAG: openwrt-ipq-emmc-k6.6-breeze
   TZ: Asia/Shanghai
 
 jobs:
