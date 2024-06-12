@@ -104,8 +104,9 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/default.config
         cp $GITHUB_WORKSPACE/config/packages.txt $OPENWRT_PATH/packages.txt
         cd $OPENWRT_PATH
-        cat default.config packages.txt >> .config
-        cat .config
+        cat default.config packages.txt >> config
+        cat config
+        mv config .config
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
