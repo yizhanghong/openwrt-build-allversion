@@ -18,10 +18,13 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 #删除自带的老旧依赖，ssr-plus，passwall
 rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
-rm -rf feeds/packages/net/{pdnsd-alt,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*}
+rm -rf feeds/packages/net/{pdnsd-alt,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*}
 rm -rf feeds/packages/net/{mosdns,redsocks2}
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus}
-#下载kenzok8的small库
-git clone --depth=1 https://github.com/kenzok8/small.git package/small
-#新版ss-rust缺少依赖，所以延用旧版，删除新版
-rm -rf package/small/shadowsocks-rust
+#下载安装kenzok8的small库
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+./scripts/feeds update -a
+./scripts/feeds install -a
+#新版ssr-libev和ss-rust缺少依赖，所以延用旧版，删除新版
+rm -rf feeds/small/shadowsocks-rust
+rm -rf feeds/small/shadowsocksr-libev
