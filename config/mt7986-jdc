@@ -312,3 +312,10 @@ CONFIG_first_card_name="MT7986"
 # CONFIG_MTK_PRE_CAL_TRX_SET2_SUPPORT is not set
 # CONFIG_MTK_RLM_CAL_CACHE_SUPPORT is not set
 # CONFIG_MTK_SNIFFER_RADIOTAP_SUPPORT is not set
+CONFIG_PACKAGE_kmod-usb-net=y
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y
+CONFIG_PACKAGE_kmod-usb-net-cdc-ncm=y
+CONFIG_PACKAGE_kmod-usb-net-huawei-cdc-ncm=y
+CONFIG_PACKAGE_kmod-usb-net-ipheth=y
+CONFIG_PACKAGE_kmod-usb-net-rndis=y
+CONFIG_PACKAGE_kmod-usb-printer
