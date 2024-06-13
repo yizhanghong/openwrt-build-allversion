@@ -1,6 +1,8 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 # sed -i 's/OpenWrt/L1Pro/g' package/base-files/files/bin/config_generate
-
+git clone --depth=1 https://github.com/immortalwrt/packages.git package/immpkg
+rm -rf feeds/package/net/xray-core
+mv package/immpkg/net/xray-core feeds/package/net/xray-core
 
 # 添加额外插件
 git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/mypackage/luci-app-adguardhome
