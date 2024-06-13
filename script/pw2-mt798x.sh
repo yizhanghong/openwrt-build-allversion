@@ -13,21 +13,15 @@ sed -i 's/ImmortalWrt/CMCCRAX/g' package/kernel/mac80211/files/lib/wifi/mac80211
 #   cd .. && rm -rf $repodir
 # }
 
-# 添加额外插件passwall/passwall2
-# 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
+# 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-
-# rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
-# rm -rf feeds/packages/net/{pdnsd-alt,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*}
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-rm -rf package/passwall-packages/shadowsocks-rust
-# mv package/passwall-packages/sing-box package/
-cp -rf package/passwall-packages/* feeds/packages/net/
-rm -rf package/passwall-packages
-# 添加最新passwall
-rm -rf feeds/luci/applications/luci-app-passwall
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-# 添加最新passwall2
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
-# mv package/sing-box package/luci-app-passwall2/
+#删除自带的老旧依赖，ssr-plus，passwall
+rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
+rm -rf feeds/packages/net/{pdnsd-alt,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*}
+rm -rf feeds/packages/net/{mosdns,,redsocks2}
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus}
+#下载kenzok8的small库
+git clone --depth=1 https://github.com/kenzok8/small.git package/small
+#新版ss-rust缺少依赖，所以延用旧版，删除新版
+rm -rf package/small/shadowsocks-rust
