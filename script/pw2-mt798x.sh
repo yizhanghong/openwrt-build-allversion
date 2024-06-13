@@ -13,43 +13,21 @@ sed -i 's/ImmortalWrt/CMCCRAX/g' package/kernel/mac80211/files/lib/wifi/mac80211
 #   cd .. && rm -rf $repodir
 # }
 
-# 移除要替换的包
-# rm -rf feeds/packages/net/hysteria
-# rm -rf feeds/packages/net/xray-core
-
-# 添加额外插件passwall2
-rm -rf feeds/packages/net/brook
-rm -rf feeds/packages/net/chinadns-ng
-rm -rf feeds/packages/net/dns2socks
-rm -rf feeds/packages/net/dns2tcp
-rm -rf feeds/packages/net/gn
-rm -rf feeds/packages/net/hysteria
-rm -rf feeds/packages/net/ipt2socks
-rm -rf feeds/packages/net/microsocks
-rm -rf feeds/packages/net/naiveproxy
-rm -rf feeds/packages/net/pdnsd-alt
-rm -rf feeds/packages/net/shadowsocksr-libev
-rm -rf feeds/packages/net/simple-obfs 
-rm -rf feeds/packages/net/sing-box 
-rm -rf feeds/packages/net/ssocks  
-rm -rf feeds/packages/net/tcping
-rm -rf feeds/packages/net/trojan
-rm -rf feeds/packages/net/trojan-go 
-rm -rf feeds/packages/net/tuic-client
-rm -rf feeds/packages/net/v2ray-core
-rm -rf feeds/packages/net/v2ray-geodata
-rm -rf feeds/packages/net/v2ray-plugin
-rm -rf feeds/packages/net/xray-core
-rm -rf feeds/packages/net/xray-plugin
-
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
+# 添加额外插件passwall/passwall2
 # 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
-git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
+# rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
+# rm -rf feeds/packages/net/{pdnsd-alt,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*}
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 rm -rf package/passwall-packages/shadowsocks-rust
-mv package/passwall-packages/sing-box package/
+# mv package/passwall-packages/sing-box package/
 cp -rf package/passwall-packages/* feeds/packages/net/
 rm -rf package/passwall-packages
-mv package/sing-box package/luci-app-passwall2/
+# 添加最新passwall
+rm -rf feeds/luci/applications/luci-app-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+# 添加最新passwall2
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
+# mv package/sing-box package/luci-app-passwall2/
