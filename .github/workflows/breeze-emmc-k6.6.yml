@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/breeze303/openwrt-6.x.git
+  REPO_URL: https://github.com/breeze303/openwrt-6.x
   REPO_BRANCH: main
   CONFIG_FILE: config/breeze-emmc-wifi
   DIY_SCRIPT: script/ipq-breeze.sh
@@ -71,14 +71,15 @@ jobs:
 
     - name: Generate Variables(生成变量)
       run: |
-        cp $CONFIG_FILE $OPENWRT_PATH/.config
+        cp $CONFIG_FILE $OPENWRT_PATH/abcd
         cd $OPENWRT_PATH
-        make defconfig > /dev/null 2>&1
         SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
         echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
-        DEVICE_TARGET=$(cat .config | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
+        SOURCE_AUTHOR="$(echo $REPO_URL | awk -F '/' '{print $2}')"
+        echo "SOURCE_AUTHOR=$SOURCE_AUTHOR" >> $GITHUB_ENV
+        DEVICE_TARGET=$(cat abcd | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
         echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
-        DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
+        DEVICE_SUBTARGET=$(cat abcd | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
         echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
 
     - name: Cache Toolchain(缓存工具链)
@@ -86,9 +87,9 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-${{ env.DEVICE_SUBTARGET }}
         prefix: ${{ env.OPENWRT_PATH }}
-    
+
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
