@@ -71,15 +71,16 @@ jobs:
 
     - name: Generate Variables(生成变量)
       run: |
-        cp $CONFIG_FILE $OPENWRT_PATH/abcd
+        cp $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
+        make defconfig > /dev/null 2>&1
         SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
         echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
         SOURCE_AUTHOR="$(echo $REPO_URL | awk -F '/' '{print $2}')"
         echo "SOURCE_AUTHOR=$SOURCE_AUTHOR" >> $GITHUB_ENV
-        DEVICE_TARGET=$(cat abcd | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
+        DEVICE_TARGET=$(cat .config | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
         echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
-        DEVICE_SUBTARGET=$(cat abcd | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
+        DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
         echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
 
     - name: Cache Toolchain(缓存工具链)
@@ -166,10 +167,10 @@ jobs:
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact(将固件上传到Artifact)
-      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE != 'true'
+      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release(发布固件)
