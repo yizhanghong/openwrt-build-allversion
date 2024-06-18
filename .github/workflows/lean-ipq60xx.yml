@@ -16,7 +16,7 @@ env:
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  FIRMWARE_RELEASE: false
+  FIRMWARE_RELEASE: true
   FIRMWARE_TAG: qualcomm-ipq60xx-emmc
   TZ: Asia/Shanghai
 
@@ -112,36 +112,26 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
-
-    - name: Generate Variables(生成变量)
-      run: |
-        cp $CONFIG_FILE $OPENWRT_PATH/.config
-        cd $OPENWRT_PATH
-        make defconfig > /dev/null 2>&1
         SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
         echo "SOURCE_REPO=$SOURCE_REPO" >> $GITHUB_ENV
         SOURCE_AUTHOR="$(echo $REPO_URL | awk -F '/' '{print $4}')"
         echo "SOURCE_AUTHOR=$SOURCE_AUTHOR" >> $GITHUB_ENV
-        DEVICE_TARGET=$(cat .config | grep CONFIG_TARGET_BOARD | awk -F '"' '{print $2}')
-        echo "DEVICE_TARGET=$DEVICE_TARGET" >> $GITHUB_ENV
-        DEVICE_SUBTARGET=$(cat .config | grep CONFIG_TARGET_SUBTARGET | awk -F '"' '{print $2}')
-        echo "DEVICE_SUBTARGET=$DEVICE_SUBTARGET" >> $GITHUB_ENV
 
     - name: Cache Toolchain(缓存工具链)
       if: env.CACHE_TOOLCHAIN == 'true'
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_AUTHOR }}-${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.DEVICE_SUBTARGET }}
+        mixkey: ${{ env.SOURCE_AUTHOR }}-${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-ipq60xx
         prefix: ${{ env.OPENWRT_PATH }}
     
 
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
-        cat feeds.conf.default
         sed -i '2s/^/#/' feeds.conf.default
         sed -i '3s/^#//' feeds.conf.default
+        sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
         cat feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
