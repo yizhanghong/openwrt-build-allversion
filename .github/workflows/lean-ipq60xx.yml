@@ -10,6 +10,7 @@ env:
   REPO_BRANCH: master
   CONFIG_FILE: config/lean-ipq60xx
   DIY_SCRIPT: script/lean.sh
+  PATCHES_FILE_1: patches/lean-zzz-default-settings
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
@@ -133,6 +134,11 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
+
+    - name: Apply patches
+      run: |
+        rm -rf $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
+        cp $PATCHES_FILE_2 $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
 
     - name: Load Custom Script
       run: |
