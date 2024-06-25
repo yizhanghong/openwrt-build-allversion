@@ -92,16 +92,16 @@ jobs:
   
     - name: Apply patches
       run: |
-        mv -f $GITHUB_WORKSPACE/patches/rax3000m-nand-custom.dts $OPENWRT_PATH/target/linux/mediatek/dts/
-        patch -R -p1 -d $GITHUB_WORKSPACE < $OPENWRT_PATH/patches/mt798x-custom.patch
+        mv -f $GITHUB_WORKSPACE/patches/mediatek-custom/*.dts $OPENWRT_PATH/target/linux/mediatek/dts/
+        patch -R -p1 -d $OPENWRT_PATH < $GITHUB_WORKSPACE/patches/mtk*.patch
 
-    - name: Load Custom Script(加载自定义脚本)
+    - name: Load Custom Script
       run: |
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
-    - name: edit md5（编辑内核值）
+    - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
         mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
