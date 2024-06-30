@@ -13,6 +13,11 @@ rm -rf package/openwrt-packages
 
 rm -rf package/lean/luci-theme-argon
 git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
+
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+./scripts/feeds update -a
+./scripts/feeds install -a
+
 # 修改版本为编译日期
 # date_version=$(date +"%y.%m.%d")
 # orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
