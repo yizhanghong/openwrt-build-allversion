@@ -200,13 +200,6 @@ jobs:
         name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
-    - name: Package Armvirt as OpenWrt
-      uses: ophub/amlogic-s9xxx-openwrt@main
-      with:
-        openwrt_path: ${{ env.OPENWRT_PATH }}/bin/targets/*/*/*rootfs.tar.gz
-        openwrt_board: s905x
-        openwrt_kernel: 6.1.y
-
     - name: Upload Firmware To Release(发布固件)
       if: ${{ env.PACKAGED_STATUS }} == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
