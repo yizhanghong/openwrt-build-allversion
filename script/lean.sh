@@ -11,12 +11,25 @@ mv package/openwrt-packages/luci-app-aliddns package/luci-app-aliddns
 mv package/openwrt-packages/luci-app-ddns-go package/luci-app-ddns-go
 rm -rf package/openwrt-packages
 
-rm -rf package/lean/luci-theme-argon
-git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
-
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+
+# 添加额外插件
+rm -rf package/lean/luci-theme-argon
+git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
+git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/mypackage/luci-app-argon-config
+git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/mypackage/luci-app-poweroff
+git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/mypackage/luci-app-amlogic
+
+
+
+# iStore
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/mypackage/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/mypackage/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/mypackage/nas-luci
+mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packages/
+rm -rf package/mypackage/nas-packages/network
 
 # 修改版本为编译日期
 # date_version=$(date +"%y.%m.%d")
