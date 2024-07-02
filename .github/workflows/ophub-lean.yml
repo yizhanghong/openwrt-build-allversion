@@ -14,7 +14,7 @@ env:
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: false
+  UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
   FIRMWARE_TAG: amlogic-s9xx
   TZ: Asia/Shanghai
@@ -208,7 +208,7 @@ jobs:
         allowUpdates: true
         tag: ${{ env.FIRMWARE_TAG }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+        artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
