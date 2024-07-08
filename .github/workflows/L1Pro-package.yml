@@ -1,4 +1,4 @@
-name: L1Pro-immortalwrt23052
+name: L1Pro-package
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
