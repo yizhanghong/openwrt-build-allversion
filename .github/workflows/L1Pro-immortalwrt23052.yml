@@ -118,6 +118,7 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         git checkout v23.05.2
+        git checkout v23.05.2
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -143,10 +144,10 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vermagic-imm23052 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '119d' include/kernel-defaults.mk
-        sed -i '119i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '121d' include/kernel-defaults.mk
+        sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '29d' package/kernel/linux/Makefile
         sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
