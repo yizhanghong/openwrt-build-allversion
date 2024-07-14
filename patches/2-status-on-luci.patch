@@ -67,7 +67,7 @@ diff --git a/modules/luci-base/root/usr/share/rpcd/ucode/luci b/modules/luci-bas
 index 3c4fea4691..abccca886e 100644
 --- a/modules/luci-base/root/usr/share/rpcd/ucode/luci
 +++ b/modules/luci-base/root/usr/share/rpcd/ucode/luci
-@@ -581,6 +581,40 @@ const methods = {
+@@ -580,6 +580,40 @@ const methods = {
  
  			return { result: ports };
  		}
