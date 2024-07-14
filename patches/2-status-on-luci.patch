@@ -1,9 +1,23 @@
+From 6607061537b4007182f51d31ba4af3427082d45c Mon Sep 17 00:00:00 2001
+From: pexcn <pexcn97@gmail.com>
+Date: Sun, 3 Mar 2024 15:31:06 +0800
+Subject: [PATCH] show status on luci
+
+Signed-off-by: pexcn <pexcn97@gmail.com>
+---
+ modules/luci-base/root/sbin/soc-status        | 45 ++++++++++++++
+ .../luci-base/root/usr/share/rpcd/ucode/luci  | 34 ++++++++++
+ .../view/status/include/10_system.js          | 22 ++++++-
+ .../usr/share/rpcd/acl.d/luci-mod-status.json |  2 +-
+ 4 files changed, 107 insertions(+), 4 deletions(-)
+ create mode 100755 modules/luci-base/root/sbin/soc-status
+
 diff --git a/modules/luci-base/root/sbin/soc-status b/modules/luci-base/root/sbin/soc-status
 new file mode 100755
 index 0000000000..467b3247bf
 --- /dev/null
 +++ b/modules/luci-base/root/sbin/soc-status
-@@ -0,0 +1,63 @@
+@@ -0,0 +1,45 @@
 +#!/bin/sh
 +# shellcheck disable=SC2155
 +
@@ -53,7 +67,7 @@ diff --git a/modules/luci-base/root/usr/share/rpcd/ucode/luci b/modules/luci-bas
 index 3c4fea4691..abccca886e 100644
 --- a/modules/luci-base/root/usr/share/rpcd/ucode/luci
 +++ b/modules/luci-base/root/usr/share/rpcd/ucode/luci
-@@ -581,6 +581,57 @@ const methods = {
+@@ -581,6 +581,40 @@ const methods = {
  
  			return { result: ports };
  		}
@@ -102,7 +116,7 @@ diff --git a/modules/luci-mod-status/htdocs/luci-static/resources/view/status/in
 index 45f7b4acae..032f74bdd4 100644
 --- a/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 +++ b/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-@@ -8,6 +8,21 @@ var callLuciVersion = rpc.declare({
+@@ -8,6 +8,16 @@ var callLuciVersion = rpc.declare({
  	method: 'getVersion'
  });
  
@@ -119,7 +133,7 @@ index 45f7b4acae..032f74bdd4 100644
  var callSystemBoard = rpc.declare({
  	object: 'system',
  	method: 'board'
-@@ -25,14 +40,20 @@ return baseclass.extend({
+@@ -20,14 +35,18 @@ return baseclass.extend({
  		return Promise.all([
  			L.resolveDefault(callSystemBoard(), {}),
  			L.resolveDefault(callSystemInfo(), {}),
