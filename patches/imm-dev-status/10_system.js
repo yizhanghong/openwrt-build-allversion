@@ -61,7 +61,7 @@ return baseclass.extend({
 			L.resolveDefault(callTempInfo(), {}),
 			L.resolveDefault(callLuciVersion(), { revision: _('unknown version'), branch: 'LuCI' }),
 			L.resolveDefault(callCoreInfo(), {}),
-			L.resolveDefault(callCoreTemp(), {}),
+			L.resolveDefault(callCoreTemp(), {})
 		]);
 	},
 
@@ -74,7 +74,7 @@ return baseclass.extend({
 		    tempinfo    = data[5],
 		    luciversion = data[6],
 		    coreinfo    = data[7],
-		    coretemp    = data[8],
+		    coretemp    = data[8];
 
 		luciversion = luciversion.branch + ' ' + luciversion.revision;
 
@@ -108,7 +108,7 @@ return baseclass.extend({
 				systeminfo.load[2] / 65535.0
 			) : null,
       _('核心频率'),          coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')',
-      _('核心温度'),          'CPU ' + coretemp.cpu + ' °C' + ' / ' + 'WiFi ' + coretemp.wifi + ' °C',
+      _('核心温度'),          'CPU ' + coretemp.cpu + ' °C' + ' / ',
       _('CPU usage (%)'),    cpuusage.cpuusage
 		];
 
