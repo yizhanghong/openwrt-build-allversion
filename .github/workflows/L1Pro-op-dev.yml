@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: L1Pro-imm-dev
+  FIRMWARE_TAG: L1Pro-op-dev
   TZ: Asia/Shanghai
 
 jobs:
