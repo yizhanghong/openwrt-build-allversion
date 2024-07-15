@@ -608,10 +608,6 @@ const methods = {
 			result.cpu = trim(fd.read('all'));
 			fd.close();
 
-			fd = popen('soc-status wifi_temp');
-			result.wifi = trim(fd.read('all'));
-			fd.close();
-
 			return result;
 		}
 	},
