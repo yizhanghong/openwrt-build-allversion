@@ -1,4 +1,4 @@
-name: L1Pro-op-23.05.3
+name: ARM-openwrt-23.05.3
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: config/L1Pro-op-dev
-  DIY_SCRIPT: script/armv8.sh
+  CONFIG_FILE: config/ARM64-openwrt
+  DIY_SCRIPT: script/ARM64.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: L1Pro-op-23.05.3
+  FIRMWARE_TAG: ARM64-openwrt-23.05.3
   TZ: Asia/Shanghai
 
 jobs:
@@ -63,7 +63,7 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 $REPO_URL openwrt
+        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
@@ -78,7 +78,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-rk3328
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-ARM64
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
@@ -178,7 +178,7 @@ jobs:
         body: |
           ### 📒 固件信息
           - 这是基于官方openwrt-23.05.3源码编译的固件
-          - 💻 这是 armsr-v8 平台使用的 OpenWrt-rootfs 固件
+          - 💻 这是 ARM64 平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
