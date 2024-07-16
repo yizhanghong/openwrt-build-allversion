@@ -46,7 +46,6 @@
 +    exit 1
 +    ;;
 +esac
-
 --- a/modules/luci-base/root/usr/share/rpcd/ucode/luci
 +++ b/modules/luci-base/root/usr/share/rpcd/ucode/luci
 @@ -581,6 +581,43 @@ const methods = {
