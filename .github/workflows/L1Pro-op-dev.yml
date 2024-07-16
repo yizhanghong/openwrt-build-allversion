@@ -92,8 +92,7 @@ jobs:
 
     - name: Apply patches(安装补丁)   
       run: |
-        cd $OPENWRT_PATH/feeds/luci
-        patch -p1 < $GITHUB_WORKSPACE/patches/3-status-on-luci-nowifi.patch
+        patch $OPENWRT_PATH/feeds/luci < $GITHUB_WORKSPACE/patches/3-status-on-luci-nowifi.patch
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
