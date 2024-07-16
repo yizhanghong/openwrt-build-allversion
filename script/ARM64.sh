@@ -12,3 +12,14 @@ git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/mypackage/
 # git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/mypackage/nas-luci
 # mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packages/
 # rm -rf package/mypackage/nas-packages/network
+
+# 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
+#rm -rf feeds/packages/lang/golang
+#git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
+#删除自带的老旧依赖
+#rm -rf feeds/packages/net/{microsocks,v2ray*,xray*,mosdns}
+#rm -rf feeds/packages/utils/v2dat
+#下载安装kenzok8的small库
+#sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+#./scripts/feeds update -a
+#./scripts/feeds install -a
