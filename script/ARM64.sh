@@ -17,7 +17,7 @@ git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/mypackage/
 #rm -rf feeds/packages/lang/golang
 #git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
 #删除自带的老旧依赖
-#rm -rf feeds/packages/net/{microsocks,v2ray*,xray*,mosdns}
+#rm -rf feeds/packages/net/{microsocks,v2ray*,xray*,mosdns,sing-box}
 #rm -rf feeds/packages/utils/v2dat
 #下载安装kenzok8的small库
 #sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
