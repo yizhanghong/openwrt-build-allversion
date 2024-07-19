@@ -104,11 +104,6 @@ return baseclass.extend({
 			_('温度    '),          'CPU ' + tempinfo.cpu + ' °C'
 		];
 
-		if (tempinfo.tempinfo) {
-			fields.splice(6, 0, _('Temperature'));
-			fields.splice(7, 0, tempinfo.tempinfo);
-		}
-
 		var table = E('table', { 'class': 'table' });
 
 		for (var i = 0; i < fields.length; i += 2) {
