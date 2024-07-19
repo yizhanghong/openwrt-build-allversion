@@ -1,4 +1,4 @@
-name: L1Pro-immortalwrt23053
+name: ARM64-immortalwrt23053
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -101,14 +101,14 @@ jobs:
       run: |
         mv $GITHUB_WORKSPACE/patch/imm-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
         chmod a+rwx $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/soc-status
-        mv $GITHUB_WORKSPACE/patch/imm-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
+        mv $GITHUB_WORKSPACE/patch/imm-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
         mv $GITHUB_WORKSPACE/patch/imm-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-        mv $GITHUB_WORKSPACE/patch/imm-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
+        mv $GITHUB_WORKSPACE/patch/imm-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/luci-mod-status.json
 
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic-op23053 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vermagic-imm23053 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '121d' include/kernel-defaults.mk
         sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
