@@ -636,10 +636,7 @@ const methods = {
 			result.governor = trim(fd.read('all'));
 			fd.close();
 
-				return { coreinfo: coreinfo };
-			} else {
-				return { coreinfo: error() };
-			}
+			return result;
 		}
 	},
 
@@ -656,10 +653,7 @@ const methods = {
 			result.wifi = trim(fd.read('all'));
 			fd.close();
 
-				return { tempinfo: tempinfo };
-			} else {
-				return { tempinfo: error() };
-			}
+			return result;
 		}
 	},
 
