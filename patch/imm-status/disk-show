@@ -1,15 +1,15 @@
 #!/bin/sh
 # shellcheck disable=SC2155
 
-get_disk_status() {
-  local value="$(hdparm -C /dev/sda | awk '/state/{print $(NF)}' 2>/dev/null)"
-  [ -n "$value" ] || value="0"
-  echo "$value"
-}
-
 get_disk_temp() {
   local value="$(hdparm -H /dev/sda | awk '/celsius/{print $(NF)}' 2>/dev/null)"
   [ -n "$value" ] || value="unknown"
+  echo "$value"
+}
+
+get_disk_status() {
+  local value="$(hdparm -C /dev/sda | awk '/state/{print $(NF)}' 2>/dev/null)"
+  [ -n "$value" ] || value="0"
   echo "$value"
 }
 
@@ -20,17 +20,17 @@ get_disk_model() {
 }
 
 case "$1" in
-  disk_status)
-    get_disk_status
-    ;;
   disk_temp)
     get_disk_temp
+    ;;
+  disk_status)
+    get_disk_status
     ;;
   disk_model)
     get_disk_model
     ;;
   *)
-    echo "Usage: $0 {disk_status|disk_temp|disk_model}"
+    echo "Usage: $0 {disk_temp|disk_status|disk_model}"
     exit 1
     ;;
 esac
