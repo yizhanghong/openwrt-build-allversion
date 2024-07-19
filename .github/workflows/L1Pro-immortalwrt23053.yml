@@ -1,4 +1,4 @@
-name: L1Pro-immortalwrt23052
+name: L1Pro-immortalwrt23053
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: L1Pro-immortalwrt23052
+  FIRMWARE_TAG: L1Pro-immortalwrt23053
   TZ: Asia/Shanghai
 
 jobs:
@@ -117,8 +117,8 @@ jobs:
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
-        git checkout v23.05.2
-        git checkout v23.05.2
+        git checkout v23.05.3
+        git checkout v23.05.3
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -130,7 +130,13 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
-
+    - name: Apply patches   
+      run: |
+        mv $GITHUB_WORKSPACE/patch/imm-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
+        chmod a+rwx $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/soc-status
+        mv $GITHUB_WORKSPACE/patch/imm-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
+        mv $GITHUB_WORKSPACE/patch/imm-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+        mv $GITHUB_WORKSPACE/patch/imm-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
 
     - name: Download DL Package
       run: |
