@@ -662,15 +662,15 @@ const methods = {
 			let fd;
 			let result = {};
 
-			fd = popen('disk-show disk_temp');
+			fd = popen('soc-status disk_temp');
 			result.temp = trim(fd.read('all'));
 			fd.close();
 
-			fd = popen('disk-show disk_status');
+			fd = popen('soc-status disk_status');
 			result.status = trim(fd.read('all'));
 			fd.close();
 
-			fd = popen('disk-show disk_model');
+			fd = popen('soc-status disk_model');
 			result.model = trim(fd.read('all'));
 			fd.close();
 
