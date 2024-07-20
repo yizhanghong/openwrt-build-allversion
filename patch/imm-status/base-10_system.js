@@ -33,9 +33,14 @@ var callCPUUsage = rpc.declare({
 	method: 'getCPUUsage'
 });
 
-var callTempInfo = rpc.declare({
+var callCoreInfo = rpc.declare({
 	object: 'luci',
-	method: 'getTempInfo'
+	method: 'getCoreInfo'
+});
+
+var callCoreTemp = rpc.declare({
+	object: 'luci',
+	method: 'getCoreTemp'
 });
 
 return baseclass.extend({
@@ -48,7 +53,8 @@ return baseclass.extend({
 			L.resolveDefault(callCPUBench(), {}),
 			L.resolveDefault(callCPUInfo(), {}),
 			L.resolveDefault(callCPUUsage(), {}),
-			L.resolveDefault(callTempInfo(), {}),
+			L.resolveDefault(callCoreInfo(), {}),
+			L.resolveDefault(callCoreTemp(), {}),
 			L.resolveDefault(callLuciVersion(), { revision: _('unknown version'), branch: 'LuCI' })
 		]);
 	},
@@ -59,8 +65,9 @@ return baseclass.extend({
 		    cpubench    = data[2],
 		    cpuinfo     = data[3],
 		    cpuusage    = data[4],
-		    tempinfo    = data[5],
-		    luciversion = data[6];
+		    coreinfo    = data[5],
+		    coretemp    = data[6],
+		    luciversion = data[7];
 
 		luciversion = luciversion.branch + ' ' + luciversion.revision;
 
@@ -84,7 +91,7 @@ return baseclass.extend({
 			_('Model'),            boardinfo.model + cpubench.cpubench,
 			_('Architecture'),     cpuinfo.cpuinfo || boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
-			_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),
+			_('Firmware Version'), boardinfo.release.description
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
@@ -93,13 +100,8 @@ return baseclass.extend({
 				systeminfo.load[1] / 65535.0,
 				systeminfo.load[2] / 65535.0
 			) : null,
-			_('CPU usage (%)'),    cpuusage.cpuusage
+			_('CPU状态 '),          '温度 ' + tempinfo.cpu + ' °C' + ' ， ' + ' 使用率 ' + cpuusage.cpuusage + ' ， ' + ' 频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')'
 		];
-
-		if (tempinfo.tempinfo) {
-			fields.splice(6, 0, _('Temperature'));
-			fields.splice(7, 0, tempinfo.tempinfo);
-		}
 
 		var table = E('table', { 'class': 'table' });
 
