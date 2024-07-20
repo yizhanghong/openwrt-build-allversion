@@ -670,10 +670,6 @@ const methods = {
 			result.status = trim(fd.read('all'));
 			fd.close();
 
-			fd = popen('soc-status disk_model');
-			result.model = trim(fd.read('all'));
-			fd.close();
-
 			return result;
 		}
 	},
