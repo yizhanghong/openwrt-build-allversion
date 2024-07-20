@@ -37,12 +37,6 @@ get_disk_status() {
   echo "$value"
 }
 
-get_disk_model() {
-  local value="$(hdparm -I /dev/sda | awk '/Model/{print $(NF-1),$(NF)}' 2>/dev/null)"
-  [ -n "$value" ] || value="-1"
-  echo "$value"
-}
-
 case "$1" in
   cpu_freq)
     get_cpu_freq
@@ -62,11 +56,8 @@ case "$1" in
   disk_status)
     get_disk_status
     ;;
-  disk_model)
-    get_disk_model
-    ;;
 *)
-    echo "Usage: $0 {cpu_freq|cpu_governor|cpu_temp|wifi_temp|disk_temp|disk_status|disk_model}"
+    echo "Usage: $0 {cpu_freq|cpu_governor|cpu_temp|wifi_temp|disk_temp|disk_status}"
     exit 1
     ;;
 esac
