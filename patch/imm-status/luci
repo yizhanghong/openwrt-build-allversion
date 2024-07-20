@@ -640,7 +640,7 @@ const methods = {
 		}
 	},
 
-	getTempInfo: {
+	getCoreTemp: {
 		call: function() {
 			let fd;
 			let result = {};
