@@ -38,9 +38,9 @@ var callCoreInfo = rpc.declare({
 	method: 'getCoreInfo'
 });
 
-var callTempInfo = rpc.declare({
+var callCoreTemp = rpc.declare({
 	object: 'luci',
-	method: 'getTempInfo'
+	method: 'getCoreTemp'
 });
 
 return baseclass.extend({
@@ -54,7 +54,7 @@ return baseclass.extend({
 			L.resolveDefault(callCPUInfo(), {}),
 			L.resolveDefault(callCPUUsage(), {}),
 			L.resolveDefault(callCoreInfo(), {}),
-			L.resolveDefault(callTempInfo(), {}),
+			L.resolveDefault(callCoreTemp(), {}),
 			L.resolveDefault(callLuciVersion(), { revision: _('unknown version'), branch: 'LuCI' })
 		]);
 	},
@@ -66,7 +66,7 @@ return baseclass.extend({
 		    cpuinfo     = data[3],
 		    cpuusage    = data[4],
 		    coreinfo    = data[5],
-		    tempinfo    = data[6],
+		    coretemp    = data[6],
 		    luciversion = data[7];
 
 		luciversion = luciversion.branch + ' ' + luciversion.revision;
@@ -91,7 +91,7 @@ return baseclass.extend({
 			_('Model'),            boardinfo.model + cpubench.cpubench,
 			_('Architecture'),     cpuinfo.cpuinfo || boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
-			_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),
+			_('Firmware Version'), boardinfo.release.description
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
@@ -101,7 +101,7 @@ return baseclass.extend({
 				systeminfo.load[2] / 65535.0
 			) : null,
 			_('CPU状态 '),          '使用率 ' + cpuusage.cpuusage + ' ， ' + '频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + ' ， ' + '模式 ' + coreinfo.governor ,
-			_('温度    '),          'CPU ' + tempinfo.cpu + ' °C'
+			_('温度    '),          'CPU ' + coretemp.cpu + ' °C' + ' ， ' + 'WiFi ' + coretemp.wifi + ' °C',
 		];
 
 		var table = E('table', { 'class': 'table' });
