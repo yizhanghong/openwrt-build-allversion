@@ -99,7 +99,7 @@ jobs:
     - name: edit md5（编辑内核值）
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vermagic21.02 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '109d' include/kernel-defaults.mk
         sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
