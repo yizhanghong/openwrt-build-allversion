@@ -1,7 +1,6 @@
 # 修改默认IP，主机名，WiFi名称
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/RAX3000M/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/CMCCRAX/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 
 # Git稀疏克隆，只克隆指定目录到本地
 # function git_sparse_clone() {
@@ -14,7 +13,7 @@ sed -i 's/ImmortalWrt/CMCCRAX/g' package/kernel/mac80211/files/lib/wifi/mac80211
 # }
 
 #添加lucky
-git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/lucky
+# git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 rm -rf feeds/packages/lang/golang
