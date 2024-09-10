@@ -1,18 +1,15 @@
-# 修改默认IP，主机名，WiFi名称
+# 修改默认IP，主机名
 sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_generate
-sed -i 's/r1.5/v24.6.15/g' package/emortal/default-settings/files/99-default-settings
-sed -i 's/OpenWRT/OpenWrt/g' package/emortal/default-settings/files/99-default-settings
 sed -i 's/LibWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 #默认WiFi设置
-sed -i 's/LibWrt/CMCC-8Hd5/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
-#sed -i 's/disabled=0/disabled=1/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
-sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
-sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.sh
+sed -i 's/LibWrt/IPQ6000/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+# sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+# sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 
 # git clone https://github.com/destan19/OpenAppFilter.git package/mypackage/OpenAppFilter
-# 添加homeproxy
-# git clone --depth=1 https://github.com/immortalwrt/homeproxy.git package/mypackage/homeproxy
-# git clone --depth=1 https://github.com/kenzok8/small-package.git package/small
 # mv package/small/chinadns-ng package/mypackage/
 # rm -rf package/small
 # 添加cpufreq和diskman
