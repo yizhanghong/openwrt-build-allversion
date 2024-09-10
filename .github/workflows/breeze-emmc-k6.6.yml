@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: qualcomm-ipq60xx-emmc
+  FIRMWARE_TAG: ipq60xx-emmc
   TZ: Asia/Shanghai
 
 jobs:
@@ -101,6 +101,7 @@ jobs:
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
+        mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
@@ -110,8 +111,8 @@ jobs:
         rm -rf $OPENWRT_PATH/.vermagic
         mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '119d' include/kernel-defaults.mk
-        sed -i '119i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '116d' include/kernel-defaults.mk
+        sed -i '116i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '29d' package/kernel/linux/Makefile
         sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
