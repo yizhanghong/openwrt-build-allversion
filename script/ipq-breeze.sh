@@ -2,7 +2,7 @@
 sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_generate
 sed -i 's/LibWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 #默认WiFi设置
-sed -i 's/LibWrt/IPQ6000/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i 's/LiBwrt/IPQ6000/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
