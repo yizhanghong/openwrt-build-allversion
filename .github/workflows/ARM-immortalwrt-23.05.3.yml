@@ -1,20 +1,20 @@
-name: L1Pro-imm-dev
+name: ARM-immortalwrt-23.05.3
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: master
-  CONFIG_FILE: config/L1Pro-imm-dev
-  DIY_SCRIPT: script/armv8.sh
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-23.05
+  CONFIG_FILE: config/ARM64-immortalwrt
+  DIY_SCRIPT: script/ARM64.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: L1Pro-imm-dev
+  FIRMWARE_TAG: ARM64-immortalwrtwrt-23.05.3
   TZ: Asia/Shanghai
 
 jobs:
@@ -63,7 +63,7 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 $REPO_URL openwrt
+        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
@@ -78,28 +78,18 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-rk3328
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-ARM64
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        cat feeds.conf.default
+        git checkout v23.05.3
+        git checkout v23.05.3
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-
-    - name: Apply patches(安装首页补丁)   
-      run: |
-        rm $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/luci
-        rm $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-        rm $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/luci-mod-status.json
-        mkdir $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin
-        mv $GITHUB_WORKSPACE/patches/imm-dev-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
-        mv $GITHUB_WORKSPACE/patches/imm-dev-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
-        mv $GITHUB_WORKSPACE/patches/imm-dev-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/
-        mv $GITHUB_WORKSPACE/patches/imm-dev-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
@@ -107,13 +97,21 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
+    - name: Apply patches   
+      run: |
+        mv $GITHUB_WORKSPACE/patch/imm-status/soc-status $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/
+        chmod a+rwx $OPENWRT_PATH/feeds/luci/modules/luci-base/root/sbin/soc-status
+        mv $GITHUB_WORKSPACE/patch/imm-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
+        mv $GITHUB_WORKSPACE/patch/imm-status/base-10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+        mv $GITHUB_WORKSPACE/patch/imm-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
+
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic-imm-dev $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vermagic-imm23053 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '116d' include/kernel-defaults.mk
-        sed -i '116i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '121d' include/kernel-defaults.mk
+        sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '29d' package/kernel/linux/Makefile
         sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
@@ -164,3 +162,24 @@ jobs:
       with:
         name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
+
+    - name: Upload Firmware To Release(发布固件)
+      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
+      uses: ncipollo/release-action@v1
+      with:
+        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        allowUpdates: true
+        tag: ${{ env.FIRMWARE_TAG }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: ${{ env.FIRMWARE_PATH }}/*
+        body: |
+          ### 📒 固件信息
+          - 这是基于官方openwrt-23.05.3源码编译的固件
+          - 💻 这是 ARM64 平台使用的 OpenWrt-rootfs 固件
+          - ⚽ 固件源码: ${{ env.REPO_URL }}
+          - 💝 源码分支: ${{ env.REPO_BRANCH }}
+          - 🌐 默认地址: 192.168.23.1
+          - 🔑 默认密码: 无
+          ### 🧊 固件版本
+          - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
+          - ${{ env.VERSION_INFO }}
