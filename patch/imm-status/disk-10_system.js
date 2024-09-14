@@ -107,7 +107,7 @@ return baseclass.extend({
 				systeminfo.load[1] / 65535.0,
 				systeminfo.load[2] / 65535.0
 			) : null,
-			_('CPU状态 '),          '温度 ' + tempinfo.cpu + ' °C' + ' ， ' + ' 使用率 ' + cpuusage.cpuusage + ' ， ' + ' 频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')' ,
+			_('CPU状态 '),          '温度 ' + coretemp.cpu + ' °C' + ' ， ' + ' 使用率 ' + cpuusage.cpuusage + ' ， ' + ' 频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')' ,
 			_('硬盘信息'),          '温度 ' + diskinfo.temp + ' °C' + ' ， ' + ' 状态 ' + diskinfo.status + ' ， ' + ' 型号 ' + diskinfo.model
 		];
 
