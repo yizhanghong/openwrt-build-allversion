@@ -7,11 +7,11 @@ git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/mypackage/
 # git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/mypackage/luci-app-argon-config
 
 # iStore
-# git clone --depth=1 -b main https://github.com/linkease/istore.git package/mypackage/istore
-# git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/mypackage/nas-packages
-# git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/mypackage/nas-luci
-# mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packages/
-# rm -rf package/mypackage/nas-packages/network
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/mypackage/istore
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/mypackage/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/mypackage/nas-luci
+mv package/mypackage/nas-packages/network/services/* package/mypackage/nas-packages/
+rm -rf package/mypackage/nas-packages/network
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 #rm -rf feeds/packages/lang/golang
