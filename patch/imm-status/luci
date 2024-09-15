@@ -623,6 +623,25 @@ const methods = {
 		}
 	},
 
+	getTempInfo: {
+		call: function() {
+			if (!access('/sbin/tempinfo'))
+				return {};
+
+			const fd = popen('/sbin/tempinfo');
+			if (fd) {
+				let tempinfo = fd.read('all');
+				if (!tempinfo)
+					tempinfo = '?';
+				fd.close();
+
+				return { tempinfo: tempinfo };
+			} else {
+				return { tempinfo: error() };
+			}
+		}
+	},
+
 	getCoreInfo: {
 		call: function() {
 			let fd;
