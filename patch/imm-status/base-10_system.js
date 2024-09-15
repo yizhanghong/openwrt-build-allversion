@@ -43,6 +43,11 @@ var callCoreTemp = rpc.declare({
 	method: 'getCoreTemp'
 });
 
+var callTempInfo = rpc.declare({
+	object: 'luci',
+	method: 'getTempInfo'
+});
+
 return baseclass.extend({
 	title: _('System'),
 
@@ -53,6 +58,7 @@ return baseclass.extend({
 			L.resolveDefault(callCPUBench(), {}),
 			L.resolveDefault(callCPUInfo(), {}),
 			L.resolveDefault(callCPUUsage(), {}),
+			L.resolveDefault(callTempInfo(), {}),
 			L.resolveDefault(callCoreInfo(), {}),
 			L.resolveDefault(callCoreTemp(), {}),
 			L.resolveDefault(callLuciVersion(), { revision: _('unknown version'), branch: 'LuCI' })
@@ -65,9 +71,10 @@ return baseclass.extend({
 		    cpubench    = data[2],
 		    cpuinfo     = data[3],
 		    cpuusage    = data[4],
-		    coreinfo    = data[5],
+		    tempinfo    = data[5],
 		    coretemp    = data[6],
-		    luciversion = data[7];
+		    coreusage   = data[7],
+		    luciversion = data[8];
 
 		luciversion = luciversion.branch + ' ' + luciversion.revision;
 
@@ -100,8 +107,13 @@ return baseclass.extend({
 				systeminfo.load[1] / 65535.0,
 				systeminfo.load[2] / 65535.0
 			) : null,
-			_('CPU状态 '),          '温度 ' + coretemp.cpu + ' °C' + ' ， ' + ' 使用率 ' + cpuusage.cpuusage + ' ， ' + ' 频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')'
+			_('CPU状态 '),          '温度 ' + coretemp.cpu + ' °C' + ' ， ' + '使用率 ' + coreusage.cpu + '%' + ' ， ' + '频率 ' + coreinfo.cpufreq / 1000 + ' MHz ' + '(' + coreinfo.governor + ')'
 		];
+
+		if (tempinfo.tempinfo) {
+			fields.splice(6, 0, _('Temperature'));
+			fields.splice(7, 0, tempinfo.tempinfo);
+		}
 
 		var table = E('table', { 'class': 'table' });
 
