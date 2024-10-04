@@ -1,12 +1,12 @@
-name: wrt1900acs-openwrt-19.07
+name: wrt1900acs-immortalwrt-18.06
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: openwrt-19.07
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-18.06
   CONFIG_FILE: config/wrt1900acs
   DIY_SCRIPT: script/wrt1900acs.sh
   CLASH_KERNEL: amd64
@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: wrt1900acs-openwrt-19.07
+  FIRMWARE_TAG: wrt1900acs-immortalwrt-18.06
   TZ: Asia/Shanghai
 
 jobs:
@@ -84,8 +84,6 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v19.07.10
-        git checkout v19.07.10
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -102,8 +100,8 @@ jobs:
         rm -rf $OPENWRT_PATH/.vermagic
         mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '108d' include/kernel-defaults.mk
-        sed -i '108i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '105d' include/kernel-defaults.mk
+        sed -i '105i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '27d' package/kernel/linux/Makefile
         sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
@@ -166,11 +164,11 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 这是基于官方openwrt-19.07源码编译的固件
+          - 这是基于官方immortalwrt-21.02源码编译的固件
           - 💻 这是 ARM64 平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.23.1
+          - 🌐 默认地址: 192.168.2.1
           - 🔑 默认密码: 无
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
