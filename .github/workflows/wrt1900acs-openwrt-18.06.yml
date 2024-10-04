@@ -164,7 +164,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 这是基于官方immortalwrt-21.02源码编译的固件
+          - 这是基于官方immortalwrt-18.06源码编译的固件
           - 💻 这是 ARM64 平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
