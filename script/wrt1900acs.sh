@@ -2,8 +2,12 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 sed -i 's/ImmortalWrt/Wrt1900ACS/g' package/base-files/files/bin/config_generate
 
 git clone -b openwrt-21.02 --single-branch --depth=1 https://github.com/immortalwrt/luci  package/imm-luci21.02
-mv package/imm-luci21.02/applications/luci-app-ddns-go feeds/luci/applications/
-rm -rf package/imm-luci21.02 
+mv package/imm-luci21.02/applications/luci-app-ddns-go feeds/luci/applications/luci-app-ddns-go
+rm -rf package/imm-luci21.02
+
+git clone -b openwrt-21.02 --single-branch --depth=1 https://github.com/immortalwrt/packages  package/imm-pkg21.02
+mv package/imm-pkg21.02/net/ddns-go feeds/packages/net/ddns-go
+rm -rf package/imm-pkg21.02
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
