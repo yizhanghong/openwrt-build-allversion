@@ -5,9 +5,7 @@ git clone -b openwrt-21.02 --single-branch --depth=1 https://github.com/immortal
 mv package/imm-luci21.02/applications/luci-app-ddns-go feeds/luci/applications/luci-app-ddns-go
 rm -rf package/imm-luci21.02
 
-git clone -b openwrt-21.02 --single-branch --depth=1 https://github.com/immortalwrt/packages  package/imm-pkg21.02
-mv package/imm-pkg21.02/net/ddns-go feeds/packages/net/ddns-go
-rm -rf package/imm-pkg21.02
+git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/ddns-go
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
