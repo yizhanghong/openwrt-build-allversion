@@ -6,7 +6,7 @@ on:
 
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt.git
-  REPO_BRANCH: q20-pbboot
+  REPO_BRANCH: master
   CONFIG_FILE: config/jcg-q20
   DIY_SCRIPT: script/q20.sh
   CLASH_KERNEL: amd64
