@@ -14,6 +14,10 @@ git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git pa
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
+git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
+mv package/small-package/luci-app-gowebdav package/luci-app-gowebdav
+rm -rf package/small-package
+
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 #rm -rf feeds/packages/lang/golang
 #git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
