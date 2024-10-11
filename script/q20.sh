@@ -10,6 +10,6 @@ git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-app-argon-config 
 git clone -b openwrt-21.02 --single-branch --depth=1 https://github.com/immortalwrt/luci.git package/imm21pkg
 mv package/imm21pkg/protocols/luci-proto-sstp package/luci-proto-sstp
 rm -rf package/imm21pkg
-sed -i '13d' package/luci-proto-sstp/Makefile
-sed -i '13i\include $(TOPDIR)/feeds/luci/luci.mk' package/luci-proto-sstp/Makefile
-#rm -rf package/luci-proto-sstp/Makefile
+# sed -i '13d' package/luci-proto-sstp/Makefile
+# sed -i '13i\include $(TOPDIR)/feeds/luci/luci.mk' package/luci-proto-sstp/Makefile
+rm -rf package/luci-proto-sstp/Makefile
