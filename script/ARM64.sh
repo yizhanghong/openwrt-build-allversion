@@ -14,10 +14,10 @@ mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
 git clone --depth=1 https://github.com/kiddin9/openwrt-clouddrive2.git package/luci-app-clouddrive2
-git clone --depth=1 https://github.com/linkease/istore-packages.git package/istore-packages
-mv package/istore-packages/luci-app-gowebdav package/luci-app-gowebdav
-mv package/istore-packages/gowebdav package/gowebdav
-rm -rf package/istore-packages
+# git clone --depth=1 https://github.com/linkease/istore-packages.git package/istore-packages
+# mv package/istore-packages/luci-app-gowebdav package/luci-app-gowebdav
+# mv package/istore-packages/gowebdav package/gowebdav
+# rm -rf package/istore-packages
 
 rm -rf package/emortal/default-settings/files/99-default-settings
 
