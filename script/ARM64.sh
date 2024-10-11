@@ -19,6 +19,8 @@ mv package/istore-packages/luci-app-gowebdav package/luci-app-gowebdav
 mv package/istore-packages/gowebdav package/gowebdav
 rm -rf package/istore-packages
 
+rm -rf package/emortal/default-settings/files/99-default-settings
+
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 #rm -rf feeds/packages/lang/golang
 #git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
