@@ -1,20 +1,20 @@
-name: redmi-ax6s-237imm
+name: redmi-ax6s-imm23
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/padavanonly/immortalwrt.git
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-23.05
   CONFIG_FILE: config/ax6s
-  DIY_SCRIPT: script/q20.sh
+  DIY_SCRIPT: script/immortalwrt.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: redmi-ax6s-237imm
+  FIRMWARE_TAG: redmi-ax6s-imm23
   TZ: Asia/Shanghai
 
 jobs:
@@ -84,6 +84,8 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
+        git checkout v23.05.4
+        git checkout v23.05.4
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -98,13 +100,12 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/patch/makefile1 $OPENWRT_PATH/package/luci-proto-sstp/Makefile
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vermagic-imm23054 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '121d' include/kernel-defaults.mk
         sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-        sed -i '27d' package/kernel/linux/Makefile
-        sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+        sed -i '29d' package/kernel/linux/Makefile
+        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package
       run: |
@@ -142,8 +143,6 @@ jobs:
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
         cp $OPENWRT_PATH/.config full.config
-        mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
-        tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
@@ -165,8 +164,8 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 这是基于官方237-immortalwrt-mt762x源码编译的固件
-          - 💻 这是 mt762x 平台使用的 OpenWrt-rootfs 固件
+          - 这是基于官方immortalwrt-23.05源码编译的固件
+          - 💻 这是 7622平台使用的 OpenWrt固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
