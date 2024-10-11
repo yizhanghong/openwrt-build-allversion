@@ -14,6 +14,11 @@ git clone --depth=1 -b master https://github.com/linkease/nas-packages.git packa
 git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
+#安装最新openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
+# mv package/openclash/luci-app-openclash feeds/luci/applications/
+# rm -rf package/openclash
 
 # git clone https://github.com/destan19/OpenAppFilter.git package/mypackage/OpenAppFilter
 # mv package/small/chinadns-ng package/mypackage/
