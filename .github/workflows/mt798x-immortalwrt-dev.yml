@@ -1,20 +1,20 @@
-name: mt798x-immortalwrt-dev
-# 脚本参考github/haiibo
+name: redmi-ax6s-237imm
+# 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: master
-  CONFIG_FILE: config/mt798x-immortalwrt-dev
-  DIY_SCRIPT: script/immortalwrt.sh
+  REPO_URL: https://github.com/padavanonly/immortalwrt.git
+  REPO_BRANCH: mt7915_mtwifi
+  CONFIG_FILE: config/ax6s
+  DIY_SCRIPT: script/q20.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: false
-  FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: mt798x-immortalwrt-dev
+  UPLOAD_FIRMWARE: true
+  FIRMWARE_RELEASE: false
+  FIRMWARE_TAG: redmi-ax6s-237imm
   TZ: Asia/Shanghai
 
 jobs:
@@ -63,7 +63,7 @@ jobs:
     - name: Clone Source Code(克隆源代码)
       run: |
         df -hT $GITHUB_WORKSPACE
-        git clone --depth=1 -b $REPO_BRANCH --single-branch $REPO_URL openwrt
+        git clone -b $REPO_BRANCH --single-branch $REPO_URL openwrt
         cd openwrt
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
@@ -78,24 +78,18 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt798x
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-ax6s
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        cat feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-  
-    - name: Apply patches
-      run: |
-        mv -f $GITHUB_WORKSPACE/patches/mediatek-custom/*.dts $OPENWRT_PATH/target/linux/mediatek/dts/
-        patch -R -p1 -d $OPENWRT_PATH < $GITHUB_WORKSPACE/patches/mtk*.patch
 
-    - name: Load Custom Script
+    - name: Load Custom Script(加载自定义脚本)
       run: |
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
@@ -103,24 +97,18 @@ jobs:
 
     - name: edit md5
       run: |
-        rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
-        cd $OPENWRT_PATH
-        sed -i '119d' include/kernel-defaults.mk
-        sed -i '119i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-        sed -i '29d' package/kernel/linux/Makefile
-        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+        mv $GITHUB_WORKSPACE/patch/makefile1 $OPENWRT_PATH/package/luci-proto-sstp/Makefile
 
-    - name: Download DL Package(下载DL软件包)
+    - name: Download DL Package
       run: |
-        cp $CONFIG_FILE $OPENWRT_PATH/.config
+        mv $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Compile Firmware(开始编译固件)
+    - name: Compile Firmware
       id: compile
       run: |
         cd $OPENWRT_PATH
@@ -130,28 +118,30 @@ jobs:
         echo "DATE=$(date +"%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "FILE_DATE=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
 
-    - name: Check Space Usage(检查空间使用情况)
+    - name: Check Space Usage
       if: (!cancelled())
       run: df -hT
 
-    - name: Upload Bin Directory(上传固件)
+    - name: Upload Bin Directory
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.SOURCE_REPO }}-bin-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
+        name: ${{ env.SOURCE_REPO }}-bin-${{ env.DEVICE_TARGET }}-${{ env.DEVICE_SUBTARGET }}-${{ env.FILE_DATE }}
         path: ${{ env.OPENWRT_PATH }}/bin
 
-    - name: Organize Files(整理文件)
+    - name: Organize Files
       if: steps.compile.outputs.status == 'success'
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
         cp $OPENWRT_PATH/.config full.config
+        mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
+        tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
     - name: Upload Firmware To Artifact(将固件上传到Artifact)
-      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@main
       with:
         name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
@@ -167,12 +157,12 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
-          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息
-          - 💻 这是 mtk 7981/7986 平台使用的 immortalwrt-snapshot官方固件
+          - 这是基于官方237-immortalwrt-mt7622源码编译的固件
+          - 💻 这是 mt762x 平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.13.1
+          - 🌐 默认地址: 192.168.23.1
           - 🔑 默认密码: 无
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
