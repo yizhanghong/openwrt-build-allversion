@@ -1,4 +1,4 @@
-name: jcg-q20-237imm
+name: 7621-237imm
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/ax6s
-  DIY_SCRIPT: script/q20.sh
+  CONFIG_FILE: config/7621-237imm
+  DIY_SCRIPT: script/7621-237imm.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: jcg-q20-237imm
+  FIRMWARE_TAG: 7621-237imm
   TZ: Asia/Shanghai
 
 jobs:
@@ -78,7 +78,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-q20
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-7621-237imm
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
@@ -98,7 +98,6 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/patch/makefile1 $OPENWRT_PATH/package/luci-proto-sstp/Makefile
         mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '121d' include/kernel-defaults.mk
@@ -165,8 +164,8 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 这是基于官方237-immortalwrt源码编译的固件
-          - 💻 这是 q20 平台使用的 OpenWrt-rootfs 固件
+          - 这是基于237-immortalwrt源码编译的固件
+          - 💻 这是 mt7621 平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
