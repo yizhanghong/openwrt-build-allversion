@@ -95,6 +95,11 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
+    - name: Apply patches   
+      run: |
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/mac80211.sh $OPENWRT_PATH/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
