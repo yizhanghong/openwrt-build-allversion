@@ -175,14 +175,16 @@ detect_mac80211() {
 			set wireless.radio${devidx}.band=${mode_band}
 			set wireless.radio${devidx}.htmode=$htmode
 			set wireless.radio${devidx}.disabled=0
- 			set wireless.radio${devidx}.country=US
+ 			set wireless.radio${devidx}.country=RU
 
 			set wireless.default_radio${devidx}=wifi-iface
 			set wireless.default_radio${devidx}.device=radio${devidx}
 			set wireless.default_radio${devidx}.network=lan
 			set wireless.default_radio${devidx}.mode=ap
-			set wireless.default_radio${devidx}.ssid=OpenWrt
-			set wireless.default_radio${devidx}.encryption=none
+			set wireless.default_radio0.ssid=Aimydee-AR660X-2.4G
+			set wireless.default_radio1.ssid=Aimydee-AR660X-5G
+			set wireless.default_radio${devidx}.encryption=psk2
+			set wireless.default_radio${devidx}.key=1234567890
 EOF
 		uci -q commit wireless
 
