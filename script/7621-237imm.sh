@@ -3,7 +3,7 @@ sed -i 's/ImmortalWrt/Aimydee/g' package/base-files/files/bin/config_generate
 
 #
 sed -i 's/auto/ru/g' feeds/luci/modules/luci-base/root/etc/config/luci
-sed -i 's/bootstrap/design/g' feeds/luci/modules/luci-base/root/etc/config/luci
+sed -i 's/bootstrap/netgear/g' feeds/luci/modules/luci-base/root/etc/config/luci
 
 rm -rf feeds/luci/themes/luci-theme-argonv3
 # git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
