@@ -1,4 +1,4 @@
-sed -i 's/192.168.6.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/Aimydee/g' package/base-files/files/bin/config_generate
 
 #
@@ -7,7 +7,8 @@ sed -i 's/bootstrap/netgear/g' feeds/luci/modules/luci-base/root/etc/config/luci
 rm -rf feeds/luci/applications/luci-app-filetransfer
 rm -rf package/emortal/luci-app-mwan3helper-chinaroute
 
-# rm -rf feeds/luci/themes/luci-theme-argonv3
+rm -rf feeds/luci/themes/luci-theme-argonv3
+rm -rf feeds/luci/themes/luci-theme-bootstrap
 # git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 # rm -rf feeds/luci/themes/luci-theme-argon
 # rm -rf feeds/luci/applications/luci-app-argon-config
