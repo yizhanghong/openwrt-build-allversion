@@ -182,9 +182,9 @@ detect_mac80211() {
 			set wireless.default_radio${devidx}.network=lan
 			set wireless.default_radio${devidx}.mode=ap
 			set wireless.default_radio0.ssid=Aimydee-AR660X-2.4G
-			set wireless.default_radio1.ssid=Aimydee-AR660X-5G
+			set wireless.default_radio1.ssid=Aimydee-AR660X-WiFi6
 			set wireless.default_radio${devidx}.encryption=psk2
-			set wireless.default_radio${devidx}.key=1234567890
+			set wireless.default_radio${devidx}.key=Ta23H64kg
 EOF
 		uci -q commit wireless
 
