@@ -4,6 +4,13 @@ sed -i 's/ImmortalWrt/Aimydee/g' package/base-files/files/bin/config_generate
 #
 sed -i 's/auto/ru/g' feeds/luci/modules/luci-base/root/etc/config/luci
 rm -rf feeds/luci/modules/luci-base/po/zh-cn
+rm -rf feeds/luci/applications/luci-app-passwall/po/zh-cn
+rm -rf feeds/luci/applications/luci-app-timecontrol/po/zh-cn
+rm -rf feeds/luci/applications/luci-app-firewall/po/zh-cn
+rm -rf feeds/luci/applications/luci-app-upnp/po/zh-cn
+rm -rf package/emortal/luci-app-eqos-mtk/po/zh-cn
+rm -rf package/emortal/luci-app-turboacc-mtk/po/zh-cn
+
 sed -i 's/bootstrap/rosy/g' feeds/luci/modules/luci-base/root/etc/config/luci
 sed -i "s/luci-theme-bootstrap/luci-theme-rosy/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 rm -rf feeds/luci/applications/luci-app-filetransfer
