@@ -17,8 +17,9 @@ sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
-sed -i '/Powered by/d' /usr/lib/lua/luci/view/themes/rosy/footer.htm
-sed -i 's/auto/ru/g'  /etc/config/luci
+sed -i '/Powered by/,+1d' /usr/lib/lua/luci/view/themes/rosy/footer.htm
+sed -i '/Powered by/d' /usr/lib/lua/luci/view/themes/bootstrap/footer.htm
+sed -i 's/auto/ru/g' /etc/config/luci
 
 ln -sf /sbin/ip /usr/bin/ip
 
