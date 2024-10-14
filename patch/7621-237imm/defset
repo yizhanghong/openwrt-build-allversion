@@ -1,6 +1,6 @@
 #!/bin/sh
 
-uci set luci.main.lang=auto
+uci set luci.main.lang=ru
 uci commit luci
 
 uci set fstab.@global[0].anon_mount=1
@@ -41,6 +41,5 @@ echo 'hsts=0' > /root/.wgetrc
 rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
 
-mv /etc/openwrt_banner /etc/banner
 
 exit 0
