@@ -3,12 +3,16 @@ sed -i 's/ImmortalWrt/Aimydee/g' package/base-files/files/bin/config_generate
 
 #
 sed -i 's/auto/ru/g' feeds/luci/modules/luci-base/root/etc/config/luci
-sed -i 's/bootstrap/netgear/g' feeds/luci/modules/luci-base/root/etc/config/luci
+sed -i 's/bootstrap/rosy/g' feeds/luci/modules/luci-base/root/etc/config/luci
+sed -i "s/luci-theme-bootstrap/luci-theme-rosy/g" feeds/luci/collections/luci/Makefile
+sed -i "s/luci-theme-bootstrap/luci-theme-rosy/g" feeds/luci/collections/luci-nginx/Makefile
+sed -i "s/luci-theme-bootstrap/luci-theme-rosy/g" feeds/luci/collections/luci-ssl-nginx/Makefile
+# sed -i "s/luci-theme-bootstrap/luci-theme-rosy/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 rm -rf feeds/luci/applications/luci-app-filetransfer
 rm -rf package/emortal/luci-app-mwan3helper-chinaroute
 
 rm -rf feeds/luci/themes/luci-theme-argonv3
-rm -rf feeds/luci/themes/luci-theme-bootstrap
+# rm -rf feeds/luci/themes/luci-theme-bootstrap
 # git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 # rm -rf feeds/luci/themes/luci-theme-argon
 # rm -rf feeds/luci/applications/luci-app-argon-config
