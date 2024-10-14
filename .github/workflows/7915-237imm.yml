@@ -95,6 +95,10 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
+    - name: Apply patches   
+      run: |
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/imm-2102-led $OPENWRT_PATH/package/base-files/files/etc/init.d/led
+
     - name: Download DL Package
       run: |
         mv $CONFIG_FILE $OPENWRT_PATH/.config
