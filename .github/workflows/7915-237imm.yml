@@ -108,6 +108,7 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_dev_cfg.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_dev_cfg.htm
         mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_overview.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_overview.htm
         mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_vif_cfg.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_vif_cfg.htm
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtkwifi.lua $OPENWRT_PATH/package/emortal/luci-app-mtwifi/root/usr/lib/lua/mtkwifi.lua
 
     - name: Download DL Package
       run: |
