@@ -1,3 +1,15 @@
 #!/bin/sh
 
+uci -q batch <<-EOF
+	set system.@system[0].zonename='Europe/Moscow'
+
+EOF
+uci commit system
+
+sed -i 's/0x10/0/g' /etc/config/system
+sed -i 's/switch0/0x10/g' /etc/config/system
+sed -i 's/option dev/option port_mask/g' /etc/config/system
+sed -i 's/netdev/switch0/g' /etc/config/system
+sed -i 's/option mode/option default/g' /etc/config/system
+
 exit 0
