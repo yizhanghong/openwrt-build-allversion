@@ -24,10 +24,12 @@ sed -i 's/auto/ru/g' /etc/config/luci
 sed -i 's/192.168.1.1/192.168.6.1/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 sed -i 's/Openwrt_5G/Aimydee-AR660X-WiFi6/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 sed -i 's/12345678/Ta23H64kg/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 
 sed -i 's/192.168.1.1/192.168.6.1/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/CR660X_2.4G/Aimydee-AR660X-2.4G/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/12345678/Ta23H64kg/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 
 ln -sf /sbin/ip /usr/bin/ip
 
