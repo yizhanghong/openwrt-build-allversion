@@ -75,7 +75,7 @@ local devs = mtkwifi.get_all_devs()
                         <% else %>
                         <input class="cbi-button cbi-button-apply" style="width:100px" title="Отключить беспроводную сеть" value="Включить" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_enable", vif.vifname)%>'" />
                         <% end %>
-                        <input class="cbi-button cbi-button-edit" style="width:100px" title="Изменение основных настроек беспроводной сети" value="Основные настройки" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_cfg_view", dev.devname, vif.vifname)%>'" />
+                        <input class="cbi-button cbi-button-edit" style="width:100px" title="Изменение основных настроек беспроводной сети" value="Редактировать" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_cfg_view", dev.devname, vif.vifname)%>'" />
                         <input class="cbi-button cbi-button-remove" style="width:100px" title="Удалить сеть" value="Удалить" type="button" onclick="location.href='<%=luci.dispatcher.build_url("admin", "network", "wifi", "vif_del", dev.devname, vif.vifname)%>'" />
                     </td>
                 </tr>
