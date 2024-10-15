@@ -104,6 +104,10 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/7621-237imm/loginBG.png $OPENWRT_PATH/feeds/luci/themes/luci-theme-rosy/htdocs/luci-static/rosy/loginBG.png
         mv $GITHUB_WORKSPACE/patch/7621-237imm/mobile-loginBG.png $OPENWRT_PATH/feeds/luci/themes/luci-theme-rosy/htdocs/luci-static/rosy/mobile-loginBG.png
         mv $GITHUB_WORKSPACE/patch/7621-237imm/favicon.ico $OPENWRT_PATH/feeds/luci/themes/luci-theme-rosy/htdocs/luci-static/rosy/favicon.ico
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_apcli.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_apcli.htm
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_dev_cfg.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_dev_cfg.htm
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_overview.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_overview.htm
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_vif_cfg.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_vif_cfg.htm
 
     - name: Download DL Package
       run: |
