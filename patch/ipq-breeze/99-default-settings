@@ -16,6 +16,7 @@ sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
 echo "DISTRIB_REVISION='v24.10.11'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt V24.10.11'" >> /etc/openwrt_release
+echo 'src/gz openwrt_core https://mirror.nju.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/packages' >> /etc/opkg/distfeeds.conf
 
 sed -i "/log-facility/d" "/etc/dnsmasq.conf"
 echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
