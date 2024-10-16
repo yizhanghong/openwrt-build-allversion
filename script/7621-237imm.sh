@@ -10,12 +10,14 @@ rm -rf feeds/luci/applications/luci-app-upnp/po/zh-cn
 rm -rf package/emortal/luci-app-eqos-mtk/po/zh-cn
 rm -rf package/emortal/luci-app-turboacc-mtk/po/zh-cn
 
-sed -i 's/bootstrap/rosy/g' feeds/luci/modules/luci-base/root/etc/config/luci
-sed -i "s/luci-theme-bootstrap/luci-theme-rosy/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
+sed -i 's/bootstrap/design/g' feeds/luci/modules/luci-base/root/etc/config/luci
+sed -i "s/luci-theme-design/luci-theme-design/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 rm -rf feeds/luci/applications/luci-app-filetransfer
 rm -rf package/emortal/luci-app-mwan3helper-chinaroute
 
 rm -rf feeds/luci/themes/luci-theme-argonv3
+git clone --depth=1 https://github.com/SAENE/luci-theme-design.git package/luci-theme-design
+
 # rm -rf feeds/luci/themes/luci-theme-bootstrap
 # git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
 # rm -rf feeds/luci/themes/luci-theme-argon
