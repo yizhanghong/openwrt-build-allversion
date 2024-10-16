@@ -1,8 +1,10 @@
 name: x86-istoreOS
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
-on: 
+on:
   workflow_dispatch:
+  schedule:
+    - cron: 0 17 * * *
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos.git
