@@ -16,6 +16,11 @@ rm -rf package/nas-packages/network
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 
+rm -rf feeds/packages/lang/ruby
+git clone --depth=1 -b openwrt-23.05 --single-branch https://github.com/immortalwrt/packages.git package/immortal-pkg
+mv package/immortal-pkg/lang/ruby feeds/packages/lang/ruby
+rm -rf package/immortal-pkg
+
 #安装最新openclash
 # rm -rf feeds/luci/applications/luci-app-openclash
 # git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
