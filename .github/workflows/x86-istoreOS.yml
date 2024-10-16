@@ -8,7 +8,7 @@ on:
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos.git
-  REPO_BRANCH: default
+  REPO_BRANCH: istoreos-22.03
   CONFIG_FILE: config/x86-istoreOS
   DIY_SCRIPT: script/immortalwrt.sh
   CLASH_KERNEL: amd64
