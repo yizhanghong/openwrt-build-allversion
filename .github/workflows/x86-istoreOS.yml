@@ -3,8 +3,6 @@ name: x86-istoreOS
 # Add a button to trigger the workflow
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 0 17 * * *
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos.git
