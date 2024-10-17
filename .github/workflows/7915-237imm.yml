@@ -103,6 +103,7 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/bg1.jpg $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
         mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/favicon.ico $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/favicon.ico
         mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/cascade.css $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/argon.svg $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg
         sed -i 's/5e72e4/bb24f2/g' $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
         mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_apcli.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_apcli.htm
         mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_dev_cfg.htm $OPENWRT_PATH/package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_dev_cfg.htm
