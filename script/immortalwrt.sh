@@ -2,6 +2,9 @@
 # sed -i 's/ImmortalWrt/AX6S/g' package/base-files/files/bin/config_generate
 # sed -i 's/ImmortalWrt/AX6S/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
