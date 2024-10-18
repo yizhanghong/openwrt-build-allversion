@@ -94,6 +94,7 @@ jobs:
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
+        mv  $GITHUB_WORKSPACE/patch/ipq-breeze/banner $OPENWRT_PATH/package/base-files/files/etc/banner
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
