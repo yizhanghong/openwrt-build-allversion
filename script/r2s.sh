@@ -12,7 +12,7 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclas
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
-rm -rf rm -rf feeds/luci/applications/luci-app-dockerman
+# rm -rf rm -rf feeds/luci/applications/luci-app-dockerman
 
 # git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git package/kz8
 # mv package/kz8/luci-app-ikoolproxy package/luci-app-ikoolproxy
