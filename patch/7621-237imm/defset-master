@@ -1,0 +1,49 @@
+#!/bin/sh
+
+uci set luci.main.lang=ru
+uci commit luci
+
+uci set fstab.@global[0].anon_mount=1
+uci commit fstab
+
+rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
+rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
+rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
+rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
+sed -i 's/<%=pcdata(boardinfo.model or "?")%>/Aimydee-AR660X/g' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i '/Powered by/,+3d' /usr/lib/lua/luci/view/themes/argon/footer.htm
+sed -i '/Powered by/d' /usr/lib/lua/luci/view/themes/bootstrap/footer.htm
+sed -i 's/auto/ru/g' /etc/config/luci
+
+sed -i 's/5e72e4/bb24f2/g' /usr/lib/lua/luci/view/themes/argon/header_login.htm
+sed -i 's/5e72e4/bb24f2/g' /usr/lib/lua/luci/view/themes/argon/header.htm
+sed -i 's/5e72e4/bb24f2/g' /usr/lib/lua/luci/view/themes/argon/footer.htm
+
+ln -sf /sbin/ip /usr/bin/ip
+
+sed -i "s/# //g" /etc/opkg/distfeeds.conf
+
+sed -i 's|root::0:0:99999:7:::|root:$1$Y7kdX3JT$fwEEhEuPnZb8r56C9q5xW/:0:0:99999:7:::|g' /etc/shadow
+[ -f '/bin/bash' ] && sed -i 's|root:x:0:0:root:/root:/bin/ash|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd
+
+sed -i '/option disabled/d' /etc/config/wireless
+sed -i '/set wireless.radio${devidx}.disabled/d' /lib/wifi/mac80211.sh
+
+sed -i '/log-facility/d' /etc/dnsmasq.conf
+echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
+
+sed -i 's/cbi.submit\"] = true/cbi.submit\"] = \"1\"/g' /usr/lib/lua/luci/dispatcher.lua
+
+echo 'hsts=0' > /root/.wgetrc
+
+rm -rf /tmp/luci-modulecache/
+rm -f /tmp/luci-indexcache
+
+
+exit 0
