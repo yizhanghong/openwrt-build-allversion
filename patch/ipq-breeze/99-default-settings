@@ -18,7 +18,7 @@ echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
 echo "DISTRIB_DESCRIPTION='OpenWrt-V${date_version} '" >> /etc/openwrt_release
 
-echo "src/gz openwrt_core https://mirror.nju.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/kmods/6.6.56-1-8ce1fcf08e9372905cb140eb5f56c2c0/" >> /etc/opkg/customfeeds.conf
+#echo "src/gz openwrt_core https://mirror.nju.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq807x/kmods/6.6.56-1-8ce1fcf08e9372905cb140eb5f56c2c0/" >> /etc/opkg/customfeeds.conf
 
 sed -i "/log-facility/d" "/etc/dnsmasq.conf"
 echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
