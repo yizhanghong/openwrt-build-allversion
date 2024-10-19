@@ -104,7 +104,7 @@ jobs:
     - name: edit md5（编辑内核值）
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/vermagic-breeze $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '130d' include/kernel-defaults.mk
         sed -i '130i\\tcp $(TOPDIR)/vm/vermagic-breeze $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
