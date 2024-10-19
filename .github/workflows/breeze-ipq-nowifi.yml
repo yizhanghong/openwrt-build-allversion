@@ -92,10 +92,14 @@ jobs:
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
-        mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
+
+    - name: Apply patches(应用补丁)
+      run: |
+        mv $GITHUB_WORKSPACE/patch/ipq-breeze/banner $OPENWRT_PATH/package/base-files/files/etc/banner
+        mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 
     - name: edit md5（编辑内核值）
       run: |
