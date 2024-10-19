@@ -39,6 +39,12 @@ sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/CountryCode=US/CountryCode=RU/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 
+sed -i 's/0x10/0/g' /etc/config/system
+sed -i 's/switch0/0x10/g' /etc/config/system
+sed -i 's/option dev/option port_mask/g' /etc/config/system
+sed -i 's/netdev/switch0/g' /etc/config/system
+sed -i 's/option mode/option default/g' /etc/config/system
+
 ln -sf /sbin/ip /usr/bin/ip
 
 sed -i "s/# //g" /etc/opkg/distfeeds.conf
