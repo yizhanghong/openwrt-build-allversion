@@ -7,14 +7,11 @@ rm -rf feeds/luci/applications/luci-app-passwall/po/zh-cn
 rm -rf feeds/luci/applications/luci-app-timecontrol/po/zh-cn
 rm -rf feeds/luci/applications/luci-app-firewall/po/zh-cn
 rm -rf feeds/luci/applications/luci-app-upnp/po/zh-cn
-rm -rf package/emortal/luci-app-eqos-mtk/po/zh-cn
-rm -rf package/emortal/luci-app-turboacc-mtk/po/zh-cn
+
 
 # sed -i 's/bootstrap/design/g' feeds/luci/modules/luci-base/root/etc/config/luci
 # sed -i "s/luci-theme-design/luci-theme-design/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 rm -rf feeds/luci/applications/luci-app-filetransfer
-rm -rf package/emortal/luci-app-mwan3helper-chinaroute
-rm -rf package/emortal/luci-theme-argon-new
 
 rm -rf feeds/luci/themes/luci-theme-argonv3
 rm -rf feeds/luci/themes/luci-theme-argonv2
