@@ -1,4 +1,4 @@
-name: 7621-237imm
+name: 7620-237imm
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/7621-237imm
-  DIY_SCRIPT: script/7621-237imm.sh
+  CONFIG_FILE: config/yk-l1
+  DIY_SCRIPT: script/7620-237imm.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: 7621-237imm
+  FIRMWARE_TAG: 7620-237imm
   TZ: Asia/Shanghai
 
 jobs:
@@ -78,7 +78,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-7621-237imm
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-7620-237imm
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
@@ -100,20 +100,14 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/7621-237imm/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
         mv $GITHUB_WORKSPACE/patch/7621-237imm/defset-cn $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings-chinese
         mv $GITHUB_WORKSPACE/patch/7621-237imm/mac80211.sh $OPENWRT_PATH/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-        mv $GITHUB_WORKSPACE/patch/7621-237imm/logo.png $OPENWRT_PATH/feeds/luci/themes/luci-theme-rosy/htdocs/luci-static/rosy/logo.png
-        mv $GITHUB_WORKSPACE/patch/7621-237imm/loginBG.png $OPENWRT_PATH/feeds/luci/themes/luci-theme-rosy/htdocs/luci-static/rosy/loginBG.png
-        mv $GITHUB_WORKSPACE/patch/7621-237imm/mobile-loginBG.png $OPENWRT_PATH/feeds/luci/themes/luci-theme-rosy/htdocs/luci-static/rosy/mobile-loginBG.png
-        mv $GITHUB_WORKSPACE/patch/7621-237imm/favicon.ico $OPENWRT_PATH/feeds/luci/themes/luci-theme-rosy/htdocs/luci-static/rosy/favicon.ico
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/bg1.jpg $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/favicon.ico $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/favicon.ico
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/cascade.css $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/argon.svg $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg
+        rm -rf $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon 
+        mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/icon $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon
+        sed -i 's/5e72e4/bb24f2/g' $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
 
-    - name: edit md5
-      run: |
-        rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
-        cd $OPENWRT_PATH
-        sed -i '121d' include/kernel-defaults.mk
-        sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-        sed -i '27d' package/kernel/linux/Makefile
-        sed -i '27i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package
       run: |
@@ -175,7 +169,7 @@ jobs:
         body: |
           ### 📒 固件信息
           - 这是基于237-immortalwrt源码编译的固件
-          - 💻 这是 mt7621 平台使用的 OpenWrt-rootfs 固件
+          - 💻 这是 mt7620 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
