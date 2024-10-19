@@ -90,18 +90,13 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
   
-    - name: Load Custom Configuration(加载配置文件)
-      run: |
-        [ -e files ] && mv files $OPENWRT_PATH/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
-
     - name: Load Custom Script(加载自定义脚本)
       run: |
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
-    - name: Apply patches   
+    - name: Apply patches(加载补丁) 
       run: |
         mv $GITHUB_WORKSPACE/patch/ipq-breeze/banner $OPENWRT_PATH/package/base-files/files/etc/banner
         mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
@@ -113,12 +108,13 @@ jobs:
         mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '130d' include/kernel-defaults.mk
-        sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '130i\\tcp $(TOPDIR)/vm/vermagic-ipq $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '29d' package/kernel/linux/Makefile
         sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package(下载DL软件包)
       run: |
+        mv $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
         make defconfig
         cat .config
