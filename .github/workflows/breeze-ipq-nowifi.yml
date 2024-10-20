@@ -107,7 +107,7 @@ jobs:
         mv $GITHUB_WORKSPACE/vm/vermagic-breeze $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '130d' include/kernel-defaults.mk
-        sed -i '130i\\tcp $(TOPDIR)/vm/vermagic-breeze $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '130i\\tcp $(TOPDIR)/vm/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '29d' package/kernel/linux/Makefile
         sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
