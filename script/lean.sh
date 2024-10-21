@@ -20,7 +20,7 @@ git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git f
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-
+sed -i '24d' package/5g-mod/luci-app-modem/Makefile
 # iStore
 #git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
 #git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
