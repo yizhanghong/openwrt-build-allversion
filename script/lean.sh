@@ -1,4 +1,4 @@
-sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 
 # git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
 # mv package/openwrt-packages/ddns-go package/ddns-go
@@ -16,9 +16,9 @@ rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 
-git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+#git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 
 # iStore
