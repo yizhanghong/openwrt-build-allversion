@@ -78,7 +78,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-ARM64
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-mt7621
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
@@ -100,7 +100,7 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/imm21027-mt7621 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '109d' include/kernel-defaults.mk
         sed -i '109i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
@@ -170,7 +170,7 @@ jobs:
           - 💻 这是 ARM64 平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
-          - 🌐 默认地址: 192.168.2.1
+          - 🌐 默认地址: 192.168.23.1
           - 🔑 默认密码: 无
           ### 🧊 固件版本
           - 固件编译前最后一次➦[主源码](${{ env.REPO_URL }})更新记录
