@@ -22,11 +22,11 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/lu
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 
 # iStore
-git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
-mv package/nas-packages/network/services/* package/nas-packages/
-rm -rf package/nas-packages/network
+#git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+#git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+#git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+#mv package/nas-packages/network/services/* package/nas-packages/
+#rm -rf package/nas-packages/network
 
 # 修改版本为编译日期
 # date_version=$(date +"%y.%m.%d")
@@ -34,5 +34,5 @@ rm -rf package/nas-packages/network
 # sed -i "s/${orig_version}/R${date_version} by 5und4y/g" package/lean/default-settings/files/zzz-default-settings
 
 # Clear the login password
-sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+#sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 
