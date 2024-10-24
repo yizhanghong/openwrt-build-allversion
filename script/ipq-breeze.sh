@@ -15,6 +15,8 @@ sed -i 's/LiBwrt/IPQ6000/g' package/network/config/wifi-scripts/files/lib/wifi/m
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+rm -rf feeds/packages/kernel/quectel-qmi-wwan
 
 rm -rf feeds/packages/lang/ruby
 git clone --depth=1 -b openwrt-23.05 --single-branch https://github.com/immortalwrt/packages.git package/immortal-pkg
