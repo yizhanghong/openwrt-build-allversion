@@ -10,7 +10,6 @@ env:
   REPO_BRANCH: master
   CONFIG_FILE: config/lean-ipq60xx
   DIY_SCRIPT: script/lean.sh
-  PATCHES_FILE_1: patch/lean-zzz-default-settings
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
