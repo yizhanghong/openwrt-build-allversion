@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF
+	set system.@system[0].zonename='Europe/Moscow'
+
+EOF
+uci commit system
+
+sed -i 's,downloads.immortalwrt.org,mirror.nju.edu.cn/immortalwrt,g' /etc/opkg/distfeeds.conf
+
+exit 0
