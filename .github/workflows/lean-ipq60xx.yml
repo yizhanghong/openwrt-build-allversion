@@ -16,7 +16,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: ipq60xx-lean
+  FIRMWARE_TAG: ipq60xx-wifi
   TZ: Asia/Shanghai
 
 jobs:
@@ -128,6 +128,7 @@ jobs:
     - name: Install Feeds
       run: |
         cd $OPENWRT_PATH
+        mv $GITHUB_WORKSPACE/patch/lean/feeds.conf.default $OPENWRT_PATH/feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -135,8 +136,7 @@ jobs:
 
     - name: Apply patches
       run: |
-        rm -rf $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
-        cp $PATCHES_FILE_1 $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
+        mv $OPENWRT_PATH/patch/lean/defset $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
 
     - name: Load Custom Script
       run: |
