@@ -1,4 +1,4 @@
-name: MeIsReallyBa-padavan-4.4
+name: padavan-4.4-MeIsReallyBa
 
 on: 
   workflow_dispatch:
