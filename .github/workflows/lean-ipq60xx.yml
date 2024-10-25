@@ -135,7 +135,7 @@ jobs:
 
     - name: Apply patches
       run: |
-        mv $OPENWRT_PATH/patch/lean/defset $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
+        mv $GITHUB_WORKSPACE/patch/lean/defset $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
 
     - name: Load Custom Script
       run: |
