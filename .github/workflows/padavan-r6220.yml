@@ -33,6 +33,7 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/padavan/r6220-default.h /opt/rt-n56u/trunk/user/shared/defaults.h
         mv $GITHUB_WORKSPACE/config/r6220-padavan /opt/rt-n56u/trunk/configs/templates/R6220.config
         cd /opt/rt-n56u/trunk
+        cp -f configs/templates/$TNAME.config .config
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
         sudo mv -f images/*.trx /opt/images/
