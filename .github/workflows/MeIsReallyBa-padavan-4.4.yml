@@ -29,6 +29,7 @@ jobs:
       env:
         TNAME: JCG-Q20
       run: |
+        mv $GITHUB_WORKSPACE/patch/padavan/default.h /opt/rt-n56u/trunk/user/shared/defaults.h
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
