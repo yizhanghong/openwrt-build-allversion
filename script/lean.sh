@@ -1,11 +1,5 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 
-# git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
-# mv package/openwrt-packages/ddns-go package/ddns-go
-# mv package/openwrt-packages/luci-app-aliddns package/luci-app-aliddns
-# mv package/openwrt-packages/luci-app-ddns-go package/luci-app-ddns-go
-# rm -rf package/openwrt-packages
-
 # sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 # ./scripts/feeds update -a
 # ./scripts/feeds install -a
@@ -34,12 +28,12 @@ git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-
 # sed -i "s/${orig_version}/R${date_version} by 5und4y/g" package/lean/default-settings/files/zzz-default-settings
 
 # Clear the login password
-sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
+#sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
 
 git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git package/kenzok8
 mv package/kenzok8/luci-theme-design package/luci-theme-design
 rm -rf package/kenzok8
 
-git clone --depth=1 https://github.com/sirpdboy/sirpdboy-package.git  package/sirpdboy
-mv package/sirpdboy/luci-app-netwizard package/luci-app-netwizard
-rm -rf package/sirpdboy
+#git clone --depth=1 https://github.com/sirpdboy/sirpdboy-package.git  package/sirpdboy
+#mv package/sirpdboy/luci-app-netwizard package/luci-app-netwizard
+#rm -rf package/sirpdboy
