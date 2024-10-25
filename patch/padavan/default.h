@@ -37,14 +37,12 @@
 
 #define DEF_WLAN_2G_CC		"CN"
 #define DEF_WLAN_5G_CC		"CN"
-#define DEF_WLAN_2G_SSID	BOARD_PID "_2.4G_%s"
-#define DEF_WLAN_5G_SSID	BOARD_PID "_5G_%s"
+#define DEF_WLAN_2G_SSID	"WIFI_2.4G"
+#define DEF_WLAN_5G_SSID	"WIFI_5G"
 #define DEF_WLAN_2G_GSSID	BOARD_PID "_GUEST_%s"
 #define DEF_WLAN_5G_GSSID	BOARD_PID "_GUEST_5G_%s"
-#define DEF_WLAN_2G_OPEN
-#define DEF_WLAN_5G_OPEN
 
-#define DEF_ROOT_PASSWORD	""
+
 #define DEF_SMB_WORKGROUP	"WORKGROUP"
 #define DEF_TIMEZONE		"CST-8"
 #define DEF_NTP_SERVER0		"ntp1.aliyun.com"
