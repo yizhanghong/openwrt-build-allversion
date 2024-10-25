@@ -97,7 +97,7 @@ jobs:
 
     - name: Apply patches   
       run: |
-        mv $GITHUB_WORKSPACE/patch/cr660x-237imm/defset-7915 $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
+        mv $GITHUB_WORKSPACE/patch/cr660x-237imm/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
         mv $GITHUB_WORKSPACE/patch/cr660x-237imm/defset-cn $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings-chinese
         mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/bg1.jpg $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
