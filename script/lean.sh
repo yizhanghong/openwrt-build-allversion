@@ -40,4 +40,6 @@ git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git package/kenz
 mv package/kenzok8/luci-theme-design package/luci-theme-design
 rm -rf package/kenzok8
 
-git clone --depth=1 https://github.com/kiddin9/luci-app-wizard.git  package/luci-app-wizard
+git clone --depth=1 https://github.com/sirpdboy/sirpdboy-package.git  package/sirpdboy
+mv package/sirpdboy/luci-app-netwizard package/luci-app-netwizard
+rm -rf package/sirpdboy
