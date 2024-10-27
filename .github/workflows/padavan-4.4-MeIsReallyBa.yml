@@ -27,37 +27,12 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: JCG-Q20
+        TNAME: CR660x
       run: |
         mv $GITHUB_WORKSPACE/patch/padavan/default.h /opt/rt-n56u/trunk/user/shared/defaults.h
+        mv $GITHUB_WORKSPACE/config/r660x-padavan /opt/rt-n56u/trunk/configs/templates/$TNAME.config
         cd /opt/rt-n56u/trunk
-        if [ ! -f configs/templates/$TNAME.config ] ; then
-        echo "configs/templates/$TNAME.config not found "
-        exit 1
-        fi
         cp -f configs/templates/$TNAME.config .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=n/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y/g' .config
-        ################################################################################################
-        #因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
-        ################################################################################################
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=y/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=y/CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_OPENVPN=y/CONFIG_FIRMWARE_INCLUDE_OPENVPN=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_XUPNPD=y/CONFIG_FIRMWARE_INCLUDE_XUPNPD=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_MINIEAP=y/CONFIG_FIRMWARE_INCLUDE_MINIEAP=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=y/CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_SOCAT=y/CONFIG_FIRMWARE_INCLUDE_SOCAT=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_SRELAY=y/CONFIG_FIRMWARE_INCLUDE_SRELAY=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_VLMCSD=y/CONFIG_FIRMWARE_INCLUDE_VLMCSD=n/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y/CONFIG_FIRMWARE_INCLUDE_WIREGUARD=n/g' .config
-
-        #########################################################################################
-        #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
-        #格式如下：
-        #sed -i '/自定义项/d' .config
-        #echo "自定义项=y" >> .config
-        #########################################################################################
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
         sudo mv -f images/*.trx /opt/images/
