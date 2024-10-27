@@ -10,9 +10,10 @@ rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 
 # iStore
@@ -29,10 +30,6 @@ git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-
 
 # Clear the login password
 #sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' package/lean/default-settings/files/zzz-default-settings
-
-git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git package/kenzok8
-mv package/kenzok8/luci-theme-design package/luci-theme-design
-rm -rf package/kenzok8
 
 
 #git clone --depth=1 https://github.com/sirpdboy/sirpdboy-package.git  package/sirpdboy
