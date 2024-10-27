@@ -101,15 +101,6 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
         mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 
-    - name: edit md5（编辑内核值）
-      run: |
-        rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/vermagic-breeze $OPENWRT_PATH/vermagic
-        cd $OPENWRT_PATH
-        sed -i '130d' include/kernel-defaults.mk
-        sed -i '130i\\tcp $(TOPDIR)/vm/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-        sed -i '29d' package/kernel/linux/Makefile
-        sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
     - name: Download DL Package(下载DL软件包)
       run: |
