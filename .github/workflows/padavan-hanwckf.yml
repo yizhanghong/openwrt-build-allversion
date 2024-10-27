@@ -31,6 +31,8 @@ jobs:
         TNAME: PSG1218_nano
       run: |
         mv $GITHUB_WORKSPACE/patch/padavan/default.h /opt/rt-n56u/trunk/user/shared/defaults.h
+        mv $GITHUB_WORKSPACE/patch/padavan/bootstrap.min.css /opt/rt-n56u/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/bootstrap.min.css
+        mv $GITHUB_WORKSPACE/patch/padavan/main.css /opt/rt-n56u/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
         mv $GITHUB_WORKSPACE/config/PSG1218_nano /opt/rt-n56u/trunk/configs/templates/PSG1218_nano.config
         cd /opt/rt-n56u/trunk
         cp -f configs/templates/$TNAME.config .config
