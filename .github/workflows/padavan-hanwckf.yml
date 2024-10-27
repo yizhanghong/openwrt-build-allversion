@@ -1,4 +1,4 @@
-name: padavan-r6220
+name: padavan-hanwckf
 
 on: 
   workflow_dispatch:
@@ -28,10 +28,10 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: R6220
+        TNAME: PSG1218_nano
       run: |
         mv $GITHUB_WORKSPACE/patch/padavan/r6220-default.h /opt/rt-n56u/trunk/user/shared/defaults.h
-        mv $GITHUB_WORKSPACE/config/r6220-padavan /opt/rt-n56u/trunk/configs/templates/R6220.config
+        mv $GITHUB_WORKSPACE/config/PSG1218_nano-padavan /opt/rt-n56u/trunk/configs/templates/PSG1218_nano.config
         cd /opt/rt-n56u/trunk
         cp -f configs/templates/$TNAME.config .config
         sudo ./clear_tree
