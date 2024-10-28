@@ -100,7 +100,6 @@ jobs:
       run: |
         mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
         mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
-        mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-distfeeds.conf $OPENWRT_PATH/package/emortal/default-settings/files/99-distfeeds.conf
 
 
     - name: Download DL Package(下载DL软件包)
