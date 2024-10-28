@@ -13,7 +13,7 @@ rm -rf feeds/packages/net/quectel-cm
 rm -rf feeds/packages/kernel/fibocom-qmi-wwan
 rm -rf feeds/packages/kernel/quectel-qmi-wwan
 rm -rf feeds/luci/protocols/luci-proto-quectel
-rm -rf feeds/nss-packages/wwan
+rm -rf feeds/nss_packages/wwan
 
 rm -rf feeds/packages/lang/ruby
 git clone --depth=1 -b openwrt-23.05 --single-branch https://github.com/immortalwrt/packages.git package/immortal-pkg
