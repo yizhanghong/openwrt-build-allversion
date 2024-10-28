@@ -181,7 +181,8 @@ detect_mac80211() {
 			set wireless.default_radio${devidx}.device=radio${devidx}
 			set wireless.default_radio${devidx}.network=lan
 			set wireless.default_radio${devidx}.mode=ap
-			set wireless.default_radio${devidx}.ssid==Aimydee-YK-L1
+			set wireless.default_radio0.ssid==Aimydee-K2-2.4G
+			set wireless.default_radio1.ssid==Aimydee-K2-5G
 			set wireless.default_radio${devidx}.encryption=psk2
 			set wireless.default_radio${devidx}.key=Ta23H64kg
 EOF
