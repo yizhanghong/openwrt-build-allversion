@@ -169,6 +169,7 @@ CONFIG_PARTED_READLINE=y
 
 CONFIG_PACKAGE_luci-app-openclash=y
 CONFIG_PACKAGE_luci-app-modem=y
-
+CONFIG_PACKAGE_luci-app-sms-tool=y
+CONFIG_PACKAGE_luci-i18n-sms-tool-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-modem-zh-cn=y
 
