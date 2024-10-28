@@ -30,7 +30,7 @@ jobs:
       env:
         TNAME: CR660x
       run: |
-        mv $GITHUB_WORKSPACE/patch/padavan/default.h /opt/rt-n56u/trunk/user/shared/defaults.h
+        mv $GITHUB_WORKSPACE/patch/padavan/default-gen.h /opt/rt-n56u/trunk/user/shared/defaults.h
         mv $GITHUB_WORKSPACE/config/cr660x-padavan /opt/rt-n56u/trunk/configs/templates/$TNAME.config
         cd /opt/rt-n56u/trunk
         cp -f configs/templates/$TNAME.config .config
