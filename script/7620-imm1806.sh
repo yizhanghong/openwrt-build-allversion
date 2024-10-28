@@ -17,7 +17,9 @@ rm -rf feeds/luci/themes/luci-theme-argonv3
 rm -rf feeds/luci/themes/luci-theme-argonv2
 rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
-# git clone --depth=1 https://github.com/SAENE/luci-theme-design.git package/luci-theme-design
+git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git  package/openwrt-packages
+mv package/openwrt-packages/luci-theme-design package/luci-theme-design
+rm -rf package/openwrt-packages
 
 # rm -rf feeds/luci/themes/luci-theme-bootstrap
 # git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus package/luci-app-eqosplus
