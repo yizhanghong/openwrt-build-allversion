@@ -12,6 +12,8 @@ if ! uci -q get system.@imm_init[0].lang > "/dev/null"; then
 	EOF
 fi
 
+sed -i 's/\"network\"/\"modem\"/g' /usr/lib/lua/luci/controller/modem.lua
+
 date_version=$(date +"%y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
 echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
