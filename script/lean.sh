@@ -11,6 +11,11 @@ rm -rf feeds/luci/themes/luci-theme-argon
 git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications/luci-app-argon-config
 git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 
+git clone --depth=1 https://github.com/lucikap/luci-app-ua2f.git  package/luci-app-ua2f
+git clone --depth=1 https://github.com/EOYOHOO/UA2F.git package/UA2F
+git clone --depth=1 https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+
+
 #git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
