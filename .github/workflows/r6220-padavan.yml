@@ -32,7 +32,6 @@ jobs:
         CONFIG_FILE: config/r6220-padavan
       run: |
         mv $GITHUB_WORKSPACE/patch/padavan/default.h /opt/rt-n56u/trunk/user/shared/defaults.h
-        mv $GITHUB_WORKSPACE/patch/padavan/bootstrap.min.css /opt/rt-n56u/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/bootstrap.min.css
         mv $GITHUB_WORKSPACE/patch/padavan/main.css /opt/rt-n56u/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
         mv $CONFIG_FILE /opt/rt-n56u/trunk/configs/templates/$TNAME.config
         cd /opt/rt-n56u/trunk
