@@ -36,12 +36,9 @@ CONFIG_PACKAGE_libuci-lua=y
 CONFIG_PACKAGE_libudns=y
 CONFIG_PACKAGE_lua-neturl=y
 
-CONFIG_PACKAGE_kmod-usb-net-rndis=y
-CONFIG_PACKAGE_kmod-usb2=y
-CONFIG_PACKAGE_luci-app-argon-config=y
+
 CONFIG_PACKAGE_luci-app-autoreboot=y
 CONFIG_PACKAGE_luci-app-ramfree=y
-CONFIG_PACKAGE_luci-i18n-argon-config-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-autoreboot-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-ramfree-zh-cn=y
 CONFIG_PACKAGE_luci-theme-argon=y
@@ -49,3 +46,5 @@ CONFIG_PACKAGE_luci-theme-argon=y
 
 CONFIG_PACKAGE_luci-app-wizard=y
 CONFIG_PACKAGE_luci-i18n-wizard-zh-cn=y
+CONFIG_PACKAGE_luci-app-accesscontrol=y
+CONFIG_PACKAGE_luci-i18n-accesscontrol-zh-cn=y
