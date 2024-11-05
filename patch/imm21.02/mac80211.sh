@@ -175,14 +175,15 @@ detect_mac80211() {
 			set wireless.radio${devidx}.band=${mode_band}
 			set wireless.radio${devidx}.htmode=$htmode
 			set wireless.radio${devidx}.country=CN
+			set wireless.radio${devidx}.txpower='20'
 			set wireless.radio${devidx}.disabled=0
 
 			set wireless.default_radio${devidx}=wifi-iface
 			set wireless.default_radio${devidx}.device=radio${devidx}
 			set wireless.default_radio${devidx}.network=lan
 			set wireless.default_radio${devidx}.mode=ap
-			set wireless.default_radio0.ssid=AX3000-2.4G_$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
-			set wireless.default_radio1.ssid=AX3000-5G_$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
+			set wireless.default_radio0.ssid=AX3000-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
+			set wireless.default_radio1.ssid=AX3000-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')-5G
 			set wireless.default_radio${devidx}.encryption=none
 EOF
 		uci -q commit wireless
