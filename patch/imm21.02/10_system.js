@@ -79,7 +79,7 @@ return baseclass.extend({
 		}
 
 		var fields = [
-			_('Model'),            '畅灵通WiFi6-AX3000路由器 ',
+			_('Model'),            '畅灵通WiFi6-AX3000Pro路由器 ',
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
 			_('CPU usage (%)'),    cpuusage.cpuusage
