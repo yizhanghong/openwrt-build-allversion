@@ -1,5 +1,5 @@
 # 修改默认IP，主机名
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.13.1/g' package/base-files/files/bin/config_generate
 sed -i 's/LibWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 #默认WiFi设置
 sed -i 's/OpenWrt/AX1800/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
