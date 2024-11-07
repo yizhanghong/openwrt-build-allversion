@@ -6,7 +6,7 @@ on:
 
 env:
   REPO_URL: https://github.com/LiBwrt-op/openwrt-6.x.git
-  REPO_BRANCH: main
+  REPO_BRANCH: openwrt-24.10
   CONFIG_FILE: config/breeze-ax5jjdc
   DIY_SCRIPT: script/ipq-breeze.sh
   CLASH_KERNEL: amd64
