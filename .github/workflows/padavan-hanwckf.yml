@@ -35,7 +35,7 @@ jobs:
         mv $GITHUB_WORKSPACE/config/PSG1218_nano /opt/rt-n56u/trunk/configs/templates/PSG1218_nano.config
         cd /opt/rt-n56u/trunk
         rm -rf user/www
-        unzip www.zip user/www
+        unzip www.zip -d user/www
         cp -f configs/templates/$TNAME.config .config
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
