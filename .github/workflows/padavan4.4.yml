@@ -1,4 +1,4 @@
-name: r6220-padavan
+name: padavan4.4
 
 on: 
   workflow_dispatch:
@@ -22,19 +22,19 @@ jobs:
         libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget libc-dev-bin
     - name: Clone source code
       run: |
-        git clone --depth=1 https://e.coding.net/hanwckf/rt-n56u/padavan.git /opt/rt-n56u
-        cd /opt/rt-n56u/toolchain-mipsel
+        git clone --depth=1 https://github.com/hanwckf/padavan-4.4.git padavan4.4
+        cd padavan4.4/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: R6220
-        CONFIG_FILE: config/r6220-padavan
+        TNAME: CR660x
+        CONFIG_FILE: config/cr660x-padavan4.4
       run: |
-        mv $GITHUB_WORKSPACE/patch/padavan/default-Aimydee.h /opt/rt-n56u/trunk/user/shared/defaults.h
-        mv $GITHUB_WORKSPACE/patch/padavan/www.zip /opt/rt-n56u/trunk/www.zip
-        mv $CONFIG_FILE /opt/rt-n56u/trunk/configs/templates/$TNAME.config
-        cd /opt/rt-n56u/trunk
+        mv $GITHUB_WORKSPACE/patch/padavan/default-Aimydee.h padavan4.4/trunk/user/shared/defaults.h
+        mv $GITHUB_WORKSPACE/patch/padavan/www.zip padavan4.4/trunk/www.zip
+        mv $CONFIG_FILE padavan4.4/trunk/configs/templates/$TNAME.config
+        cd padavan4.4/trunk
         rm -rf user/www
         unzip www.zip -d user/www
         cp -f configs/templates/$TNAME.config .config
