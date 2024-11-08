@@ -32,9 +32,11 @@ jobs:
         CONFIG_FILE: config/r6220-padavan
       run: |
         mv $GITHUB_WORKSPACE/patch/padavan/default-Aimydee.h /opt/rt-n56u/trunk/user/shared/defaults.h
-        mv $GITHUB_WORKSPACE/patch/padavan/main.css /opt/rt-n56u/trunk/user/www/n56u_ribbon_fixed/bootstrap/css/main.css
+        mv $GITHUB_WORKSPACE/patch/padavan/www.zip /opt/rt-n56u/trunk/www.zip
         mv $CONFIG_FILE /opt/rt-n56u/trunk/configs/templates/$TNAME.config
         cd /opt/rt-n56u/trunk
+        rm -rf user/www
+        unzip www.zip -d user/www
         cp -f configs/templates/$TNAME.config .config
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
@@ -43,5 +45,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: ${{ env.TNAME }}-Padavan
+        name: R6220-Padavan
         path: /opt/images
