@@ -45,5 +45,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: R6220-Padavan
+        name: CR660x-Padavan4.4
         path: /opt/images
