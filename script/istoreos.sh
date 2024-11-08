@@ -8,6 +8,6 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/p
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-pkg
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 
-git clone --depth=1 https://github.com/immortalwrt/packages.git immpkg
-mv immpkg/lang/rust package/rust
+git clone --depth=1 -b openwrt23.05 https://github.com/immortalwrt/packages.git immpkg
+mv immpkg/lang/rust feeds/packages/lang/rust
 rm -rf immpkg
