@@ -1,4 +1,4 @@
-name: mt7621-lean
+name: lean-7621
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede.git
   REPO_BRANCH: master
-  CONFIG_FILE: config/r3g-lean
-  DIY_SCRIPT: script/lean.sh
+  CONFIG_FILE: config/lean-7621
+  DIY_SCRIPT: script/lean-7621.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: mt7621-lean
+  FIRMWARE_TAG: lean-mt7621
   TZ: Asia/Shanghai
 
 jobs:
@@ -92,7 +92,8 @@ jobs:
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
-        mv $GITHUB_WORKSPACE/patch/lean-zzz-default-settings $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
+        mv $GITHUB_WORKSPACE/patch/lean/defset $OPENWRT_PATH/package/lean/default-settings/files/zzz-default-settings
+        mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
