@@ -10,8 +10,3 @@ sed -i 's/openwrt/immortalwrt/g' package/emortal/default-settings/files/99-defau
 # git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
 #git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 #sed -i '24d' package/5g-modem/luci-app-modem/Makefile
-
-rm -rf feeds/luci/applications/luci-app-openclash
-git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
-mv package/openclash/luci-app-openclash feeds/luci/applications/
-rm -rf package/openclash
