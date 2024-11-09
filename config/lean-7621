@@ -7,11 +7,9 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_phicomm_k2p=y
 # CONFIG_PACKAGE_luci-app-ddns is not set
 # CONFIG_PACKAGE_luci-app-nlbwmon is not set
 # CONFIG_PACKAGE_luci-app-upnp is not set
-CONFIG_PACKAGE_luci-app-uugamebooster=y
 # CONFIG_PACKAGE_luci-app-vlmcsd is not set
 # CONFIG_PACKAGE_luci-app-vsftpd is not set
 # CONFIG_PACKAGE_luci-app-wol is not set
-CONFIG_PACKAGE_luci-i18n-uugamebooster-zh-cn=y
 CONFIG_PACKAGE_luci-theme-design=y
 
 CONFIG_PACKAGE_luci-app-openclash=y
