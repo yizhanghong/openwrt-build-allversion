@@ -7,6 +7,7 @@ git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclas
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-pkg
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 
 git clone --depth=1 -b openwrt23.05 https://github.com/immortalwrt/packages.git immpkg
 mv immpkg/lang/rust package/rust
