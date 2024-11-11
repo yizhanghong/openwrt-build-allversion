@@ -13,9 +13,12 @@ if ! uci -q get system.@imm_init[0].lang > "/dev/null"; then
 fi
 
 sed -i "/log-facility/d" "/etc/dnsmasq.conf"
+echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
+
 sed -i 's/mirrors.vsean.net/mirrors.jlu.edu.cn/g' /etc/opkg/distfeeds.conf
 sed -i 's/openwrt/immortalwrt/g' /etc/opkg/distfeeds.conf
-echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
+sed -i '/check_signature/d' /etc/opkg.conf
+sed -i '/${interface:+-i/d' /etc/init.d/ttyd
 
 ln -sf "/sbin/ip" "/usr/bin/ip"
 
