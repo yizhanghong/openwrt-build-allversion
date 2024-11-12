@@ -18,6 +18,11 @@ sed -i 's/%M/OpenWrt/g' package/base-files/files/usr/lib/os-release
 # rm -rf package/nas-packages/network
 
 git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus.git package/eqosplus
+sed -i 's/Control/NetControl/g' package/eqosplus/luasrc/controller/eqosplus.lua
+sed -i '$a msgid "NetControl"' package/eqosplus/po/zh_Hans/eqosplus.po
+sed -i '$a msgstr "网络控制"' package/eqosplus/po/zh_Hans/eqosplus.po
+sed -i '$a msgid "NetControl"' package/eqosplus/po/zh-cn/eqosplus.po
+sed -i '$a msgid "网络控制"' package/eqosplus/po/zh-cn/eqosplus.po
 
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
