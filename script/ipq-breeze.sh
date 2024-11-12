@@ -17,28 +17,7 @@ sed -i 's/LiBwrt/OpenWrt/g' package/base-files/files/usr/lib/os-release
 # mv package/nas-packages/network/services/* package/nas-packages/
 # rm -rf package/nas-packages/network
 
-#下载5g模块
-git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
-sed -i '24d' package/5g-modem/luci-app-modem/Makefile
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
-rm -rf feeds/packages/net/quectel-cm
-rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-rm -rf feeds/packages/kernel/quectel-qmi-wwan
-rm -rf feeds/luci/protocols/luci-proto-quectel
-rm -rf feeds/nss_packages/wwan
-
-rm -rf feeds/packages/lang/ruby
-git clone --depth=1 -b openwrt-23.05 --single-branch https://github.com/immortalwrt/packages.git package/immortal-pkg
-mv package/immortal-pkg/lang/ruby feeds/packages/lang/ruby
-rm -rf package/immortal-pkg
-
-#安装最新openclash
-# rm -rf feeds/luci/applications/luci-app-openclash
-# git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
-# mv package/openclash/luci-app-openclash feeds/luci/applications/
-# rm -rf package/openclash
+git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus.git package/eqosplus
 
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
