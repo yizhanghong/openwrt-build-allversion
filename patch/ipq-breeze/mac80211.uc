@@ -106,8 +106,8 @@ set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
 set ${si}.ssid='AX1800'
-set ${si}.encryption='psk2+ccmp'
-set ${si}.key='123456789'
+set ${si}.encryption='none'
+set ${si}.key='${defaults?.key || ""}'
 
 `);
 		config[name] = {};
