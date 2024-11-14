@@ -94,7 +94,8 @@ for (let phy_name, phy in board.wlan) {
 set ${s}.type='mac80211'
 set ${s}.${id}
 set ${s}.band='${band_name}'
-set ${s}.channel='${channel}'
+set wireless.radio0.channel='149'
+set wireless.radio1.channel='3'
 set ${s}.htmode='${htmode}'
 set ${s}.country='CN'
 set ${s}.num_global_macaddr='${num_global_macaddr || ''}'
@@ -105,9 +106,10 @@ set ${si}=wifi-iface
 set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
-set ${si}.ssid='AX1800'
-set ${si}.encryption='none'
-set ${si}.key='${defaults?.key || ""}'
+set wireless.default_radio0.ssid='CMCC-E155'
+set wireless.default_radio1.ssid='CMCC-E122'
+set ${si}.encryption='psk2+ccmp'
+set ${si}.key='86880959liu'
 
 `);
 		config[name] = {};
