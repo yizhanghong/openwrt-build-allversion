@@ -21,11 +21,11 @@ sed -i 's/%M/OpenWrt/g' package/base-files/files/usr/lib/os-release
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 #sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-rm -rf feeds/packages/net/quectel-cm
-rm -rf feeds/packages/kernel/fibocom-qmi-wwan
-rm -rf feeds/packages/kernel/quectel-qmi-wwan
-rm -rf feeds/luci/protocols/luci-proto-quectel
-rm -rf feeds/nss_packages/wwan
+#rm -rf feeds/packages/net/quectel-cm
+#rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+#rm -rf feeds/packages/kernel/quectel-qmi-wwan
+#rm -rf feeds/luci/protocols/luci-proto-quectel
+#rm -rf feeds/nss_packages/wwan
 
 git clone --depth=1 https://github.com/sirpdboy/luci-app-eqosplus.git package/eqosplus
 sed -i 's/Control/NetControl/g' package/eqosplus/luasrc/controller/eqosplus.lua
