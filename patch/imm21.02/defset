@@ -34,5 +34,8 @@ sed -i '/Powered by/d' /usr/lib/lua/luci/view/themes/bootstrap/footer.htm
 sed -i '/ula_prefix/d' /etc/config/network
 sed -i 's/60/64/g' /etc/config/network
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+sed -i 's#hour '5'#hour '3'#g' /etc/config/autoreboot
+sed -i 's#week '3'#week '7'#g' /etc/config/autoreboot
+sed -i 's#enable '0'#enable '1'#g' /etc/config/autoreboot
 
 exit 0
