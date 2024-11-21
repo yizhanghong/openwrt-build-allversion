@@ -25,10 +25,10 @@ rm -rf package/immortal-pkg
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
-mv package/nas-packages/network/services/* package/nas-packages/
-rm -rf package/nas-packages/network
+#git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+#git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+#mv package/nas-packages/network/services/* package/nas-packages/
+#rm -rf package/nas-packages/network
 
 git clone --depth=1 https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
