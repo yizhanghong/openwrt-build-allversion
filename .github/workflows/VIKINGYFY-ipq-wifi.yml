@@ -102,6 +102,7 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
         mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/defset-Makefile $OPENWRT_PATH/package/emortal/default-settings/Makefile
         mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-distfeeds.conf $OPENWRT_PATH/package/emortal/default-settings/files/99-distfeeds.conf
+        mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/mac80211.uc $OPENWRT_PATH/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
     - name: Download DL Package(下载DL软件包)
       run: |
