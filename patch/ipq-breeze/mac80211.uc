@@ -106,10 +106,10 @@ set ${si}=wifi-iface
 set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
-set wireless.default_radio0.ssid='CMCC-E155'
-set wireless.default_radio1.ssid='CMCC-E122'
+set wireless.default_radio0.ssid='AX1800-2.4G'
+set wireless.default_radio1.ssid='AX1800-5G'
 set ${si}.encryption='psk2+ccmp'
-set ${si}.key='86880959liu'
+set ${si}.key='123456789'
 
 `);
 		config[name] = {};
