@@ -35,4 +35,5 @@ git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-sma
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
+mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
