@@ -5,17 +5,17 @@ sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 sed -i 's/mirrors.vsean.net/mirror.nju.edu.cn/g' package/emortal/default-settings/files/99-default-settings-chinese
 sed -i 's/openwrt/immortalwrt/g' package/emortal/default-settings/files/99-default-settings-chinese
 
-#git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 #git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/lucky
-git clone --depth=1 https://github.com/kiddin9/openwrt-clouddrive2.git package/openwrt-clouddrive2
-git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
-git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
-mv package/small-package/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
-mv package/small-package/aliyundrive-webdav package/aliyundrive-webdav
-rm -rf package/small-package
+#git clone --depth=1 https://github.com/kiddin9/openwrt-clouddrive2.git package/openwrt-clouddrive2
+#git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
+#git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
+#mv package/small-package/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
+#mv package/small-package/aliyundrive-webdav package/aliyundrive-webdav
+#rm -rf package/small-package
 
 # iStore
 #git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
