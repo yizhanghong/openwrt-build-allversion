@@ -1,8 +1,9 @@
 # 修改默认IP，主机名
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.13.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 #默认WiFi设置
-sed -i 's/ImmortalWrt/IPQ6000/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i 's/ImmortalWrt/AX1800/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
@@ -23,7 +24,7 @@ mv package/immortal-pkg/lang/ruby feeds/packages/lang/ruby
 rm -rf package/immortal-pkg
 
 # iStore
-#git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
 #git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
 #git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
 #mv package/nas-packages/network/services/* package/nas-packages/
