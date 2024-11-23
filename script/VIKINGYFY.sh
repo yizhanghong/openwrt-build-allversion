@@ -2,8 +2,9 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/AX1800/g' package/base-files/files/bin/config_generate
+sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 #默认WiFi设置
-sed -i 's/ImmortalWrt/AX1800/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+# sed -i 's/ImmortalWrt/AX1800/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
@@ -18,10 +19,10 @@ rm -rf feeds/packages/kernel/quectel-qmi-wwan
 rm -rf feeds/luci/protocols/luci-proto-quectel
 rm -rf feeds/nss_packages/wwan
 
-rm -rf feeds/packages/lang/ruby
-git clone --depth=1 -b openwrt-23.05 --single-branch https://github.com/immortalwrt/packages.git package/immortal-pkg
-mv package/immortal-pkg/lang/ruby feeds/packages/lang/ruby
-rm -rf package/immortal-pkg
+#rm -rf feeds/packages/lang/ruby
+#git clone --depth=1 -b openwrt-23.05 --single-branch https://github.com/immortalwrt/packages.git package/immortal-pkg
+#mv package/immortal-pkg/lang/ruby feeds/packages/lang/ruby
+#rm -rf package/immortal-pkg
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
