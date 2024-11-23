@@ -13,6 +13,7 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
 rm -rf feeds/packages/net/quectel-cm
 rm -rf feeds/packages/kernel/fibocom-qmi-wwan
 rm -rf feeds/packages/kernel/quectel-qmi-wwan
