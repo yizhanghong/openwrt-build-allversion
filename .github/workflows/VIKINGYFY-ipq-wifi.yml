@@ -98,6 +98,7 @@ jobs:
     - name: Apply patches(加载补丁) 
       run: |
         mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/mac80211.uc $OPENWRT_PATH/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+        mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 
     - name: Download DL Package(下载DL软件包)
       run: |
