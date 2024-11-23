@@ -6,6 +6,7 @@ sed -i 's/mirrors.vsean.net/mirror.nju.edu.cn/g' package/emortal/default-setting
 sed -i 's/openwrt/immortalwrt/g' package/emortal/default-settings/files/99-default-settings-chinese
 
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
