@@ -13,6 +13,10 @@ git clone --depth=1 -b main https://github.com/linkease/istore.git package/istor
 # mv package/nas-packages/network/services/* package/nas-packages/
 # rm -rf package/nas-packages/network
 
+rm -rf feeds/packages/net/quectel-cm
+rm -rf feeds/packages/kernel/fibocom-qmi-wwan
+rm -rf feeds/packages/kernel/quectel-qmi-wwan
+rm -rf feeds/luci/protocols/luci-proto-quectel
 
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
