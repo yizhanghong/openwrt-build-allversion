@@ -106,8 +106,8 @@ set ${si}=wifi-iface
 set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
-set wireless.default_radio0.ssid='AX1800-2.4G'
-set wireless.default_radio1.ssid='AX1800-5G'
+set wireless.default_radio0.ssid='AX1800-5G'
+set wireless.default_radio1.ssid='AX1800-2.4G'
 set ${si}.encryption='none'
 set ${si}.key=''
 
