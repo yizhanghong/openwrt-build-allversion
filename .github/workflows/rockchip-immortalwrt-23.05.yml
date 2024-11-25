@@ -98,6 +98,7 @@ jobs:
         mv $GITHUB_WORKSPACE/patch/imm-status/luci $OPENWRT_PATH/feeds/luci/modules/luci-base/root/usr/share/rpcd/ucode/
         mv $GITHUB_WORKSPACE/patch/imm-status/10_system.js $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/
         mv $GITHUB_WORKSPACE/patch/imm-status/luci-mod-status.json $OPENWRT_PATH/feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/
+        mv $GITHUB_WORKSPACE/patch/imm23-defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 
     - name: Load Custom Script(加载自定义脚本)
       run: |
