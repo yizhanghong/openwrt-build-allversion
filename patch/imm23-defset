@@ -15,8 +15,6 @@ fi
 sed -i "/log-facility/d" "/etc/dnsmasq.conf"
 echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
 
-sed -i 's/mirrors.vsean.net/mirrors.jlu.edu.cn/g' /etc/opkg/distfeeds.conf
-sed -i 's/openwrt/immortalwrt/g' /etc/opkg/distfeeds.conf
 sed -i '/${interface:+-i/d' /etc/init.d/ttyd
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
