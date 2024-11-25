@@ -1,4 +1,4 @@
-name: r2s-immortalwrt-23.05
+name: rockchip-immortalwrt-23.05
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -7,14 +7,14 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: config/r2s-imm
+  CONFIG_FILE: config/rockchip-imm23.05
   DIY_SCRIPT: script/immortalwrt.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: r2s-immortalwrtwrt-23.05
+  FIRMWARE_TAG: rockchip-immortalwrtwrt-23.05
   TZ: Asia/Shanghai
 
 jobs:
@@ -78,7 +78,7 @@ jobs:
       uses: HiGarfield/cachewrtbuild@main
       with:
         ccache: false
-        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-r2s
+        mixkey: ${{ env.SOURCE_REPO }}-${{ env.REPO_BRANCH }}-${{ env.SOURCE_AUTHOR }}-rockchip
         prefix: ${{ env.OPENWRT_PATH }}
 
     - name: Install Feeds(安装feeds)
@@ -173,7 +173,7 @@ jobs:
         body: |
           ### 📒 固件信息
           - 这是基于官方immortalwrt-23.05源码编译的固件
-          - 💻 这是 r2s 平台使用的 OpenWrt 固件
+          - 💻 这是 rockchip 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🌐 默认地址: 192.168.23.1
