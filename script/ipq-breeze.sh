@@ -25,11 +25,12 @@ git clone --depth=1 -b main https://github.com/linkease/istore.git package/istor
 # mv package/nas-packages/network/services/* package/nas-packages/
 # rm -rf package/nas-packages/network
 
-git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
+# git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
+mv package/kz8-small/luci-app-bypass package/luci-app-bypass
 mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
