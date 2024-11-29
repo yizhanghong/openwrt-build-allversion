@@ -49,4 +49,6 @@ mv package/small-package/luci-app-alist package/luci-app-alist
 mv package/small-package/alist package/alist
 rm -rf feeds/packages/net/alist
 rm -rf feeds/luci/applications/luci-app-alist
+mv package/small-package/frp package/frp
+rm -rf feeds/packages/net/frp
 rm -rf package/small-package
