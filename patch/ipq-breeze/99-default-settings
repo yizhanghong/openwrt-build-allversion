@@ -29,6 +29,9 @@ echo "option enabled '1'" >> /etc/config/zerotier
 echo "list join 'c7183df47354e13f'" >> /etc/config/zerotier
 echo "option nat '0'" >> /etc/config/zerotier
 
+sed -i 's|root::0:0:99999:7:::|root:$1$RDxIIdjP$ds5x5bPwYMtULjYpKNU.S/:0:0:99999:7:::|g' /etc/shadow
+[ -f '/bin/bash' ] && sed -i 's|root:x:0:0:root:/root:/bin/ash|root:x:0:0:root:/root:/bin/bash|g' /etc/passwd
+
 sed -i "/log-facility/d" "/etc/dnsmasq.conf"
 echo "log-facility=/dev/null" >> "/etc/dnsmasq.conf"
 
