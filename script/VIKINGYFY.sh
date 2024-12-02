@@ -32,6 +32,7 @@ git clone --depth=1 -b main https://github.com/linkease/istore.git package/istor
 #mv package/nas-packages/network/services/* package/nas-packages/
 #rm -rf package/nas-packages/network
 
+git clone --depth=1 https://github.com/ZeaKyX/luci-app-speedtest-web.git package/luci-app-speedtest-web
 #git clone --depth=1 https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
