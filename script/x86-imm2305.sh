@@ -18,6 +18,7 @@ git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 #git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/lucky
 #git clone --depth=1 https://github.com/kiddin9/openwrt-clouddrive2.git package/openwrt-clouddrive2
 #git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
+git clone --depth=1 https://github.com/ZeaKyX/luci-app-speedtest-web.git package/luci-app-speedtest-web
 
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
