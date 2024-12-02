@@ -13,18 +13,23 @@ sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/
 
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 #git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/lucky
 #git clone --depth=1 https://github.com/kiddin9/openwrt-clouddrive2.git package/openwrt-clouddrive2
 #git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
-#git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
-#mv package/small-package/luci-app-aliyundrive-webdav package/luci-app-aliyundrive-webdav
-#mv package/small-package/aliyundrive-webdav package/aliyundrive-webdav
-#rm -rf package/small-package
+
+git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
+mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
+#mv package/small-package/adguardhome package/adguardhome
+mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/small-package/luci-app-netspeedtest package/luci-app-netspeedtest
+mv package/small-package/homebox package/homebox
+rm -rf package/small-package
 
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
-#git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-#git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
-#mv package/nas-packages/network/services/* package/nas-packages/
-#rm -rf package/nas-packages/network
+git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+mv package/nas-packages/network/services/* package/nas-packages/
+rm -rf package/nas-packages/network
