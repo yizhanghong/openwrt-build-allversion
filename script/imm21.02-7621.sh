@@ -20,9 +20,9 @@ rm -rf package/mypackage/nas-packages/network
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 sed -i '/pcie_mhi/d' package/5g-modem/luci-app-modem/Makefile
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
-sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
+#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
+#sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+#sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
 rm -rf feeds/packages/net/quectel-cm
 rm -rf feeds/packages/kernel/fibocom-qmi-wwan
 rm -rf feeds/packages/kernel/quectel-qmi-wwan
