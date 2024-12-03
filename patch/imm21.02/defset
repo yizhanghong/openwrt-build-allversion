@@ -37,5 +37,10 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 #sed -i 's/3/7/g' /etc/config/autoreboot
 #sed -i 's/5/3/g' /etc/config/autoreboot
 #sed -i 's/0/1/g' /etc/config/autoreboot
+date_version=$(date +"%y.%m.%d")
+sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
+echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
+sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
+echo "DISTRIB_DESCRIPTION='OpenWrt-V${date_version} '" >> /etc/openwrt_release
 
 exit 0
