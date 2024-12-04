@@ -12,45 +12,45 @@ function index()
         return
     end
 
-	entry({"admin", "network", "modem"}, alias("admin", "network", "modem", "modem_info"), translate("Modem"), 100).dependent = true
+	entry({"admin", "modem", "modem"}, alias("admin", "network", "modem", "modem_info"), translate("Modem"), 100).dependent = true
 
 	--模块信息
-	entry({"admin", "network", "modem", "modem_info"}, template("modem/modem_info"), translate("Modem Information"),10).leaf = true
-	entry({"admin", "network", "modem", "get_at_port"}, call("getATPort"), nil).leaf = true
-	entry({"admin", "network", "modem", "get_modem_info"}, call("getModemInfo")).leaf = true
+	entry({"admin", "modem", "modem", "modem_info"}, template("modem/modem_info"), translate("Modem Information"),10).leaf = true
+	entry({"admin", "modem", "modem", "get_at_port"}, call("getATPort"), nil).leaf = true
+	entry({"admin", "modem", "modem", "get_modem_info"}, call("getModemInfo")).leaf = true
 
 	--拨号配置
-	entry({"admin", "network", "modem", "dial_overview"},cbi("modem/dial_overview"),translate("Dial Overview"),20).leaf = true
-	entry({"admin", "network", "modem", "dial_config"}, cbi("modem/dial_config")).leaf = true
-	entry({"admin", "network", "modem", "get_modems"}, call("getModems"), nil).leaf = true
-	entry({"admin", "network", "modem", "get_dial_log_info"}, call("getDialLogInfo"), nil).leaf = true
-	entry({"admin", "network", "modem", "clean_dial_log"}, call("cleanDialLog"), nil).leaf = true
-	entry({"admin", "network", "modem", "status"}, call("act_status")).leaf = true
+	entry({"admin", "modem", "modem", "dial_overview"},cbi("modem/dial_overview"),translate("Dial Overview"),20).leaf = true
+	entry({"admin", "modem", "modem", "dial_config"}, cbi("modem/dial_config")).leaf = true
+	entry({"admin", "modem", "modem", "get_modems"}, call("getModems"), nil).leaf = true
+	entry({"admin", "modem", "modem", "get_dial_log_info"}, call("getDialLogInfo"), nil).leaf = true
+	entry({"admin", "modem", "modem", "clean_dial_log"}, call("cleanDialLog"), nil).leaf = true
+	entry({"admin", "modem", "modem", "status"}, call("act_status")).leaf = true
 
 	--模块调试
-	entry({"admin", "network", "modem", "modem_debug"},template("modem/modem_debug"),translate("Modem Debug"),30).leaf = true
-	entry({"admin", "network", "modem", "quick_commands_config"}, cbi("modem/quick_commands_config")).leaf = true
-	entry({"admin", "network", "modem", "get_mode_info"}, call("getModeInfo"), nil).leaf = true
-	entry({"admin", "network", "modem", "set_mode"}, call("setMode"), nil).leaf = true
-	entry({"admin", "network", "modem", "get_network_prefer_info"}, call("getNetworkPreferInfo"), nil).leaf = true
-	entry({"admin", "network", "modem", "set_network_prefer"}, call("setNetworkPrefer"), nil).leaf = true
-	entry({"admin", "network", "modem", "set_band_prefer"}, call("setBandPrefer"), nil).leaf = true
-	entry({"admin", "network", "modem", "get_self_test_info"}, call("getSelfTestInfo"), nil).leaf = true
-	entry({"admin", "network", "modem", "get_quick_commands"}, call("getQuickCommands"), nil).leaf = true
-	entry({"admin", "network", "modem", "send_at_command"}, call("sendATCommand"), nil).leaf = true
-	-- entry({"admin", "network", "modem", "get_modem_debug_info"}, call("getModemDebugInfo"), nil).leaf = true
+	entry({"admin", "modem", "modem", "modem_debug"},template("modem/modem_debug"),translate("Modem Debug"),30).leaf = true
+	entry({"admin", "modem", "modem", "quick_commands_config"}, cbi("modem/quick_commands_config")).leaf = true
+	entry({"admin", "modem", "modem", "get_mode_info"}, call("getModeInfo"), nil).leaf = true
+	entry({"admin", "modem", "modem", "set_mode"}, call("setMode"), nil).leaf = true
+	entry({"admin", "modem", "modem", "get_network_prefer_info"}, call("getNetworkPreferInfo"), nil).leaf = true
+	entry({"admin", "modem", "modem", "set_network_prefer"}, call("setNetworkPrefer"), nil).leaf = true
+	entry({"admin", "modem", "modem", "set_band_prefer"}, call("setBandPrefer"), nil).leaf = true
+	entry({"admin", "modem", "modem", "get_self_test_info"}, call("getSelfTestInfo"), nil).leaf = true
+	entry({"admin", "modem", "modem", "get_quick_commands"}, call("getQuickCommands"), nil).leaf = true
+	entry({"admin", "modem", "modem", "send_at_command"}, call("sendATCommand"), nil).leaf = true
+	-- entry({"admin", "modem", "modem", "get_modem_debug_info"}, call("getModemDebugInfo"), nil).leaf = true
 
 	--插件设置
-	entry({"admin", "network", "modem", "plugin_config"},cbi("modem/plugin_config"),translate("Plugin Config"),40).leaf = true
-	entry({"admin", "network", "modem", "modem_config"}, cbi("modem/modem_config")).leaf = true
-	entry({"admin", "network", "modem", "modem_scan"}, call("modemScan"), nil).leaf = true
+	entry({"admin", "modem", "modem", "plugin_config"},cbi("modem/plugin_config"),translate("Plugin Config"),40).leaf = true
+	entry({"admin", "modem", "modem", "modem_config"}, cbi("modem/modem_config")).leaf = true
+	entry({"admin", "modem", "modem", "modem_scan"}, call("modemScan"), nil).leaf = true
 
 	--插件信息
-	entry({"admin", "network", "modem", "plugin_info"},template("modem/plugin_info"),translate("Plugin Info"),50).leaf = true
-	entry({"admin", "network", "modem", "get_plugin_info"}, call("getPluginInfo"), nil).leaf = true
+	entry({"admin", "modem", "modem", "plugin_info"},template("modem/plugin_info"),translate("Plugin Info"),50).leaf = true
+	entry({"admin", "modem", "modem", "get_plugin_info"}, call("getPluginInfo"), nil).leaf = true
 
 	--AT命令旧界面
-	entry({"admin", "network", "modem", "at_command_old"},template("modem/at_command_old")).leaf = true
+	entry({"admin", "modem", "modem", "at_command_old"},template("modem/at_command_old")).leaf = true
 end
 
 --[[
