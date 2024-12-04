@@ -25,7 +25,6 @@ git clone --depth=1 -b main https://github.com/linkease/istore.git package/istor
 # mv package/nas-packages/network/services/* package/nas-packages/
 # rm -rf package/nas-packages/network
 
-git clone --depth=1 https://github.com/ZeaKyX/luci-app-speedtest-web.git package/luci-app-speedtest-web
 # git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
 # git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
