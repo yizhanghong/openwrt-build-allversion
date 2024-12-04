@@ -108,8 +108,8 @@ set ${si}.network='lan'
 set ${si}.mode='ap'
 set wireless.default_radio0.ssid='AX1800-5G'
 set wireless.default_radio1.ssid='AX1800'
-set ${si}.encryption='none'
-set ${si}.key=''
+set ${si}.encryption='psk2+ccmp'
+set ${si}.key='123456qwerty'
 
 `);
 		config[name] = {};
