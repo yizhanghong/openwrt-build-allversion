@@ -28,10 +28,10 @@ mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
 # git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
-#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 rm -rf feeds/packages/devel/gn
-#mv package/passwall-packages/gn feeds/packages/devel/gn
-#rm -rf package/passwall-packages
+mv package/passwall-packages/gn feeds/packages/devel/gn
+rm -rf package/passwall-packages
 #git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
