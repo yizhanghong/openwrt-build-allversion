@@ -95,11 +95,6 @@ jobs:
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
 
-    - name: Apply patches   
-      run: |
-        mv $GITHUB_WORKSPACE/patch/imm18.06-k5.4/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
-        mv $GITHUB_WORKSPACE/patch/imm18.06-k5.4/mac80211.sh $OPENWRT_PATH/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
 
     - name: Download DL Package
       run: |
