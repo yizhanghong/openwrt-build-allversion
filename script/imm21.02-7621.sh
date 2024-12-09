@@ -29,15 +29,15 @@ rm -rf feeds/packages/kernel/quectel-qmi-wwan
 rm -rf feeds/luci/protocols/luci-proto-quectel
 
 git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
-mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
-rm -rf feeds/packages/net/adguardhome
-mv package/small-package/adguardhome package/adguardhome
-mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/luci-app-alist package/luci-app-alist
-mv package/small-package/alist package/alist
-rm -rf feeds/packages/net/alist
-rm -rf feeds/luci/applications/luci-app-alist
-mv package/small-package/frp package/frp
-rm -rf feeds/packages/net/frp
-rm -rf package/small-package
+#git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
+#mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
+#rm -rf feeds/packages/net/adguardhome
+#mv package/small-package/adguardhome package/adguardhome
+#mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
+#mv package/small-package/luci-app-alist package/luci-app-alist
+#mv package/small-package/alist package/alist
+#rm -rf feeds/packages/net/alist
+#rm -rf feeds/luci/applications/luci-app-alist
+#mv package/small-package/frp package/frp
+#rm -rf feeds/packages/net/frp
+#rm -rf package/small-package
