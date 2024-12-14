@@ -6,8 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
-    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
@@ -21,8 +20,6 @@ jobs:
         cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
-      env:
-        KERNEL: 3.4
       run: |
         git clone --depth=1 https://github.com/chongshengB/rt-n56u.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
@@ -31,7 +28,6 @@ jobs:
     - name: Build Firmware
       env:
         TNAME: PSG1218_nano
-        KERNEL: 3.4
       run: |
         mv $GITHUB_WORKSPACE/patch/padavan/chongshengB/default-Aimydee.h /opt/rt-n56u/trunk/user/shared/defaults.h
         mv $GITHUB_WORKSPACE/patch/padavan/www.zip /opt/rt-n56u/trunk/www.zip
