@@ -37,8 +37,8 @@
 
 #define DEF_WLAN_2G_CC		"CN"
 #define DEF_WLAN_5G_CC		"CN"
-#define DEF_WLAN_2G_SSID	"Aimydee-2.4G"
-#define DEF_WLAN_5G_SSID	"Aimydee-5G"
+#define DEF_WLAN_2G_SSID	"AIMYDE-PSG-2.4G"
+#define DEF_WLAN_5G_SSID	"AIMYDE-PSG-5G"
 #define DEF_WLAN_2G_GSSID	BOARD_PID "_GUEST_%s"
 #define DEF_WLAN_5G_GSSID	BOARD_PID "_GUEST_5G_%s"
 #define DEF_WLAN_2G_PSK		"Ta23H64kg"
