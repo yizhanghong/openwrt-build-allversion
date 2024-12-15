@@ -6,9 +6,12 @@ sed -i 's/LiBwrt/OpenWrt/g' include/version.mk
 # sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
-mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
-mv $GITHUB_WORKSPACE/patch/ipq-breeze/mac80211.uc $OPENWRT_PATH/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i 's/24.10/23.05/g' package/emortal/default-settings/files/99-distfeeds.conf
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/os-release package/base-files/files/usr/lib/os-release
+
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings package/emortal/default-settings/files/99-default-settings
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
