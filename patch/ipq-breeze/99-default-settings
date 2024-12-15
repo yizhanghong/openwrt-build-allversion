@@ -16,7 +16,8 @@ date_version=$(date +"%y.%m.%d")
 sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
 echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
 sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
-echo "DISTRIB_DESCRIPTION='OpenWrt-V${date_version} '" >> /etc/openwrt_release
+#echo "DISTRIB_DESCRIPTION='OpenWrt-V${date_version} '" >> /etc/openwrt_release
+echo "DISTRIB_DESCRIPTION='OpenWrt 23.05 '" >> /etc/openwrt_release
 
 sed -i '/ula_prefix/d' /etc/config/network
 sed -i 's/60/64/g' /etc/config/network
