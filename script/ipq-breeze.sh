@@ -46,5 +46,6 @@ mv package/kz8-small/luci-app-mosdns package/luci-app-mosdns
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
+mv package/kz8-small/v2dat package/v2dat
 rm -rf package/kz8-small
 
