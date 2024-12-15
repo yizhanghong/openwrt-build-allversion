@@ -84,7 +84,7 @@ return baseclass.extend({
 			_('Model'),            boardinfo.model + cpubench.cpubench,
 			_('Architecture'),     cpuinfo.cpuinfo || boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
-			_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),
+			_('Firmware Version'), 'OpenWrt 23.05-SNAPSHOT on 2024.12.16 / LuCI openwrt-23.05 branch ',
 			_('Kernel Version'),   boardinfo.kernel,
 			_('Local Time'),       datestr,
 			_('Uptime'),           systeminfo.uptime ? '%t'.format(systeminfo.uptime) : null,
