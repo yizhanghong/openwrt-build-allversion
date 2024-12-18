@@ -36,8 +36,6 @@ jobs:
         cd /opt/rt-n56u/trunk
         rm -rf user/www
         unzip www.zip -d user/www
-        rm -rf user/www/n56u_ribbon_fixed/bootstrap/css/main.css
-        mv $GITHUB_WORKSPACE/patch/padavan/main.css user/www/n56u_ribbon_fixed/bootstrap/css/main.css
         mv $GITHUB_WORKSPACE/patch/padavan/www/dict/EN.footer user/www/dict/EN.footer
         mv $GITHUB_WORKSPACE/patch/padavan/www/dict/EN.header user/www/dict/EN.header
         cp -f configs/templates/$TNAME.config .config
