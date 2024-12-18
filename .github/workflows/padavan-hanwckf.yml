@@ -36,8 +36,10 @@ jobs:
         cd /opt/rt-n56u/trunk
         rm -rf user/www
         unzip www.zip -d user/www
+        ls user/www
         mv $GITHUB_WORKSPACE/patch/padavan/www/dict/EN.footer user/www/dict/EN.footer
         mv $GITHUB_WORKSPACE/patch/padavan/www/dict/EN.header user/www/dict/EN.header
+        mv $GITHUB_WORKSPACE/patch/padavan/www/dict/RU.dict user/www/dict/RU.dict
         cp -f configs/templates/$TNAME.config .config
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
