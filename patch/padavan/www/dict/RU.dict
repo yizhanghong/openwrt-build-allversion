@@ -1743,8 +1743,8 @@ Running=Бег
 running_status=Текущий статус
 WOL_Wake_up=Просыпайтесь
 WOL_Vendor=Производитель
-ChnRoute=ChnRoute
-GfwList=GfwList
+ChnRoute=CHNмаршрутизация
+GfwList=GFWсписок
 
 menu5_2_6=Пробуждение по локальной сети
 menu5_13_password=Пароль:
