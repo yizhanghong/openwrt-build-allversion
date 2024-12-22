@@ -6,6 +6,8 @@ sed -i 's/LiBwrt/TikTok/g' include/version.mk
 # sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 # sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings package/emortal/default-settings/files/99-default-settings
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/tiktok/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/tiktok/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #mv $GITHUB_WORKSPACE/patch/ipq-breeze/tiktok/bg1.jpg $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
