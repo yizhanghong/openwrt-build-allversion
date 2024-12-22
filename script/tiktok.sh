@@ -13,7 +13,7 @@ mv $GITHUB_WORKSPACE/patch/ipq-breeze/tiktok/mac80211.uc package/network/config/
 #mv $GITHUB_WORKSPACE/patch/ipq-breeze/tiktok/bg1.jpg $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 #下载5g模块
-git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
+git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 sed -i '/pcie_mhi/d' package/5g-modem/luci-app-modem/Makefile
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
@@ -25,19 +25,20 @@ rm -rf feeds/luci/protocols/luci-proto-quectel
 rm -rf feeds/nss_packages/wwan
 
 # iStore
-git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
-git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
-git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
+git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
+git clone --depth 1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
+git clone --depth 1 -b main https://github.com/linkease/nas-packages-luci.git package/nas-luci
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
-# git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld
+# git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 rm -rf feeds/packages/devel/gn
 mv package/passwall-packages/gn feeds/packages/devel/gn
 rm -rf package/passwall-packages
-#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
+#git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
