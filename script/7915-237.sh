@@ -34,3 +34,18 @@ git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git f
 # sed -i '13d' package/luci-proto-sstp/Makefile
 # sed -i '13i\include $(TOPDIR)/feeds/luci/luci.mk' package/luci-proto-sstp/Makefile
 # rm -rf package/luci-proto-sstp/Makefile
+
+
+rm -rf feeds/packages/lang/golang
+git clone --depth=1 https://github.com/kenzok8/golang feeds/packages/lang/golang
+#删除自带的老旧依赖，ssr-plus，passwall
+rm -rf feeds/packages/net/{brook,chinadns-ng,dns2socks,dns2tcp,hysteria,ipt2socks,microsocks,naiveproxy}
+rm -rf feeds/packages/net/{pdnsd-alt,simple-obfs,sing-box,tcping,trojan*,tuic-client,v2ray*,xray*,mosdns,redsocks2}
+rm -rf feeds/packages/net/{ssocks,shadow-tls}
+rm -rf feeds/packages/devel/gn
+rm -rf feeds/packages/utils/v2dat
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
+
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
