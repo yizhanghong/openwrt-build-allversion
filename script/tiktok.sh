@@ -9,7 +9,7 @@ sed -i 's/LiBwrt/TikTok/g' include/version.mk
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings package/emortal/default-settings/files/99-default-settings
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/tiktok/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
-mv $GITHUB_WORKSPACE/patch/ipq-breeze/tiktok/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 #mv $GITHUB_WORKSPACE/patch/ipq-breeze/tiktok/bg1.jpg $OPENWRT_PATH/feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 #下载5g模块
@@ -57,3 +57,6 @@ mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
 
+git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
+mv package/sirpdboy-package/luci-app-pptpserver package/luci-app-pptpserver
+rm -rf package/sirpdboy-package
