@@ -49,3 +49,4 @@ rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mos
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone --depth=1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
