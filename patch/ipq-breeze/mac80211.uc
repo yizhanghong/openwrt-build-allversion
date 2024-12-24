@@ -106,8 +106,8 @@ set ${si}=wifi-iface
 set ${si}.device='${name}'
 set ${si}.network='lan'
 set ${si}.mode='ap'
-set wireless.default_radio0.ssid='OpenWrt-5G'
-set wireless.default_radio1.ssid='OpenWrt'
+set wireless.default_radio0.ssid='WiFi-5G'
+set wireless.default_radio1.ssid='WiFi-2.4G'
 set ${si}.encryption='none'
 
 `);
