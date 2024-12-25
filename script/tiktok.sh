@@ -36,7 +36,7 @@ git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/l
 
 # git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-#git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 rm -rf feeds/packages/devel/gn
 rm -rf feeds/luci/applications/luci-app-passwall
