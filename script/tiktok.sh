@@ -56,7 +56,3 @@ mv package/kz8-small/luci-app-partexp package/luci-app-partexp
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
 rm -rf package/kz8-small
-
-git clone --depth 1 https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
-mv package/sirpdboy-package/luci-app-pptpserver package/luci-app-pptpserver
-rm -rf package/sirpdboy-package
