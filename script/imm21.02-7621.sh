@@ -4,7 +4,8 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 #mv $GITHUB_WORKSPACE/patch/imm21.02/mac80211.sh $OPENWRT_PATH/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-mv $GITHUB_WORKSPACE/patch/imm21.02/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
+mv $GITHUB_WORKSPACE/patch/imm21.02/defset package/emortal/default-settings/files/99-default-settings
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
