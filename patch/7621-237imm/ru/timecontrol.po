@@ -1,41 +1,41 @@
 msgid "Control"
-msgstr "管控"
+msgstr "контроль"
 
 msgid "Internet Time Control"
-msgstr "上网时间控制"
+msgstr "Контроль времени через Интернет"
 
 msgid "Status"
-msgstr "状态"
+msgstr "состояние"
 
 msgid "Enabled"
-msgstr "启用"
+msgstr "давать возможность"
 
 msgid "Client Settings"
-msgstr "客户端设置"
+msgstr "Настройки клиента"
 
 msgid "No Internet start time"
-msgstr "禁止上网开始时间"
+msgstr "Время начала запрета доступа в Интернет"
 
 msgid "No Internet end time"
-msgstr "取消禁止上网时间"
+msgstr "Разблокировать время Интернета"
 
 msgid "Monday"
-msgstr "周一"
+msgstr "Понедельник"
 
 msgid "Tuesday"
-msgstr "周二"
+msgstr "Вторник"
 
 msgid "Wednesday"
-msgstr "周三"
+msgstr "Среда"
 
 msgid "Thursday"
-msgstr "周四"
+msgstr "Четверг"
 
 msgid "Friday"
-msgstr "周五"
+msgstr "Пятница"
 
 msgid "Saturday"
-msgstr "周六"
+msgstr "Суббота"
 
 msgid "Sunday"
-msgstr "周日"
+msgstr "Воскресенье"
