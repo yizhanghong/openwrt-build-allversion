@@ -11,41 +11,41 @@ msgstr ""
 
 
 msgid "EQoS"
-msgstr "网速控制（MT7621支持有线上下行，无线下行）"
+msgstr "Контроль скорости интернета"
 
 
 msgid "eqos"
-msgstr "网速控制"
+msgstr "Контроль скорости интернета"
 
 msgid "Comment"
-msgstr "编号"
+msgstr "серийный номер"
 
 msgid "Download speed (Mbit/s)"
-msgstr "下载速度 (Mbit/s)"
+msgstr "Скорость загрузки (Mbit/s)"
 
 msgid "Enable"
-msgstr "开启"
+msgstr "включать"
 
 msgid "QoS"
 msgstr "QoS"
 
 msgid "Network speed control service.(Compatiable with Mediatek HNAT)"
-msgstr "网速控制服务(未设置限速主机可正常使用硬件加速)。"
+msgstr "Сервис контроля скорости интернета(Если ограничение скорости не установлено, хост может использовать аппаратное ускорение в обычном режиме)."
 
 msgid "Upload speed (Mbit/s)"
-msgstr "上传速度 (Mbit/s)"
+msgstr "скорость загрузки (Mbit/s)"
 
 msgid "Speed limit based on IP address(using unique comment which is less than 8 will enable hardware QOS)"
-msgstr "基于 IP 限速(设置小于8的唯一编号将启用硬件QOS.速度设置为0则取消限速)"
+msgstr "Ограничение скорости в зависимости от IP-адреса(использование уникального комментария меньше 8 включит аппаратное обеспечение,Установка скорости на 0 отменяет ограничение скорости.)"
 
 msgid "Total bandwidth"
-msgstr "总带宽"
+msgstr "общая пропускная способность"
 
 msgid "Download speed (kbit/s)"
-msgstr "下载速度 (kbit/s)"
+msgstr "Скорость загрузки (kbit/s)"
 
 msgid "Upload speed (kbit/s)"
-msgstr "上传速度 (kbit/s)"
+msgstr "скорость загрузки (kbit/s)"
 
 msgid "Flow control setting"
-msgstr "流控设置"
+msgstr "Настройка управления потоком"
