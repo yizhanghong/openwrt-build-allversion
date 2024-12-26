@@ -25,8 +25,9 @@ rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mos
 #git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+rm -rf package/passwall/luci-app-passwall/po/*
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
-
+rm -rf package/netspeedtest/luci-app-netspeedtest/po/*
 mv $GITHUB_WORKSPACE/patch/7621-237imm/defset-7915 package/emortal/default-settings/files/99-default-settings
 
 mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
@@ -48,8 +49,8 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/base.po feeds/luci/modules/luci-base/p
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/firewall.po feeds/luci/applications/luci-app-firewall/po/zh-cn/firewall.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/upnp.po feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/timecontrol.po feeds/luci/applications/luci-app-timecontrol/po/zh-cn/timecontrol.po
-mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/passwall.po package/passwall/luci-app-passwall/po/zh-cn/passwall.po
-mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/netspeedtest.po package/netspeedtest/luci-app-netspeedtest/po/zh-cn/netspeedtest.po
+#mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/passwall.po package/passwall/luci-app-passwall/po/zh-cn/passwall.po
+#mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/netspeedtest.po package/netspeedtest/luci-app-netspeedtest/po/zh-cn/netspeedtest.po
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/default.zh-cn.po package/emortal/default-settings/i18n/default.zh-cn.po
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/more.zh-cn.po package/emortal/default-settings/i18n/more.zh-cn.po
 
