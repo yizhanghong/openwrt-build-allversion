@@ -46,6 +46,7 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtkwifi.lua package/emortal/luci-a
 
 sed -i 's#简体中文 (Simplified Chinese)#Русский (Russian)#g' feeds/luci/luci.mk
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/base.po feeds/luci/modules/luci-base/po/zh-cn/base.po
+mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/eqos.po package/emortal/luci-app-eqos-mtk/po/zh-cn/eqos.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/firewall.po feeds/luci/applications/luci-app-firewall/po/zh-cn/firewall.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/upnp.po feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/timecontrol.po feeds/luci/applications/luci-app-timecontrol/po/zh-cn/timecontrol.po
