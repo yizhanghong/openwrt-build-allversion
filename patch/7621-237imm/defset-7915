@@ -1,6 +1,6 @@
 #!/bin/sh
 
-uci set luci.main.lang=ru
+uci set luci.main.lang=auto
 uci commit luci
 
 uci set fstab.@global[0].anon_mount=1
@@ -10,7 +10,7 @@ rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
-sed -i 's/<%=pcdata(boardinfo.model or "?")%>/Aimydee-AR660X/g' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i 's/<%=pcdata(boardinfo.model or "?")%>/AX2500/g' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
@@ -19,22 +19,22 @@ sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '/Powered by/,+3d' /usr/lib/lua/luci/view/themes/argon/footer.htm
 sed -i '/Powered by/d' /usr/lib/lua/luci/view/themes/bootstrap/footer.htm
-sed -i 's/auto/ru/g' /etc/config/luci
+#sed -i 's/auto/ru/g' /etc/config/luci
 
 sed -i 's/5e72e4/bb24f2/g' /usr/lib/lua/luci/view/themes/argon/header_login.htm
 sed -i 's/5e72e4/bb24f2/g' /usr/lib/lua/luci/view/themes/argon/header.htm
 sed -i 's/5e72e4/bb24f2/g' /usr/lib/lua/luci/view/themes/argon/footer.htm
 
 sed -i 's/192.168.1.1/192.168.6.1/g' /etc/wireless/mt7615/mt7615.1.5G.dat
-sed -i 's/Openwrt_5G/Aimydee-AR660X-WiFi6/g' /etc/wireless/mt7615/mt7615.1.5G.dat
-sed -i 's/12345678/Ta23H64kg/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/Openwrt_5G/Bitray_VPN_Pro_5G/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/12345678/kh54sf19/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 sed -i 's/CountryCode=US/CountryCode=RU/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 
 sed -i 's/192.168.1.1/192.168.6.1/g' /etc/wireless/mt7615/mt7615.1.2G.dat
-sed -i 's/CR660X_2.4G/Aimydee-AR660X-2.4G/g' /etc/wireless/mt7615/mt7615.1.2G.dat
-sed -i 's/12345678/Ta23H64kg/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/CR660X_2.4G/Bitray_VPN_Pro_2.4G/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/12345678/kh54sf19/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/CountryCode=US/CountryCode=RU/g' /etc/wireless/mt7615/mt7615.1.2G.dat
