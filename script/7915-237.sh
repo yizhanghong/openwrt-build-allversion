@@ -1,5 +1,5 @@
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/Aimydee/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/Bitray VPN Pro/g' package/base-files/files/bin/config_generate
 
 # sed -i 's/bootstrap/design/g' feeds/luci/modules/luci-base/root/etc/config/luci
 # sed -i "s/luci-theme-design/luci-theme-design/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
