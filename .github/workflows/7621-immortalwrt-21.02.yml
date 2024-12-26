@@ -84,8 +84,6 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v21.02.7
-        git checkout v21.02.7
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -96,10 +94,6 @@ jobs:
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
         $GITHUB_WORKSPACE/$DIY_SCRIPT
-
-    - name: apply patches
-      run: |
-        mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
 
     - name: edit md5
       run: |
