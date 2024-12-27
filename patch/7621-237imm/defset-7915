@@ -46,6 +46,8 @@ sed -i 's/option dev/option port_mask/g' /etc/config/system
 sed -i 's/netdev/switch0/g' /etc/config/system
 sed -i 's/option mode/option default/g' /etc/config/system
 
+sed -i '$a 0 */3 * * * sync && echo 3 > /proc/sys/vm/drop_caches' /etc/crontabs/root
+
 ln -sf /sbin/ip /usr/bin/ip
 
 sed -i "s/# //g" /etc/opkg/distfeeds.conf
