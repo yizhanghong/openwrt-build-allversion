@@ -25,9 +25,7 @@ rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mos
 #git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-rm -rf package/passwall/luci-app-passwall/po/*
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
-rm -rf package/netspeedtest/luci-app-netspeedtest/po/*
 mv $GITHUB_WORKSPACE/patch/7621-237imm/defset-7915 package/emortal/default-settings/files/99-default-settings
 
 mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
@@ -44,11 +42,15 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_overview.htm package/emor
 mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtk_wifi_vif_cfg.htm package/emortal/luci-app-mtwifi/luasrc/view/admin_mtk/mtk_wifi_vif_cfg.htm
 mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtkwifi.lua package/emortal/luci-app-mtwifi/root/usr/lib/lua/mtkwifi.lua
 
+rm -rf package/passwall/luci-app-passwall/po/*
+rm -rf package/netspeedtest/luci-app-netspeedtest/po/*
+rm -rf package/emortal/default-settings/i18n/*
 sed -i 's#简体中文 (Simplified Chinese)#Русский (Russian)#g' feeds/luci/luci.mk
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/base.po feeds/luci/modules/luci-base/po/zh-cn/base.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/eqos.po package/emortal/luci-app-eqos-mtk/po/zh-cn/eqos.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/firewall.po feeds/luci/applications/luci-app-firewall/po/zh-cn/firewall.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/upnp.po feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
+mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/release_ram.po feeds/luci/applications/luci-app-ramfree/po/zh-cn/release_ram.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/timecontrol.po feeds/luci/applications/luci-app-timecontrol/po/zh-cn/timecontrol.po
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/passwall.po package/passwall/luci-app-passwall/po/zh-cn/passwall.po
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/netspeedtest.po package/netspeedtest/luci-app-netspeedtest/po/zh-cn/netspeedtest.po
