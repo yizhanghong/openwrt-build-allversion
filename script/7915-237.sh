@@ -48,7 +48,6 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtkwifi.lua package/emortal/luci-a
 
 rm -rf package/passwall/luci-app-passwall/po/*
 rm -rf package/netspeedtest/luci-app-netspeedtest/po/*
-rm -rf package/emortal/default-settings/i18n/*
 sed -i 's#简体中文 (Simplified Chinese)#Русский (Russian)#g' feeds/luci/luci.mk
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/base.po feeds/luci/modules/luci-base/po/zh-cn/base.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/eqos.po package/emortal/luci-app-eqos-mtk/po/zh-cn/eqos.po
@@ -70,3 +69,7 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/mia.po feeds/luci/applications/luci-ap
 #rm -rf package/emortal/luci-app-turboacc-mtk/po/zh-cn
 # git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 # git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-app-argon-config feeds/luci/applications/luci-app-argon-config
+
+sed -i 's/概况/обзор/g' package/emortal/default-settings/i18n/more.zh-cn.po
+sed -i 's/接口/интерфейс/g' package/emortal/default-settings/i18n/more.zh-cn.po
+sed -i 's/诊断/диагноз/g' package/emortal/default-settings/i18n/more.zh-cn.po
