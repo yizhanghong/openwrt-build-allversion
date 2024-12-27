@@ -55,7 +55,7 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/eqos.po package/emortal/luci-app-eqos-
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/firewall.po feeds/luci/applications/luci-app-firewall/po/zh-cn/firewall.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/upnp.po feeds/luci/applications/luci-app-upnp/po/zh-cn/upnp.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/release_ram.po feeds/luci/applications/luci-app-ramfree/po/zh-cn/release_ram.po
-mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/timecontrol.po feeds/luci/applications/luci-app-timecontrol/po/zh-cn/timecontrol.po
+mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/mia.po feeds/luci/applications/luci-app-accesscontrol/po/zh-cn/mia.po
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/passwall.po package/passwall/luci-app-passwall/po/zh-cn/passwall.po
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/netspeedtest.po package/netspeedtest/luci-app-netspeedtest/po/zh-cn/netspeedtest.po
 #mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/default.zh-cn.po package/emortal/default-settings/i18n/default.zh-cn.po
