@@ -1,2 +1,2 @@
 msgid "Release Ram"
-msgstr "Освободите RAM"
+msgstr "Освободите память"
