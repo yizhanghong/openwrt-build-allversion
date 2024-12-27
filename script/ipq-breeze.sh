@@ -48,7 +48,7 @@ find ./ | grep Makefile | grep mosdns | xargs rm -f
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
-git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
+git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
@@ -56,5 +56,12 @@ mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
 mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/kz8-small/wrtbwmon package/wrtbwmon
+mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
 rm -rf package/kz8-small
 
+git clone --depth 1 https://github.com/jarod360/luci-app-xupnpd.git package/luci-app-xupnpd
+
+git clone --depth 1 -b openwrt-23.05 https://github.com/coolsnowwolf/luci.git package/lean-luci23
+mv package/lean-luci23/applications/luci-app-accesscontrol package/luci-app-accesscontrol
+sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
+rm -rf package/lean-luci23
