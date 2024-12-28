@@ -46,9 +46,9 @@ sed -i 's/option dev/option port_mask/g' /etc/config/system
 sed -i 's/netdev/switch0/g' /etc/config/system
 sed -i 's/option mode/option default/g' /etc/config/system
 
-sed -i '$a 0 */3 * * * sync && echo 3 > /proc/sys/vm/drop_caches' /etc/crontabs/root
 mv /etc/direct_host /usr/share/passwall/rules/direct_host
 mv /etc/proxy_host /usr/share/passwall/rules/proxy_host
+mv /etc/release-ram /etc/crontabs/root
 
 ln -sf /sbin/ip /usr/bin/ip
 
