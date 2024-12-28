@@ -23,8 +23,8 @@ rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
 
 #git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git checkout 24.12.1-1
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 mv $GITHUB_WORKSPACE/patch/7621-237imm/defset-7915 package/emortal/default-settings/files/99-default-settings
