@@ -31,6 +31,7 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/defset-7915 package/emortal/default-setti
 
 mv $GITHUB_WORKSPACE/patch/7621-237imm/app/pw/proxy_host package/base-files/files/etc/proxy_host
 mv $GITHUB_WORKSPACE/patch/7621-237imm/app/pw/direct_host package/base-files/files/etc/direct_host
+mv $GITHUB_WORKSPACE/patch/7621-237imm/app/release-ram package/base-files/files/etc/release-ram
 
 mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/favicon.ico feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/favicon.ico
@@ -49,6 +50,8 @@ mv $GITHUB_WORKSPACE/patch/7621-237imm/mtwifi/mtkwifi.lua package/emortal/luci-a
 rm -rf package/passwall/luci-app-passwall/po/*
 rm -rf package/netspeedtest/luci-app-netspeedtest/po/*
 sed -i 's#简体中文 (Simplified Chinese)#Русский (Russian)#g' feeds/luci/luci.mk
+mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/default.zh-cn.po package/emortal/default-settings/i18n/default.zh-cn.po
+mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/more.zh-cn.po package/emortal/default-settings/i18n/more.zh-cn.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/base.po feeds/luci/modules/luci-base/po/zh-cn/base.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/eqos.po package/emortal/luci-app-eqos-mtk/po/zh-cn/eqos.po
 mv $GITHUB_WORKSPACE/patch/7621-237imm/ru/firewall.po feeds/luci/applications/luci-app-firewall/po/zh-cn/firewall.po
