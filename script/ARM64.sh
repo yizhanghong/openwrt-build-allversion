@@ -1,6 +1,6 @@
 sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
+#sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 # 添加额外插件
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
 git clone --depth=1 https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
@@ -14,13 +14,13 @@ git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git pa
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
-git clone --depth=1 https://github.com/kiddin9/openwrt-clouddrive2.git package/luci-app-clouddrive2
+#git clone --depth=1 https://github.com/kiddin9/openwrt-clouddrive2.git package/luci-app-clouddrive2
 # git clone --depth=1 https://github.com/linkease/istore-packages.git package/istore-packages
 # mv package/istore-packages/luci-app-gowebdav package/luci-app-gowebdav
 # mv package/istore-packages/gowebdav package/gowebdav
 # rm -rf package/istore-packages
 
-rm -rf package/emortal/default-settings/files/99-default-settings
+#rm -rf package/emortal/default-settings/files/99-default-settings
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 #rm -rf feeds/packages/lang/golang
