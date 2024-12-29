@@ -1,1 +1,2 @@
 0 */3 * * * sync && echo 3 > /proc/sys/vm/drop_caches
+30 4 * * * sleep 70 && touch /etc/banner && reboot
