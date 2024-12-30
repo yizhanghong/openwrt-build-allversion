@@ -7,6 +7,13 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211
 mv $GITHUB_WORKSPACE/patch/imm21.02/defset package/emortal/default-settings/files/99-default-settings
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
+#有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
+git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
+git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+rm -rf feeds/packages/net/ua2f
+rm -rf feeds/luci/applications/luci-app-ua2f
+
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
 git clone --depth=1 https://github.com/vernesong/OpenClash.git  package/openclash
