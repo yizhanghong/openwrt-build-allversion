@@ -90,20 +90,6 @@ return view.extend({
 		form.parentNode.removeChild(form);
 	},
 
-	handleFirstboot: function(ev) {
-		if (!confirm(_('Do you really want to erase all settings?')))
-			return;
-
-		ui.showModal(_('Erasing...'), [
-			E('p', { 'class': 'spinning' }, _('The system is erasing the configuration partition now and will reboot itself when finished.'))
-		]);
-
-		/* Currently the sysupgrade rpc call will not return, hence no promise handling */
-		fs.exec('/sbin/firstboot', [ '-r', '-y' ]);
-
-		ui.awaitReconnect('192.168.1.1', 'immortalwrt.lan');
-	},
-
 	handleRestore: function(ev) {
 		return ui.uploadFile('/tmp/backup.tar.gz', ev.target)
 			.then(L.bind(function(btn, res) {
@@ -398,16 +384,6 @@ return view.extend({
 		o.inputtitle = _('Generate archive');
 		o.onclick = this.handleBackup;
 
-
-		o = s.option(form.SectionValue, 'actions', form.NamedSection, 'actions', 'actions', _('Restore'), _('To restore configuration files, you can upload a previously generated backup archive here. To reset the firmware to its initial state, click "Perform reset" (only possible with squashfs images).'));
-		ss = o.subsection;
-
-		if (has_rootfs_data) {
-			o = ss.option(form.Button, 'reset', _('Reset to defaults'));
-			o.inputstyle = 'negative important';
-			o.inputtitle = _('Perform reset');
-			o.onclick = this.handleFirstboot;
-		}
 
 		o = ss.option(form.Button, 'restore', _('Restore backup'), _('Custom files (certificates, scripts) may remain on the system. To prevent this, perform a factory-reset first.'));
 		o.inputstyle = 'action important';
