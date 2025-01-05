@@ -14,3 +14,4 @@ mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/99-default-settings package/emortal/default-settings/files/99-default-settings
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/landlord/reset package/base-files/files/etc/rc.button/reset
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/landlord/flash.js feeds/luci/modules/luci-mod-system/htdocs/luci-static/resources/view/system/flash.js
