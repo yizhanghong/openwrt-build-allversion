@@ -39,4 +39,6 @@ FILE_PATH="/etc/openwrt_release"
 NEW_DESCRIPTION="Compiled on 2025.1.12"
 sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
 
+sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+
 exit 0
