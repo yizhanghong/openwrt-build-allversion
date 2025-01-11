@@ -3,13 +3,12 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/l
 sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/imm23-defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
+mv $GITHUB_WORKSPACE/patch/imm23/defset $OPENWRT_PATH/package/emortal/default-settings/files/99-default-settings
 
 #git clone --depth=1 https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
-#sed -i 's/\"network\"/\"modem\"/g' package/5g-modem/luci-app-modem/luasrc/controller/modem.lua
 
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
@@ -22,7 +21,6 @@ git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 #mv package/small-package/adguardhome package/adguardhome
-mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/luci-app-netspeedtest package/luci-app-netspeedtest
 mv package/small-package/homebox package/homebox
 rm -rf package/small-package
