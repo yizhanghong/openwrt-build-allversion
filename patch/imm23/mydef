@@ -1,6 +1,0 @@
-uci set dhcp.lan.ignore='1'
-uci set network.lan.proto='dhcp'
-
-uci commit network
-
-exit 0
