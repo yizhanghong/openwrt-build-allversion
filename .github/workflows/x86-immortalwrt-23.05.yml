@@ -86,6 +86,7 @@ jobs:
         cd $OPENWRT_PATH
         git checkout v23.05.4
         git checkout v23.05.4
+        mv $GITHUB_WORKSPACE/patch/imm23/feeds.conf.default $OPENWRT_PATH/vermagic/feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -101,7 +102,7 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/vermagic-x86 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/imm23.05.4-x86 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '121d' include/kernel-defaults.mk
         sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
