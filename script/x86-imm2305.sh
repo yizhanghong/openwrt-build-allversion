@@ -1,10 +1,10 @@
-sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
-sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
+#sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_generate
+#sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/ImmortalWrt/X86/g' package/base-files/files/bin/config_generate
 sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-default-settings-chinese
 mv $GITHUB_WORKSPACE/patch/banner $OPENWRT_PATH/package/base-files/files/etc/banner
-mv $GITHUB_WORKSPACE/patch/imm23/defset package/emortal/default-settings/files/99-default-settings
-mv $GITHUB_WORKSPACE/patch/imm23/mydef package/base-files/files/etc/uci-defaults/mydef
+#mv $GITHUB_WORKSPACE/patch/imm23/defset package/emortal/default-settings/files/99-default-settings
+mv $GITHUB_WORKSPACE/patch/imm23/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
 
 #git clone --depth=1 https://github.com/asvow/luci-app-tailscale.git package/luci-app-tailscale
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
