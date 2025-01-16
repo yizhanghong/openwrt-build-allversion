@@ -24,7 +24,20 @@ rm -rf package/nas-packages/network
 # mv package/istore-packages/gowebdav package/gowebdav
 # rm -rf package/istore-packages
 
-#rm -rf package/emortal/default-settings/files/99-default-settings
+find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+find ./ | grep Makefile | grep mosdns | xargs rm -f
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
+mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
+mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
+mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
+mv package/kz8-small/luci-app-partexp package/luci-app-partexp
+mv package/kz8-small/luci-app-wrtbwmon package/luci-app-wrtbwmon
+mv package/kz8-small/wrtbwmon package/wrtbwmon
+mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
+rm -rf package/kz8-small
 
 # 添加kenzok8_small插件库, 编译新版Sing-box和hysteria，需golang版本1.20或者以上版本 ，可以用以下命令
 #rm -rf feeds/packages/lang/golang
