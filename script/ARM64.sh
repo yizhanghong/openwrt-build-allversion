@@ -3,7 +3,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.100.2/g" $(find ./feeds/luci/modules/
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/ImmortalWrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
-mv $GITHUB_WORKSPACE/patch/imm23/299-mydef.sh $OPENWRT_PATH/package/base-files/files/etc/uci-defaults/299-mydef.sh
+#mv $GITHUB_WORKSPACE/patch/imm23/299-mydef.sh $OPENWRT_PATH/package/base-files/files/etc/uci-defaults/299-mydef.sh
 
 # 添加额外插件
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
