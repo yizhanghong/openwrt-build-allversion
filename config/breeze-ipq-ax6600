@@ -1,0 +1,56 @@
+CONFIG_TARGET_qualcommax=y
+CONFIG_TARGET_qualcommax_ipq60xx=y
+CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_jdcloud_ax6600=y
+CONFIG_BUSYBOX_CUSTOM=y
+CONFIG_TARGET_PER_DEVICE_ROOTFS=y
+# CONFIG_ATH11K_MEM_PROFILE_1G is not set
+CONFIG_ATH11K_MEM_PROFILE_512M=y
+# CONFIG_TARGET_ROOTFS_INITRAMFS is not set
+CONFIG_LUCI_LANG_zh_Hans=y
+CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
+# CONFIG_PACKAGE_wpad-basic-mbedtls is not set
+CONFIG_PACKAGE_wpad-openssl=y
+CONFIG_PACKAGE_firewall=m
+CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_block-mount=y
+CONFIG_PACKAGE_kmod-fs-exportfs=y
+CONFIG_PACKAGE_kmod-fs-f2fs=y
+CONFIG_PACKAGE_kmod-fs-ntfs3=y
+CONFIG_PACKAGE_kmod-fs-vfat=y
+CONFIG_PACKAGE_kmod-fs-xfs=y
+
+CONFIG_PACKAGE_kmod-usb-rndis=y
+CONFIG_PACKAGE_kmod-usb-storage=y
+CONFIG_PACKAGE_kmod-usb-storage-extras=y
+CONFIG_PACKAGE_kmod-usb3=y
+CONFIG_PACKAGE_kmod-fuse=y
+CONFIG_PACKAGE_kmod-zram=y
+CONFIG_PACKAGE_coremark=y
+CONFIG_PACKAGE_blkid=y
+CONFIG_PACKAGE_coremark=y
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_cfdisk=y
+CONFIG_PACKAGE_fdisk=y
+CONFIG_PACKAGE_sgdisk=y
+CONFIG_PACKAGE_ip-full=y
+CONFIG_PACKAGE_lsblk=y
+CONFIG_PACKAGE_parted=y
+CONFIG_PACKAGE_zram-swap=y
+
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-app-argon-config=y
+CONFIG_PACKAGE_luci-app-autoreboot=y
+CONFIG_PACKAGE_luci-app-cpufreq=y
+CONFIG_PACKAGE_luci-app-diskman=y
+CONFIG_PACKAGE_luci-app-ramfree=y
+# CONFIG_PACKAGE_luci-app-sqm is not set
+CONFIG_PACKAGE_luci-app-ttyd=y
+# CONFIG_PACKAGE_luci-app-upnp is not set
+
+CONFIG_PACKAGE_luci-app-istorex=y
+CONFIG_PACKAGE_luci-app-quickstart=y
+CONFIG_PACKAGE_luci-app-store=y
+CONFIG_PACKAGE_luci-i18n-quickstart-zh-cn=y
+
+CONFIG_PACKAGE_luci-app-ddnsto=y
+CONFIG_PACKAGE_luci-app-modem=y
