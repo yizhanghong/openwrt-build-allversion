@@ -6,13 +6,14 @@ sed -i 's#mirrors.vsean.net/openwrt#mirror.nju.edu.cn/immortalwrt#g' package/emo
 sed -i 's/ImmortalWrt/OpenWrt/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 mv $GITHUB_WORKSPACE/patch/imm21.02/defset package/emortal/default-settings/files/99-default-settings
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+mv $GITHUB_WORKSPACE/patch/imm21.02/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
-git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
-git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
-git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
-rm -rf feeds/packages/net/ua2f
-rm -rf feeds/luci/applications/luci-app-ua2f
+#git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
+#git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
+#git clone https://github.com/EOYOHOO/rkp-ipid.git package/rkp-ipid
+#rm -rf feeds/packages/net/ua2f
+#rm -rf feeds/luci/applications/luci-app-ua2f
 
 #安装最新openclash
 rm -rf feeds/luci/applications/luci-app-openclash
@@ -38,7 +39,8 @@ rm -rf feeds/packages/kernel/fibocom-qmi-wwan
 rm -rf feeds/packages/kernel/quectel-qmi-wwan
 rm -rf feeds/luci/protocols/luci-proto-quectel
 
-git clone --depth=1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+git clone --depth 1 https://github.com/Enver-Yilmaz/luci-app-virtualhere.git package/luci-app-virtualhere
 #git clone --depth=1 https://github.com/kenzok8/small-package.git package/small-package
 #mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 #rm -rf feeds/packages/net/adguardhome
