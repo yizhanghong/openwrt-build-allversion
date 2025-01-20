@@ -184,7 +184,7 @@ detect_mac80211() {
 			set wireless.default_radio${devidx}.mode=ap
 			set wireless.default_radio0.ssid=WDSLR-2.4G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
 			set wireless.default_radio1.ssid=WDSLR-5G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
-			set wireless.default_radio${devidx}.encryption=psk2+ccmp
+			set wireless.default_radio${devidx}.encryption=psk2
 			set wireless.default_radio${devidx}.key=11111111
 EOF
 		uci -q commit wireless
