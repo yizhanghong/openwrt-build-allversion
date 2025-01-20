@@ -34,7 +34,8 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
-uci set wireless.radio.disabled=0
+uci set wireless.radio0.disabled=0
+uci set wireless.radio1.disabled=0
 uci set network.lan.ip6ifaceid='eui64'
 uci commit
 
