@@ -17,3 +17,5 @@ uci add_list dhcp.lan.ra_flags='none'
 uci set dhcp.lan.dns_service='0'
 
 uci commit
+
+exit 0
