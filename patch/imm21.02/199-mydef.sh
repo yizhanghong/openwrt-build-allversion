@@ -16,6 +16,11 @@ uci commit
 sed -i 's/root::0:0:99999:7:::/root:$1$fD5UO6dn$vrhOjDjV65/PkN8U1m0jX0:20106:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$fD5UO6dn$vrhOjDjV65/PkN8U1m0jX0:20106:0:99999:7:::/g' /etc/shadow
 
-wget -P /usr/bin/ https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file/Advanced_Extensions_virtualhereasp
+#wget -P /usr/bin/ https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file/Advanced_Extensions_virtualhereasp
+mv /etc/virtualhere /usr/share/virtualhere
+chmod +x /usr/share/virtualhere
+#echo > /etc/rc.local
+#sed -i '$a ./usr/share/virtualhere -b' /etc/rc.local
+#sed -i '$a exit 0' /etc/rc.local
 
 exit 0
