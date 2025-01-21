@@ -175,15 +175,15 @@ detect_mac80211() {
 			set wireless.radio${devidx}.band=${mode_band}
 			set wireless.radio${devidx}.htmode=$htmode
 			set wireless.radio${devidx}.country=CN
-			set wireless.radio0.disabled=1
-			set wireless.radio1.disabled=0
+			set wireless.radio0.disabled=0
+			set wireless.radio1.disabled=1
 
 			set wireless.default_radio${devidx}=wifi-iface
 			set wireless.default_radio${devidx}.device=radio${devidx}
 			set wireless.default_radio${devidx}.network=lan
 			set wireless.default_radio${devidx}.mode=ap
-			set wireless.default_radio0.ssid=WDSLR-2.4G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
-			set wireless.default_radio1.ssid=WDSLR-5G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
+			set wireless.default_radio0.ssid=WDSLR-5G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
+			set wireless.default_radio1.ssid=WDSLR-2.4G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
 			set wireless.default_radio${devidx}.encryption=psk2
 			set wireless.default_radio${devidx}.key=11111111
 EOF
