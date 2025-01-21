@@ -37,6 +37,12 @@ uci set dropbear.@dropbear[0].Interface=''
 uci set wireless.radio0.disabled=0
 uci set wireless.radio1.disabled=0
 uci set network.lan.ip6ifaceid='eui64'
+
+uci set network.wan.device='eth0'
+uci del network.cfg030f15.ports
+uci add_list network.cfg030f15.ports='eth1'
+uci add_list network.cfg030f15.ports='eth2'
+
 uci commit
 
 # 设置编译作者信息
