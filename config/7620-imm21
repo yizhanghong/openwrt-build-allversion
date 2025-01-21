@@ -1,15 +1,36 @@
 CONFIG_TARGET_ramips=y
 CONFIG_TARGET_ramips_mt7620=y
-CONFIG_TARGET_ramips_mt7620_DEVICE_lenovo_newifi-y1=y
-
-CONFIG_PACKAGE_ipv6helper=y
+CONFIG_TARGET_ramips_mt7620_DEVICE_xiaomi_miwifi-mini=y
+CONFIG_ATH_USER_REGD=y
+CONFIG_PACKAGE_ATH_DFS=y
+CONFIG_PACKAGE_carl9170-firmware=y
+# CONFIG_PACKAGE_ipset is not set
+# CONFIG_PACKAGE_iptables-mod-extra is not set
+# CONFIG_PACKAGE_iptables-mod-tproxy is not set
+CONFIG_PACKAGE_kmod-ath=y
+CONFIG_PACKAGE_kmod-carl9170=y
+CONFIG_PACKAGE_kmod-input-core=y
+# CONFIG_PACKAGE_kmod-ipt-extra is not set
+# CONFIG_PACKAGE_kmod-ipt-offload is not set
+# CONFIG_PACKAGE_kmod-ipt-tproxy is not set
+CONFIG_PACKAGE_kmod-mii=y
+# CONFIG_PACKAGE_kmod-nf-flow is not set
+CONFIG_PACKAGE_kmod-scsi-core=y
+CONFIG_PACKAGE_kmod-usb-net=y
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=y
+CONFIG_PACKAGE_kmod-usb-net-rndis=y
 CONFIG_PACKAGE_kmod-usb-storage=y
 CONFIG_PACKAGE_kmod-usb-storage-extras=y
-CONFIG_PACKAGE_kmod-usb2=y
-
-
-# CONFIG_PACKAGE_luci-lib-fs is not set
-# CONFIG_PACKAGE_luci is not set
-CONFIG_PACKAGE_luci-proto-ipv6=y
+CONFIG_PACKAGE_kmod-zd1211rw=y
+# CONFIG_PACKAGE_libipset is not set
 # CONFIG_PACKAGE_luci-app-filetransfer is not set
 # CONFIG_PACKAGE_luci-app-turboacc is not set
+CONFIG_PACKAGE_rt2800-pci-firmware=y
+CONFIG_PACKAGE_rt2800-usb-firmware=y
+
+CONFIG_PACKAGE_kmod-rt2800-pci=y
+CONFIG_PACKAGE_kmod-rt2800-soc=y
+CONFIG_PACKAGE_kmod-rt2800-usb=y
+CONFIG_PACKAGE_kmod-rt2x00-lib=y
+CONFIG_PACKAGE_RT2X00_LIB_DEBUGFS=y
+CONFIG_PACKAGE_RT2X00_DEBUG=y
