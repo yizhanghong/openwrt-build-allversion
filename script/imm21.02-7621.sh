@@ -8,6 +8,7 @@ mv $GITHUB_WORKSPACE/patch/imm21.02/defset package/emortal/default-settings/file
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/imm21.02/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
 mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere package/base-files/files/etc/virtualhere
+mv $GITHUB_WORKSPACE/patch/imm21.02/myvirtualhere package/base-files/files/etc/myvirtualhere
 
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 #git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
