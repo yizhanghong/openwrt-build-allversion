@@ -24,7 +24,7 @@ if [ "$count" -eq 1 ]; then
   uci set network.lan.proto='dhcp'
   uci set dhcp.lan.ignore='1'
 elif [ "$count" -gt 1 ]; then
-  uci set network.lan.ip6assign='64'
+  uci set network.lan.ipaddr='192.168.23.1'
 fi
 
 # 设置所有网口可访问网页终端
@@ -36,6 +36,7 @@ uci set dropbear.@dropbear[0].Interface=''
 #其他网络设置
 uci set wireless.radio0.disabled=0
 uci set wireless.radio1.disabled=0
+uci set network.lan.ip6assign='64'
 uci set network.lan.ip6ifaceid='eui64'
 
 uci commit
