@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #uci set wireless.default_radio0.ssid=WDSLR-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
 #uci set wireless.default_radio1.ssid=WDSLR-5G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
 #uci set network.lan.ipaddr='192.168.101.1'
