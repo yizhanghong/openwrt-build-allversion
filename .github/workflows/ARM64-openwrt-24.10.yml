@@ -1,4 +1,4 @@
-name: ARM-openwrt-23.05.4
+name: ARM-openwrt-24.10
 # 脚本参考github/haiibo和dzlea
 # Add a button to trigger the workflow
 on: 
@@ -6,15 +6,15 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: openwrt-23.05
+  REPO_BRANCH: openwrt-24.10
   CONFIG_FILE: config/ARM64-openwrt
-  DIY_SCRIPT: script/ARM64.sh
+  DIY_SCRIPT: script/ARM64-openwrt.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: false
-  FIRMWARE_TAG: ARM64-openwrt-23.05.4
+  FIRMWARE_TAG: ARM64-openwrt-24.10
   TZ: Asia/Shanghai
 
 jobs:
@@ -84,8 +84,9 @@ jobs:
     - name: Install Feeds(安装feeds)
       run: |
         cd $OPENWRT_PATH
-        git checkout v23.05.4
-        git checkout v23.05.4
+        git checkout v24.10.0-rc5
+        git checkout v24.10.0-rc5
+        mv $GITHUB_WORKSPACE/patch/openwrt-24.10/feeds.conf.default feeds.conf.default 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds update -a
@@ -108,10 +109,10 @@ jobs:
     - name: edit md5
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vermagic-op23054 $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/openwrt-24.10 $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
-        sed -i '121d' include/kernel-defaults.mk
-        sed -i '121i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
+        sed -i '130d' include/kernel-defaults.mk
+        sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
         sed -i '29d' package/kernel/linux/Makefile
         sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
@@ -151,8 +152,6 @@ jobs:
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
         cp $OPENWRT_PATH/.config full.config
-        mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
-        tar -zcf Packages.tar.gz packages
         rm -rf packages feeds.buildinfo version.buildinfo
         echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
 
@@ -160,7 +159,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true'
       uses: actions/upload-artifact@main
       with:
-        name: ${{ env.FIRMWARE_TAG }}-${{ env.SOURCE_AUTHOR }}-${{ env.FILE_DATE }}
+        name: ${{ env.FIRMWARE_TAG }}-${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release(发布固件)
@@ -174,7 +173,7 @@ jobs:
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
           ### 📒 固件信息
-          - 这是基于官方openwrt-23.05.3源码编译的固件
+          - 这是基于官方openwrt-24.10源码编译的固件
           - 💻 这是 ARM64 平台使用的 OpenWrt-rootfs 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
