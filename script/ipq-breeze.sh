@@ -3,18 +3,16 @@ sed -i 's/192.168.1.1/192.168.23.1/g' package/base-files/files/bin/config_genera
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.23.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
 sed -i 's/LibWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 sed -i 's/LiBwrt/OpenWrt/g' include/version.mk
-sed -i 's/LiBwrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-# sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-# sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 
-#sed -i 's/24.10/23.05/g' package/emortal/default-settings/files/99-distfeeds.conf
 #mv $GITHUB_WORKSPACE/patch/ipq-breeze/os-release package/base-files/files/usr/lib/os-release
 #mv $GITHUB_WORKSPACE/patch/ipq-breeze/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
-mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
+# sed -i 's/LiBwrt/OpenWrt/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+mv $GITHUB_WORKSPACE/patch/ipq-breeze/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 mv $GITHUB_WORKSPACE/patch/ipq-breeze/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
-#mv $GITHUB_WORKSPACE/patch/ipq-breeze/mac80211.uc package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-distfeeds.conf
+
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
@@ -35,21 +33,24 @@ git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git pa
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
-
-# git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
+git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
+git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/mihomo
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 rm -rf feeds/packages/devel/gn
-rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
 
-find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
-find ./ | grep Makefile | grep mosdns | xargs rm -f
+#find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+#find ./ | grep Makefile | grep mosdns | xargs rm -f
+rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/packages/net/mosdns
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+#git clone --depth 1 https://github.com/jarod360/luci-app-xupnpd.git package/luci-app-xupnpd
+git clone --depth 1 https://github.com/NONGFAH/luci-app-athena-led.git package/luci-app-athena-led
+git clone --depth=1 https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
@@ -61,10 +62,11 @@ mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
 rm -rf package/kz8-small
 
-#git clone --depth 1 https://github.com/jarod360/luci-app-xupnpd.git package/luci-app-xupnpd
-git clone --depth 1 https://github.com/NONGFAH/luci-app-athena-led.git package/luci-app-athena-led
-
 git clone --depth 1 -b openwrt-23.05 https://github.com/coolsnowwolf/luci.git package/lean-luci23
 mv package/lean-luci23/applications/luci-app-accesscontrol package/luci-app-accesscontrol
 sed -i 's#../../luci.mk#$(TOPDIR)/feeds/luci/luci.mk#g' package/luci-app-accesscontrol/Makefile
 rm -rf package/lean-luci23
+
+
+# sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+#sed -i 's/24.10/23.05/g' package/emortal/default-settings/files/99-distfeeds.conf
