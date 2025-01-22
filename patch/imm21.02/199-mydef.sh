@@ -16,6 +16,8 @@ uci commit
 sed -i 's/root::0:0:99999:7:::/root:$1$fD5UO6dn$vrhOjDjV65/PkN8U1m0jX0:20106:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$fD5UO6dn$vrhOjDjV65/PkN8U1m0jX0:20106:0:99999:7:::/g' /etc/shadow
 
+wifi down radio1
+
 #wget -P /usr/bin/ https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file/Advanced_Extensions_virtualhereasp
 mv /etc/virtualhere /usr/share/virtualhere
 chmod +x /usr/share/virtualhere
