@@ -4,7 +4,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.33.1/g" $(find ./feeds/luci/modules/l
 sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
-#mv $GITHUB_WORKSPACE/patch/ipq-breeze/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
+mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
 #sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-distfeeds.conf
 
 #默认WiFi设置
