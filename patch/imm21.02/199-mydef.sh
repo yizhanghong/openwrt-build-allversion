@@ -26,4 +26,6 @@ sed -i '$a cd /usr/share' /etc/rc.local
 sed -i '$a ./virtualhere -b' /etc/rc.local
 sed -i '$a exit 0' /etc/rc.local
 
+sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+
 exit 0
