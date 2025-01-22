@@ -26,4 +26,8 @@ sed -i '$a exit 0' /etc/rc.local
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
+/etc/init.d/network restart
+/etc/init.d/odhcpd restart
+/etc/init.d/rpcd restart
+
 exit 0
