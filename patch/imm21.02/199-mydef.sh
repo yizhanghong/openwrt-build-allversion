@@ -6,6 +6,7 @@ uci set wireless.default_radio1.ssid=WDSLR-$(cat /sys/class/ieee80211/phy0/macad
 uci set wireless.default_radio0.encryption='psk2'
 uci set wireless.default_radio0.key='11111111'
 #uci set wireless.radio0.channel='149'
+uci set wireless.radio1.disabled=1
 uci set network.lan.ipaddr='192.168.101.1'
 uci set system.cfg01e48a.hostname=dslr-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
 
@@ -20,11 +21,10 @@ uci commit
 sed -i 's/root::0:0:99999:7:::/root:$1$NdH27HBE$dmUpSX8x61asq1ewgkEvz1:20110:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$NdH27HBE$dmUpSX8x61asq1ewgkEvz1:20110:0:99999:7:::/g' /etc/shadow
 
-#wget -P /usr/bin/ https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file/Advanced_Extensions_virtualhereasp
+#wget -P /usr/sha/ https://testingcf.jsdelivr.net/gh/HiboyHiboy/opt-file/Advanced_Extensions_virtualhereasp
 mv /etc/virtualhere /usr/share/virtualhere
 chmod +x /usr/share/virtualhere
 echo > /etc/rc.local
-sed -i '$a wifi down radio1' /etc/rc.local
 sed -i '$a cd /usr/share' /etc/rc.local
 sed -i '$a ./virtualhere -b' /etc/rc.local
 sed -i '$a exit 0' /etc/rc.local
@@ -32,8 +32,8 @@ sed -i '$a exit 0' /etc/rc.local
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 
 /etc/init.d/network restart
-/etc/init.d/odhcpd restart
-/etc/init.d/rpcd restart
+# /etc/init.d/odhcpd restart
+# /etc/init.d/rpcd restart
 /etc/init.d/system restart
 
 exit 0
