@@ -1,8 +1,8 @@
 #!/bin/sh
 
 uci set wireless.radio0.cell_density=0
-uci set wireless.default_radio0.ssid=WDSLR-5G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
-uci set wireless.default_radio1.ssid=WDSLR-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }')
+uci set wireless.default_radio0.ssid=WDSLR-5G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
+uci set wireless.default_radio1.ssid=WDSLR-2.4G-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
 uci set wireless.default_radio0.encryption='psk2'
 uci set wireless.default_radio0.key='11111111'
 uci set wireless.radio0.channel='auto'
