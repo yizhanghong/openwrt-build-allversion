@@ -14,6 +14,7 @@ rm -rf package/nas-packages/network
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 -b js https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
+git clone --depth 1 https://github.com/ophub/luci-app-amlogic package/luci-app-amlogic
 git clone --depth 1 https://github.com/Siha06/my-openwrt-packages.git package/my-openwrt-packages
 git clone --depth 1 https://github.com/bobbyunknown/luci-app-syscontrol.git package/luci-app-syscontrol
 
