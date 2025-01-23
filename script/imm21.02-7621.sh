@@ -11,6 +11,12 @@ mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere/199-mydef.sh package/base-files/
 mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere/virtualhere package/base-files/files/etc/virtualhere
 mv $GITHUB_WORKSPACE/patch/imm21.02/virtualhere/config.ini package/base-files/files/etc/config.ini
 
+#完全删除luci版本
+sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#添加编译日期
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
+
 #有编译openwrt环境后，加入UA2F模块和RKP-IPID模块
 #git clone https://github.com/lucikap/luci-app-ua2f.git package/luci-app-ua2f
 #git clone https://github.com/EOYOHOO/UA2F.git package/UA2F
