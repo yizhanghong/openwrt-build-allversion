@@ -34,8 +34,10 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
-uci set wireless.radio0.disabled=0
-uci set wireless.radio1.disabled=0
+uci del wireless.radio0.disabled
+uci del wireless.radio1.disabled
+uci del wireless.default_radio0.disabled
+uci del wireless.default_radio1.disabled
 uci set network.lan.ip6assign='64'
 uci set network.lan.ip6ifaceid='eui64'
 
@@ -50,6 +52,7 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0-rc5/targets/armsr/armv8/kmods/6.6.69-1-04de402aa4176df8cd7e1d71dfe012a1' /etc/opkg/customfeeds.conf
 
+wifi up
 /etc/init.d/network restart
 
 exit 0
