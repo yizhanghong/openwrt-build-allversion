@@ -36,22 +36,19 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
-uci set wireless.radio0.disabled=0
-uci set wireless.radio1.disabled=0
+uci del wireless.radio0.disabled
+uci del wireless.radio1.disabled
+uci del wireless.default_radio0.disabled
+uci del wireless.default_radio1.disabled
 uci set network.lan.ip6assign='64'
 uci set network.lan.ip6ifaceid='eui64'
-
-#uci set network.wan.device='eth0'
-#uci del network.cfg030f15.ports
-#uci add_list network.cfg030f15.ports='eth1'
-#uci add_list network.cfg030f15.ports='eth2'
 
 uci commit
 
 # 设置编译作者信息
-#FILE_PATH="/etc/openwrt_release"
-#NEW_DESCRIPTION="OpenWrt V25.1.20"
-#sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
+FILE_PATH="/etc/openwrt_release"
+NEW_DESCRIPTION="OpenWrt V25.1.23"
+sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
@@ -59,4 +56,5 @@ sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0-rc5/
 sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 wifi up
 
+/etc/init.d/network restart
 exit 0
