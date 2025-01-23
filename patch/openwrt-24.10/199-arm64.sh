@@ -35,9 +35,7 @@ uci set dropbear.@dropbear[0].Interface=''
 
 #其他网络设置
 uci del wireless.radio0.disabled
-uci del wireless.radio1.disabled
 uci del wireless.default_radio0.disabled
-uci del wireless.default_radio1.disabled
 uci set network.lan.ip6assign='64'
 uci set network.lan.ip6ifaceid='eui64'
 
