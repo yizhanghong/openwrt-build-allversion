@@ -12,8 +12,18 @@ uci set dropbear.@dropbear[0].Interface=''
 
 uci set network.lan.ip6assign=64
 uci del network.globals.ula_prefix
-uci commit
+uci del dhcp.lan.ra_slaac
+uci del dhcp.lan.dhcpv6
+uci del dhcp.lan.ra_flags
+uci add_list dhcp.lan.ra_flags='none'
+uci set dhcp.lan.dns_service='0'
 
 # wifi设置
+uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
+#uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
+
+uci commit
+
+
 
 exit 0
