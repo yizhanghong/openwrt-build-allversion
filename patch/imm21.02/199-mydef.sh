@@ -1,4 +1,3 @@
-#!/bin/sh
 
 uci set wireless.radio0.cell_density=0
 uci set wireless.radio1.cell_density=0
