@@ -43,12 +43,12 @@ uci commit
 
 # 设置编译作者信息
 #FILE_PATH="/etc/openwrt_release"
-#NEW_DESCRIPTION="OpenWrt V25.1.23"
+#NEW_DESCRIPTION="OpenWrt V25.2.1"
 #sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0-rc5/targets/armsr/armv8/kmods/6.6.69-1-04de402aa4176df8cd7e1d71dfe012a1' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0-rc6/targets/armsr/armv8/kmods/6.6.73-1-5f0e657555378f3e0673e256ddb6fb86' /etc/opkg/customfeeds.conf
 
 wifi up
 /etc/init.d/network restart
