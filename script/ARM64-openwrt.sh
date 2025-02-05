@@ -1,7 +1,5 @@
 mv $GITHUB_WORKSPACE/patch/openwrt-24.10/199-arm64.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
 
-#完全删除luci版本
-sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 #添加编译日期
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
