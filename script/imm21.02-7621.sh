@@ -63,3 +63,12 @@ git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/luci-ap
 #mv package/small-package/frp package/frp
 #rm -rf feeds/packages/net/frp
 #rm -rf package/small-package
+
+rm -rf feeds/luci/applications/luci-app-msd_lite
+rm -rf feeds/packages/net/msd_lite
+git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/luci package/imm23luci
+mv package/imm23luci/applications/luci-app-msd_lite feeds/luci/applications/luci-app-msd_lite
+rm -rf package/imm23luci
+git clone --depth 1 -b openwrt-23.05 https://github.com/immortalwrt/packages package/imm23packages
+mv package/imm23packages/net/msd_lite feeds/packages/net/msd_lite
+rm -rf package/imm23packages
