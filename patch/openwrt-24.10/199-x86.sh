@@ -44,13 +44,13 @@ uci set network.lan.ip6ifaceid='eui64'
 uci commit
 
 # 设置编译作者信息
-FILE_PATH="/etc/openwrt_release"
-NEW_DESCRIPTION="OpenWrt V25.1.23"
-sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
+#FILE_PATH="/etc/openwrt_release"
+#NEW_DESCRIPTION="OpenWrt V25.1.23"
+#sed -i "s/DISTRIB_DESCRIPTION='[^']*'/DISTRIB_DESCRIPTION='$NEW_DESCRIPTION'/" "$FILE_PATH"
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i 's#downloads.openwrt.org#mirrors.pku.edu.cn/openwrt#g' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0-rc5/targets/x86/64/kmods/6.6.69-1-5509b70aad67fe27570100db8e5f3b66' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kmods https://mirrors.pku.edu.cn/openwrt/releases/24.10.0/targets/x86/64/kmods/6.6.73-1-a21259e4f338051d27a6443a3a7f7f1f' /etc/opkg/customfeeds.conf
 sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/packages-24.10/x86_64/kiddin9' /etc/opkg/customfeeds.conf
 wifi up
 
