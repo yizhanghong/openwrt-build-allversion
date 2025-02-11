@@ -30,6 +30,7 @@ git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/lu
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus package/luci-app-advancedplus
 git clone --depth 1 https://github.com/sirpdboy/luci-app-autotimeset package/luci-app-autotimeset
 git clone --depth 1 https://github.com/sirpdboy/luci-app-chatgpt-web.git package/luci-app-chatgpt-web
+git clone --depth 1 https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspeedtest
 git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/openwrt-oaf
 
