@@ -5,15 +5,18 @@ sed -i 's/ImmortalWrt/OpenWrt/g' package/base-files/files/bin/config_generate
 
 mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 mv $GITHUB_WORKSPACE/patch/ipq-vikingyfy/199-mydef.sh package/base-files/files/etc/uci-defaults/199-mydef.sh
-#sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' package/emortal/default-settings/files/99-distfeeds.conf
+
+#完全删除luci版本
+sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+#添加编译日期
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
+sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/etc/openwrt_release
 
 #默认WiFi设置
-sed -i 's/OWRT/OpenWrt-WiFi/g' package/base-files/files/etc/uci-defaults/990_set-wireless.sh
-sed -i '/BASE_WORD/d' package/base-files/files/etc/uci-defaults/990_set-wireless.sh
-sed -i 's/psk2+ccmp/none/g' package/base-files/files/etc/uci-defaults/990_set-wireless.sh
-# sed -i 's/ImmortalWrt/AX1800/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-# sed -i 's/encryption=none/encryption=psk2/g' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-# sed -i '214i\\t\t\tset wireless.default_${name}.key=123456qwerty' package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i 's/OWRT/OpenWrt-WiFi/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+sed -i 's/12345678/password/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+#sed -i '/BASE_WORD/d' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
+#sed -i 's/psk2+ccmp/none/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 
 
 #下载5g模块
@@ -27,11 +30,6 @@ rm -rf feeds/packages/kernel/quectel-qmi-wwan
 rm -rf feeds/luci/protocols/luci-proto-quectel
 rm -rf feeds/nss_packages/wwan
 
-#rm -rf feeds/packages/lang/ruby
-#git clone --depth=1 -b openwrt-23.05 --single-branch https://github.com/immortalwrt/packages.git package/immortal-pkg
-#mv package/immortal-pkg/lang/ruby feeds/packages/lang/ruby
-#rm -rf package/immortal-pkg
-
 # iStore
 git clone --depth=1 -b main https://github.com/linkease/istore.git package/istore
 git clone --depth=1 -b master https://github.com/linkease/nas-packages.git package/nas-packages
@@ -39,8 +37,10 @@ git clone --depth=1 -b main https://github.com/linkease/nas-packages-luci.git pa
 mv package/nas-packages/network/services/* package/nas-packages/
 rm -rf package/nas-packages/network
 
+rm -rf feeds/packages/net/adguardhome
 git clone --depth=1 https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
+mv package/kz8-small/adguardhome package/adguardhome
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
 mv package/kz8-small/luci-app-easymesh package/luci-app-easymesh
 mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
