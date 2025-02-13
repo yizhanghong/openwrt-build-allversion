@@ -1,11 +1,5 @@
 #!/bin/sh
 
-date_version=$(date +"%y.%m.%d")
-sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release
-echo "DISTRIB_REVISION='V${date_version}'" >> /etc/openwrt_release
-sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release
-echo "DISTRIB_DESCRIPTION='OpenWrt-V${date_version} '" >> /etc/openwrt_release
-
 sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 #sed -i '$a src/gz openwrt_others https://mirror.nju.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/packages' /etc/apk/repositories.d/customfeeds.list
