@@ -54,12 +54,12 @@ rm -rf feeds/packages/net/mosdns
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+rm -rf feeds/packages/net/adguardhome
 #git clone --depth 1 https://github.com/jarod360/luci-app-xupnpd.git package/luci-app-xupnpd
 git clone --depth 1 https://github.com/NONGFAH/luci-app-athena-led.git package/luci-app-athena-led
 git clone --depth=1 https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 git clone --depth 1 https://github.com/kenzok8/small-package.git package/kz8-small
 mv package/kz8-small/luci-app-adguardhome package/luci-app-adguardhome
-mv package/kz8-small/luci-app-fileassistant package/luci-app-fileassistant
 mv package/kz8-small/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/kz8-small/luci-app-macvlan package/luci-app-macvlan
 mv package/kz8-small/luci-app-partexp package/luci-app-partexp
