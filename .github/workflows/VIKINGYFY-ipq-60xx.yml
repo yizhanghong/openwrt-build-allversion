@@ -1,4 +1,4 @@
-name: VIKINGYFY-ipq-wifi
+name: VIKINGYFY-ipq-60xx
 # 脚本参考github/haiibo
 # Add a button to trigger the workflow
 on: 
@@ -7,7 +7,7 @@ on:
 env:
   REPO_URL: https://github.com/VIKINGYFY/immortalwrt.git
   REPO_BRANCH: main
-  CONFIG_FILE: config/VIKINGYFY-ipq-wifi
+  CONFIG_FILE: config/VIKINGYFY-ipq-60xx
   DIY_SCRIPT: script/VIKINGYFY.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
@@ -98,7 +98,7 @@ jobs:
     - name: edit md5（编辑内核值）
       run: |
         rm -rf $OPENWRT_PATH/.vermagic
-        mv $GITHUB_WORKSPACE/vm/vermagic-vikingyfy $OPENWRT_PATH/vermagic
+        mv $GITHUB_WORKSPACE/vm/vikingyfy-ipq60xx $OPENWRT_PATH/vermagic
         cd $OPENWRT_PATH
         sed -i '130d' include/kernel-defaults.mk
         sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
