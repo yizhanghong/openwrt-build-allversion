@@ -14,7 +14,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   FIRMWARE_RELEASE: true
-  FIRMWARE_TAG: ipq60xx-wifi
+  FIRMWARE_TAG: qualcommax
   TZ: Asia/Shanghai
 
 jobs:
