@@ -18,6 +18,7 @@ sed -i 's/12345678/password/g' target/linux/qualcommax/base-files/etc/uci-defaul
 #sed -i '/BASE_WORD/d' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 #sed -i 's/psk2+ccmp/none/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
 
+sed -i 's/hybrid/server/g' target/linux/qualcommax/base-files/etc/uci-defaults/991_set-network.sh
 
 #下载5g模块
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
