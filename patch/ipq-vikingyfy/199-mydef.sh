@@ -17,4 +17,6 @@ uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macadd
 
 uci commit
 
+#/etc/init.d/network restart
+
 exit 0
