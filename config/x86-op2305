@@ -22,3 +22,5 @@ CONFIG_LUCI_LANG_zh_Hans=y
 CONFIG_PACKAGE_luci-app-modem=y
 CONFIG_PACKAGE_luci-app-sms-tool=y
 CONFIG_PACKAGE_luci-i18n-modem-zh-cn=y
+CONFIG_PACKAGE_luci-app-syncdial=y
+CONFIG_PACKAGE_luci-app-mwan3=y
