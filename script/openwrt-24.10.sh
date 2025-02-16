@@ -48,7 +48,7 @@ mv package/kz8-small/wrtbwmon package/wrtbwmon
 mv package/kz8-small/luci-app-webrestriction package/luci-app-webrestriction
 mv package/kz8-small/luci-app-wechatpush package/luci-app-wechatpush
 mv package/kz8-small/luci-app-wolplus package/luci-app-wolplus
-mv package/kz8-small/luci-app-bypass package/luci-app-bypass
+#mv package/kz8-small/luci-app-bypass package/luci-app-bypass
 rm -rf package/kz8-small
 
 git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
