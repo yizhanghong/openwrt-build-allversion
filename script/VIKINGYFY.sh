@@ -33,6 +33,12 @@ rm -rf feeds/packages/kernel/quectel-qmi-wwan
 rm -rf feeds/luci/protocols/luci-proto-quectel
 rm -rf feeds/nss_packages/wwan
 
+#安装最新openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone --depth 1 https://github.com/vernesong/OpenClash.git  package/openclash
+mv package/openclash/luci-app-openclash feeds/luci/applications/
+rm -rf package/openclash
+
 rm -rf feeds/packages/net/adguardhome
 git clone --depth=1 https://github.com/sirpdboy/luci-app-advancedplus.git package/luci-app-advancedplus
 git clone --depth=1 https://github.com/kenzok8/small-package.git package/kz8-small
