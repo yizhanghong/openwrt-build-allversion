@@ -29,7 +29,7 @@ git clone --depth 1 https://github.com/sirpdboy/netspeedtest.git package/netspee
 
 mv $GITHUB_WORKSPACE/patch/7621-237imm/app/pw/proxy_host package/base-files/files/etc/proxy_host
 mv $GITHUB_WORKSPACE/patch/7621-237imm/app/pw/direct_host package/base-files/files/etc/direct_host
-mv $GITHUB_WORKSPACE/patch/7621-237imm/app/crontabs package/base-files/files/etc/crontabs
+mv $GITHUB_WORKSPACE/patch/7621-237imm/app/crontabs package/base-files/files/etc/my-crontabs
 
 mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 mv $GITHUB_WORKSPACE/patch/7621-237imm/argon/favicon.ico feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/favicon.ico
