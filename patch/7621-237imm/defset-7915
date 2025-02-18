@@ -48,7 +48,7 @@ sed -i 's/option mode/option default/g' /etc/config/system
 
 mv /etc/direct_host /usr/share/passwall/rules/direct_host
 mv /etc/proxy_host /usr/share/passwall/rules/proxy_host
-mv /etc/crontabs /etc/crontabs/root
+#mv /etc/my-crontabs /etc/crontabs/root
 
 ln -sf /sbin/ip /usr/bin/ip
 
