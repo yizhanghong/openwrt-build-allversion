@@ -10,8 +10,8 @@ rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
-sed -i 's/<%=luci.sys.hostname() or "?")%>/Bitray VPN Pro/g' /usr/lib/lua/luci/view/admin_status/index.htm
-sed -i 's/<%=pcdata(boardinfo.model or "?")%>/AX2500/g' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i 's/<%=luci.sys.hostname() or "?")%>/Aimydee_AR660X/g' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i 's/<%=pcdata(boardinfo.model or "?")%>/Aimydee_AR660X/g' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
@@ -27,15 +27,15 @@ sed -i 's/5e72e4/bb24f2/g' /usr/lib/lua/luci/view/themes/argon/header.htm
 sed -i 's/5e72e4/bb24f2/g' /usr/lib/lua/luci/view/themes/argon/footer.htm
 
 sed -i 's/192.168.1.1/192.168.6.1/g' /etc/wireless/mt7615/mt7615.1.5G.dat
-sed -i 's/Openwrt_5G/Bitray_VPN_Pro_5G/g' /etc/wireless/mt7615/mt7615.1.5G.dat
-sed -i 's/12345678/kh54sf19/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/Openwrt_5G/Aimydee-ar660x-5G/g' /etc/wireless/mt7615/mt7615.1.5G.dat
+sed -i 's/12345678/hj24zx85/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 sed -i 's/CountryCode=US/CountryCode=RU/g' /etc/wireless/mt7615/mt7615.1.5G.dat
 
 sed -i 's/192.168.1.1/192.168.6.1/g' /etc/wireless/mt7615/mt7615.1.2G.dat
-sed -i 's/CR660X_2.4G/Bitray_VPN_Pro_2.4G/g' /etc/wireless/mt7615/mt7615.1.2G.dat
-sed -i 's/12345678/kh54sf19/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/CR660X_2.4G/aumydee-ar660x-2.4G/g' /etc/wireless/mt7615/mt7615.1.2G.dat
+sed -i 's/12345678/hj24zx85/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/AuthMode=OPEN/AuthMode=WPA2PSK/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/EncrypType=NONE/EncrypType=AES/g' /etc/wireless/mt7615/mt7615.1.2G.dat
 sed -i 's/CountryCode=US/CountryCode=RU/g' /etc/wireless/mt7615/mt7615.1.2G.dat
