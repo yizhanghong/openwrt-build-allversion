@@ -10,8 +10,8 @@ rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
-sed -i 's/<%=luci.sys.hostname() or "?")%>/Aimydee_AR660X/g' /usr/lib/lua/luci/view/admin_status/index.htm
-sed -i 's/<%=pcdata(boardinfo.model or "?")%>/Aimydee_AR660X/g' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i 's/<%=luci.sys.hostname() or "?")%>/AIMYDEE/g' /usr/lib/lua/luci/view/admin_status/index.htm
+sed -i 's/<%=pcdata(boardinfo.model or "?")%>/AR660X/g' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
 sed -i '703d' /usr/lib/lua/luci/view/admin_status/index.htm
