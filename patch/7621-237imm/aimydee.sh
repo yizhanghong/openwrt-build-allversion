@@ -1,6 +1,6 @@
 sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 sed -i "s/192\.168\.[0-9]*\.[0-9]*/192.168.6.1/g" $(find ./feeds/luci/modules/luci-mod-system/ -type f -name "flash.js")
-sed -i 's/ImmortalWrt/Aimydee_AR660X/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/AIMYDEE/g' package/base-files/files/bin/config_generate
 mv $GITHUB_WORKSPACE/patch/7621-237imm/defset-7915 package/emortal/default-settings/files/99-default-settings
 # sed -i 's/bootstrap/design/g' feeds/luci/modules/luci-base/root/etc/config/luci
 # sed -i "s/luci-theme-design/luci-theme-design/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
