@@ -27,6 +27,7 @@ git clone --depth 1 https://github.com/morytyann/OpenWrt-mihomo.git package/Open
 git clone --depth 1 https://github.com/Siriling/5G-Modem-Support.git package/5g-modem
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh-cn/modem.po
 sed -i 's/移动通信模组/通信模组/g' package/5g-modem/luci-app-modem/po/zh_Hans/modem.po
+mv $GITHUB_WORKSPACE/patch/mhi_qti.c package/5g-modem/quectel_MHI/src/controllers/mhi_qti.c
 
 # iStore
 git clone --depth 1 -b main https://github.com/linkease/istore.git package/istore
