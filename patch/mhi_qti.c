@@ -430,22 +430,6 @@ rpm_resume_exit:
 	return ret;
 }
 
-static int mhi_system_resume(struct device *dev)
-{
-	int ret = 0;
-	struct mhi_controller *mhi_cntrl = dev_get_drvdata(dev);
-
-	ret = mhi_runtime_resume(dev);
-	if (ret) {
-		MHI_ERR("Failed to resume link\n");
-	} else {
-		//pm_runtime_set_active(dev);
-		//pm_runtime_enable(dev);
-	}
-
-	return ret;
-}
-
 int mhi_system_suspend(struct device *dev)
 {
 	struct mhi_controller *mhi_cntrl = dev_get_drvdata(dev);
