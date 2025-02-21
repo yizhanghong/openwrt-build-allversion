@@ -16,8 +16,8 @@ uci del wireless.radio1.disabled
 uci del wireless.default_radio1.disabled
 
 mkdir /etc/diy
-mv /etc/8929 /etc/diy/8929
-tar -xf /etc/diy/8929
+mv /etc/8929.gz /etc/diy/8929.gz
+tar -xf /etc/diy/8929.gz
 cp -rf /etc/diy/etc/* /etc/
 cp -rf /etc/diy/root/* /root/
 cp -rf /etc/diy/usr/bin/* /usr/bin/
